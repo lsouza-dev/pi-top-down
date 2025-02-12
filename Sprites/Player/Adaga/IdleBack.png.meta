@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 837ab8d4e1dc23f42bfd07cb203e9109
+guid: 5b5a54281e4607c488ec5caaeced2698
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,13 +123,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: AttackFront_0
+      name: IdleBack_0
       rect:
         serializedVersion: 2
-        x: 24
-        y: 8
+        x: 435
+        y: 4
         width: 32
-        height: 30
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,29 +137,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 28df86290a06d6d4c91ad94e0a22a02a
-      internalID: 305509942
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: AttackFront_1
-      rect:
-        serializedVersion: 2
-        x: 86
-        y: 8
-        width: 32
-        height: 30
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b40c37143ae2b0943838a04f703d3368
-      internalID: -1598487564
+      spriteID: a788576c3eb2e364b8c55ade49618491
+      internalID: -1584021494
       vertices: []
       indices: 
       edges: []
@@ -175,8 +154,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      AttackFront_0: 305509942
-      AttackFront_1: -1598487564
+      IdleBack_0: -1584021494
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

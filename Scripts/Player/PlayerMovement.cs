@@ -26,6 +26,9 @@ public class PlayerMovement : MonoBehaviour
     [Header("Movement")]
     [SerializeField] private float maxSpeed;
 
+
+    [SerializeField]
+    private float offsetTime = 0;
     private void Awake()
     {
         animator = GetComponentInChildren<Animator>();
@@ -43,8 +46,7 @@ public class PlayerMovement : MonoBehaviour
         float currentSpeed = Mathf.Lerp(0, maxSpeed, direction.magnitude);
         rb.velocity = direction * currentSpeed;
 
-        isAttack = Input.GetKey(KeyCode.Mouse0);
-        if (isAttack) animator.SetTrigger("isAttack");
+        isAttack = Input.GetMouseButton(0) && offsetTime == 0;
 
         isIdle = xInput == 0 && yInput == 0;
 
@@ -62,6 +64,7 @@ public class PlayerMovement : MonoBehaviour
         animator.SetFloat("ySpeed", yInput);
         animator.SetInteger("mouseDirection", mouseDirection);
         animator.SetBool("isIdle", isIdle);
+        animator.SetBool("isAttack", isAttack);
     }
 
     private void UpdateMouseDirection()

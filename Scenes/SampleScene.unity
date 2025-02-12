@@ -174,6 +174,7 @@ MonoBehaviour:
   ammo: 10
   animator: {fileID: 0}
   maxSpeed: 3
+  offsetTime: 0
 --- !u!50 &285281582
 Rigidbody2D:
   serializedVersion: 4
@@ -331,10 +332,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed8b1ae4e4e52b34ea557c1c11e076fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_CategoryHash: 9.388613e-30
-  m_labelHash: 1.9885985e-11
+  m_CategoryHash: 1.3061122e-19
+  m_labelHash: 1.6954902e-18
   m_SpriteKey: 0
-  m_SpriteHash: 309407883
+  m_SpriteHash: 86030939
 --- !u!212 &460458296
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -376,7 +377,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -667739548, guid: eab7c5418f15ee444aee6d1bba432a10, type: 3}
+  m_Sprite: {fileID: 1599411284, guid: f96f40abef9298b4a96526abb9ffe1cc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

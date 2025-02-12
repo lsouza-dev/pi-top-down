@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: walk
+  m_Name: attackSide
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -23,7 +23,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.04619882
+        value: 2.456438e-25
         inSlope: Infinity
         outSlope: Infinity
         tangentMode: 103
@@ -31,8 +31,8 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.11666667
-        value: 8.9575366e-33
+        time: 0.016666668
+        value: 1.0789949e-18
         inSlope: Infinity
         outSlope: Infinity
         tangentMode: 103
@@ -40,8 +40,8 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.25
-        value: 0.04619882
+        time: 0.13333334
+        value: 1.0789949e-18
         inSlope: Infinity
         outSlope: Infinity
         tangentMode: 103
@@ -79,12 +79,12 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.25
+    m_StopTime: 0.13333334
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
     m_HasAdditiveReferencePose: 0
-    m_LoopTime: 1
+    m_LoopTime: 0
     m_LoopBlend: 0
     m_LoopBlendOrientation: 0
     m_LoopBlendPositionY: 0
@@ -101,7 +101,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.04619882
+        value: 2.456438e-25
         inSlope: Infinity
         outSlope: Infinity
         tangentMode: 103
@@ -109,8 +109,8 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.11666667
-        value: 8.9575366e-33
+        time: 0.016666668
+        value: 1.0789949e-18
         inSlope: Infinity
         outSlope: Infinity
         tangentMode: 103
@@ -118,8 +118,8 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.25
-        value: 0.04619882
+        time: 0.13333334
+        value: 1.0789949e-18
         inSlope: Infinity
         outSlope: Infinity
         tangentMode: 103
