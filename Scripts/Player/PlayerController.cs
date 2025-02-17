@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     [Header("Player Attributes")]
     [SerializeField] private int hp = 100;
@@ -12,10 +12,10 @@ public class PlayerMovement : MonoBehaviour
     [Header("Animator Variables")]
     private float xInput;
     private float yInput;
-    private int mouseDirection;
+    public int mouseDirection;
     private bool isAlive = true;
     private bool isIdle;
-    private bool isAttack;
+    public bool isAttack;
 
     [Header("Components")]
     [SerializeField] private Animator animator;
@@ -23,18 +23,32 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
     private BoxCollider2D bCollider;
 
+    [Header("Scripts")]
+    [SerializeField] private PlayerAttack playerAttack; 
+
     [Header("Movement")]
     [SerializeField] private float maxSpeed;
 
 
     [SerializeField]
-    private float offsetTime = 0;
+    public float offsetTime;
+    [SerializeField]
+    public float offsetTimeDefault;
+
+
+    public static PlayerController instance;
     private void Awake()
     {
         animator = GetComponentInChildren<Animator>();
         playerTransform = GetComponent<Transform>();
         rb = GetComponent<Rigidbody2D>();
         bCollider = GetComponent<BoxCollider2D>();
+        playerAttack = GetComponent<PlayerAttack>();
+    }
+
+    void Start()
+    {
+        instance = instance == null ? instance = this : instance;
     }
 
     void Update()
@@ -46,8 +60,14 @@ public class PlayerMovement : MonoBehaviour
         float currentSpeed = Mathf.Lerp(0, maxSpeed, direction.magnitude);
         rb.velocity = direction * currentSpeed;
 
-        isAttack = Input.GetMouseButton(0) && offsetTime == 0;
+        isAttack = Input.GetMouseButton(0) && offsetTime <= 0;
+        if(!Input.GetMouseButton(0)) animator.SetBool("isAttack", false);
+        if(isAttack) {
+                animator.SetBool("isAttack", true);
+                playerAttack.Shoot();
+        }
 
+        offsetTime -= Time.deltaTime;
         isIdle = xInput == 0 && yInput == 0;
 
         if (mouseDirection == 1) playerTransform.localScale = new Vector3(-1, 1, 1);
@@ -64,7 +84,6 @@ public class PlayerMovement : MonoBehaviour
         animator.SetFloat("ySpeed", yInput);
         animator.SetInteger("mouseDirection", mouseDirection);
         animator.SetBool("isIdle", isIdle);
-        animator.SetBool("isAttack", isAttack);
     }
 
     private void UpdateMouseDirection()
