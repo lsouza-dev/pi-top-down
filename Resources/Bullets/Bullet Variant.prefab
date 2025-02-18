@@ -9,6 +9,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1112925164529470463, guid: 90df7d027491dc843b43dfaa8797462c, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1112925164529470463, guid: 90df7d027491dc843b43dfaa8797462c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -73,6 +77,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2039835426308842235, guid: 90df7d027491dc843b43dfaa8797462c, type: 3}
       insertIndex: -1
       addedObject: {fileID: -820518061020702949}
+    - targetCorrespondingSourceObject: {fileID: 2039835426308842235, guid: 90df7d027491dc843b43dfaa8797462c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -1986553739652303834}
+    - targetCorrespondingSourceObject: {fileID: 2039835426308842235, guid: 90df7d027491dc843b43dfaa8797462c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -7780797950882220479}
   m_SourcePrefab: {fileID: 100100000, guid: 90df7d027491dc843b43dfaa8797462c, type: 3}
 --- !u!1 &3845818874628075478 stripped
 GameObject:
@@ -238,3 +248,37 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.375
+--- !u!114 &-1986553739652303834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3845818874628075478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c57a88f75ea0bc49996769dcbf4d859, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeToDestroy: 0
+  defaultX: 0
+  defaultY: 0
+  scaleX: 0
+  scaleY: 0
+--- !u!114 &-7780797950882220479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3845818874628075478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c57a88f75ea0bc49996769dcbf4d859, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeToDestroy: 2
+  defaultX: 0.3
+  defaultY: 0.3
+  scaleX: 0
+  scaleY: 0

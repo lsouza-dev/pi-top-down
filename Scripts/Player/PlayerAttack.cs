@@ -64,8 +64,7 @@ public class PlayerAttack : MonoBehaviour
         if (spawnersPositions.Count == 0 || bullets.Count == 0) return;
         
         PlayerController.instance.isAttack = false;
-        PlayerController.instance.offsetTime = PlayerController.instance.offsetTimeDefault;
-
+        
         // Pegamos a posição do mouse na tela e convertemos para coordenadas do mundo
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePosition.z = 0;
@@ -79,6 +78,8 @@ public class PlayerAttack : MonoBehaviour
 
         // Criamos a bala
         GameObject bullet = Instantiate(bullets[currentBullet], spawnPosition, Quaternion.identity);
+        PlayerController.instance.offsetTime = PlayerController.instance.offsetTimeDefault;
+        
 
         // Calculamos o ângulo de rotação baseado no mouse
         float angle = Mathf.Atan2(-direction.y, -direction.x) * Mathf.Rad2Deg;
@@ -86,6 +87,5 @@ public class PlayerAttack : MonoBehaviour
 
         // Aplicamos a velocidade na direção calculada
         bullet.GetComponent<Rigidbody2D>().velocity = direction * speed;
-        Destroy(bullet,timeToDestroy);
     }
 }

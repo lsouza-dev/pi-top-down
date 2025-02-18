@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
 
 
     [SerializeField]
-    public float offsetTime;
+    public float offsetTime = 0;
     [SerializeField]
     public float offsetTimeDefault;
 
@@ -62,9 +62,10 @@ public class PlayerController : MonoBehaviour
 
         isAttack = Input.GetMouseButton(0) && offsetTime <= 0;
         if(!Input.GetMouseButton(0)) animator.SetBool("isAttack", false);
+
         if(isAttack) {
-                animator.SetBool("isAttack", true);
-                playerAttack.Shoot();
+            animator.SetBool("isAttack", true);
+            playerAttack.Shoot();
         }
 
         offsetTime -= Time.deltaTime;
@@ -94,7 +95,6 @@ public class PlayerController : MonoBehaviour
         Vector3 direction = (mousePosition - playerTransform.position).normalized;
 
         mouseDirection = GetMouseDirection(direction);
-        Debug.Log(mouseDirection.ToString());
     }
 
     private int GetMouseDirection(Vector3 direction)
