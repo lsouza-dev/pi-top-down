@@ -5,6 +5,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] float health = 5f;
+    [SerializeField] float collisionDamage = 5f;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,7 +23,9 @@ public class Enemy : MonoBehaviour
         if(this.health <= 0){
             Destroy(this.gameObject);
         }
+    }
 
-        print($"Health: {this.health}"); 
+    public void PlayerHit(PlayerController player){
+        player.TakeDamage(collisionDamage);
     }
 }

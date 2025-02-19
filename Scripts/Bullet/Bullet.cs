@@ -51,8 +51,6 @@ public class Bullet : MonoBehaviour
 
             color.a = Mathf.Clamp01(color.a - .15f);
             sr.color = color;
-
-            print("Damage: " + this.damage);
         }
     }
 }

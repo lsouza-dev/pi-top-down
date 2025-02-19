@@ -190,6 +190,38 @@ MonoBehaviour:
       m_SpriteOverride: {fileID: 1627042151, guid: 7e7e2725379a9854b9c925d513de21a4, type: 3}
     m_FromMain: 0
     m_EntryOverrideCount: 2
+  - m_Name: Damage
+    m_Hash: 375673178
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Damage_0
+      m_Hash: 102474000
+      m_Sprite: {fileID: -299130976, guid: 1c49ac19322da72479613bb899a69acd, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -299130976, guid: 1c49ac19322da72479613bb899a69acd, type: 3}
+    - m_Name: Damage_1
+      m_Hash: 823955846
+      m_Sprite: {fileID: -1070158795, guid: 1c49ac19322da72479613bb899a69acd, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1070158795, guid: 1c49ac19322da72479613bb899a69acd, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 2
+  - m_Name: Die
+    m_Hash: 20298039
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Die_0
+      m_Hash: 949602785
+      m_Sprite: {fileID: 316048481, guid: 8fd594adcc5e66e41b134ee669d45a25, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 316048481, guid: 8fd594adcc5e66e41b134ee669d45a25, type: 3}
+    - m_Name: Die_1
+      m_Hash: 262076791
+      m_Sprite: {fileID: 730264987, guid: 8fd594adcc5e66e41b134ee669d45a25, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 730264987, guid: 8fd594adcc5e66e41b134ee669d45a25, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 2
   m_PrimaryLibraryGUID: 
-  m_ModificationHash: 638749791155599630
+  m_ModificationHash: 638755745591500667
   m_Version: 1

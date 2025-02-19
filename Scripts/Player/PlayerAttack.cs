@@ -44,7 +44,7 @@ public class PlayerAttack : MonoBehaviour
             return;
         }
 
-        PlayerController.instance.offsetTime = PlayerController.instance.offsetTimeDefault;
+        PlayerController.instance.shootCooldownTime = PlayerController.instance.shootCooldownTimeDefault;
     }
 
     void Update()
@@ -78,7 +78,7 @@ public class PlayerAttack : MonoBehaviour
 
         // Criamos a bala
         GameObject bullet = Instantiate(bullets[currentBullet], spawnPosition, Quaternion.identity);
-        PlayerController.instance.offsetTime = PlayerController.instance.offsetTimeDefault;
+        PlayerController.instance.shootCooldownTime = PlayerController.instance.shootCooldownTimeDefault;
         
 
         // Calculamos o ângulo de rotação baseado no mouse

@@ -176,7 +176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f8d59a0fe593344a9f4b7f147193c7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 100
+  hp: 20
   mana: 50
   ammo: 10
   mouseDirection: 0
@@ -184,8 +184,10 @@ MonoBehaviour:
   animator: {fileID: 0}
   playerAttack: {fileID: 0}
   maxSpeed: 3
-  offsetTime: 0
-  offsetTimeDefault: 2
+  shootCooldownTime: 0
+  shootCooldownTimeDefault: 1.8
+  stoppedTime: 0
+  invencibleTime: 0
 --- !u!50 &285281582
 Rigidbody2D:
   serializedVersion: 4
@@ -418,10 +420,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed8b1ae4e4e52b34ea557c1c11e076fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_CategoryHash: 0.000035075664
-  m_labelHash: 3.8248278e-23
+  m_CategoryHash: 3.3377335e-38
+  m_labelHash: 0.000073332114
   m_SpriteKey: 0
-  m_SpriteHash: 379063248
+  m_SpriteHash: 809376425
 --- !u!212 &460458296
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -463,7 +465,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 172254546, guid: 36c5f4b9dfbb3524994fea8d5c872ee4, type: 3}
+  m_Sprite: {fileID: 316048481, guid: 8fd594adcc5e66e41b134ee669d45a25, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
