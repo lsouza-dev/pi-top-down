@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.U2D.Animation;
 
 public class PlayerController : MonoBehaviour
 {
@@ -27,6 +28,12 @@ public class PlayerController : MonoBehaviour
     [Header("Scripts")]
     [SerializeField] private PlayerAttack playerAttack;
 
+    [Header("Class")]
+    
+    [SerializeField] public SpriteLibrary library;
+    [SerializeField] public SpriteLibraryAsset spriteLibraryAsset;
+    [SerializeField] public Bullet currentBullet;
+
     [Header("Movement")]
     [SerializeField] private float maxSpeed;
     [SerializeField] public float shootCooldownTime = 0;
@@ -36,18 +43,25 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float stoppedTime;
     [SerializeField] private float invencibleTime;
 
+
+    int c = 0;
+
     private void Awake()
     {
+        library = GetComponentInChildren<SpriteLibrary>();
         animator = GetComponentInChildren<Animator>();
         playerTransform = GetComponent<Transform>();
         rb = GetComponent<Rigidbody2D>();
         bCollider = GetComponent<BoxCollider2D>();
         playerAttack = GetComponent<PlayerAttack>();
+        
     }
 
     void Start()
     {
         instance = instance == null ? instance = this : instance;
+        (spriteLibraryAsset,currentBullet) = ClassSelector.instance.ClassChoice(0,c);
+        library.spriteLibraryAsset = spriteLibraryAsset;
     }
 
     void Update()
@@ -59,6 +73,13 @@ public class PlayerController : MonoBehaviour
             PlayerAttack();
             UpdateMouseDirection();
             PlayerInvencible();
+        }
+
+
+        if(Input.GetKeyUp(KeyCode.U)){
+            c += 1;
+            (spriteLibraryAsset,currentBullet) = ClassSelector.instance.ClassChoice(0,c);
+            library.spriteLibraryAsset = spriteLibraryAsset;
         }
 
         ChangeAnimations();
@@ -86,7 +107,7 @@ public class PlayerController : MonoBehaviour
         if (isAttack)
         {
             animator.SetBool("isAttack", true);
-            playerAttack.Shoot();
+            playerAttack.Shoot(currentBullet);
         }
     }
 
@@ -172,7 +193,6 @@ public class PlayerController : MonoBehaviour
         }
 
     }
-
 
     private void DecrementTime()
     {

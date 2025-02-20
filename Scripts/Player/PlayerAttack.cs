@@ -7,7 +7,6 @@ public class PlayerAttack : MonoBehaviour
 {
     [SerializeField] private Transform spawnerParent; // O spawner principal
     [SerializeField] private List<GameObject> spawnersPositions; // Lista dos spawners filhos
-    [SerializeField] private List<GameObject> bullets;
     [SerializeField] private int currentBullet = 0;
     [SerializeField] private float timeToDestroy;
     [SerializeField] private float speed;
@@ -23,7 +22,6 @@ public class PlayerAttack : MonoBehaviour
 
     void Awake()
     {
-        bullets = Resources.LoadAll<GameObject>("Bullets").ToList();
         spawnersPositions = Resources.LoadAll<GameObject>("Spawners").ToList();
         spawnerParent = GameObject.Find("Spawner").transform;
     }
@@ -59,9 +57,9 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
-    public void Shoot()
+    public void Shoot(Bullet bullet)
     {
-        if (spawnersPositions.Count == 0 || bullets.Count == 0) return;
+        if (spawnersPositions.Count == 0 ) return;
         
         PlayerController.instance.isAttack = false;
         
@@ -77,15 +75,15 @@ public class PlayerAttack : MonoBehaviour
         Vector3 direction = (mousePosition - spawnPosition).normalized;
 
         // Criamos a bala
-        GameObject bullet = Instantiate(bullets[currentBullet], spawnPosition, Quaternion.identity);
+        var bulletInstance = Instantiate(bullet, spawnPosition, Quaternion.identity);
         PlayerController.instance.shootCooldownTime = PlayerController.instance.shootCooldownTimeDefault;
         
 
         // Calculamos o ângulo de rotação baseado no mouse
         float angle = Mathf.Atan2(-direction.y, -direction.x) * Mathf.Rad2Deg;
-        bullet.transform.rotation = Quaternion.Euler(0, 0, angle);
+        bulletInstance.transform.rotation = Quaternion.Euler(0, 0, angle);
 
         // Aplicamos a velocidade na direção calculada
-        bullet.GetComponent<Rigidbody2D>().velocity = direction * speed;
+        bulletInstance.GetComponent<Rigidbody2D>().velocity = direction * speed;
     }
 }
