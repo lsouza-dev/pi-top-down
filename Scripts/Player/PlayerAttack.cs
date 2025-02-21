@@ -41,8 +41,6 @@ public class PlayerAttack : MonoBehaviour
             Debug.LogError("A lista de spawners filhos precisa ter exatamente 4 posições!");
             return;
         }
-
-        PlayerController.instance.shootCooldownTime = PlayerController.instance.shootCooldownTimeDefault;
     }
 
     void Update()

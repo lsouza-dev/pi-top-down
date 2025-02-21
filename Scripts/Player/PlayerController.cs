@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.U2D.Animation;
 
 public class PlayerController : MonoBehaviour
@@ -29,7 +31,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private PlayerAttack playerAttack;
 
     [Header("Class")]
-    
+
     [SerializeField] public SpriteLibrary library;
     [SerializeField] public SpriteLibraryAsset spriteLibraryAsset;
     [SerializeField] public Bullet currentBullet;
@@ -43,8 +45,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float stoppedTime;
     [SerializeField] private float invencibleTime;
 
+    [SerializeField] private float distanciamaxdogizmos;
+    [SerializeField] private Vector3 mouseLimit;
+    [SerializeField] private GameObject mouseCursor;
 
-    int c = 0;
 
     private void Awake()
     {
@@ -54,14 +58,17 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         bCollider = GetComponent<BoxCollider2D>();
         playerAttack = GetComponent<PlayerAttack>();
-        
     }
 
     void Start()
     {
         instance = instance == null ? instance = this : instance;
-        (spriteLibraryAsset,currentBullet) = ClassSelector.instance.ClassChoice(0,c);
+        int playerClass = PlayerPrefs.GetInt("PlayerClass");
+        print($"Player Class: {playerClass}");
+        (spriteLibraryAsset, currentBullet) = ClassSelector.instance.ClassChoice(0, playerClass);
         library.spriteLibraryAsset = spriteLibraryAsset;
+        mouseCursor = GameObject.FindGameObjectWithTag("Mouse");
+        Cursor.visible = false;
     }
 
     void Update()
@@ -75,13 +82,8 @@ public class PlayerController : MonoBehaviour
             PlayerInvencible();
         }
 
-
-        if(Input.GetKeyUp(KeyCode.U)){
-            c += 1;
-            (spriteLibraryAsset,currentBullet) = ClassSelector.instance.ClassChoice(0,c);
-            library.spriteLibraryAsset = spriteLibraryAsset;
-        }
-
+        if (Input.GetKeyUp(KeyCode.Escape)) SceneManager.LoadScene("Menu");
+        mouseCursor.transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         ChangeAnimations();
         DecrementTime();
     }
@@ -122,6 +124,7 @@ public class PlayerController : MonoBehaviour
     private void UpdateMouseDirection()
     {
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mouseCursor.transform.position = mousePosition;
         mousePosition.z = 0;
 
         Vector3 direction = (mousePosition - playerTransform.position).normalized;
@@ -200,4 +203,7 @@ public class PlayerController : MonoBehaviour
         invencibleTime -= Time.deltaTime;
         stoppedTime -= Time.deltaTime;
     }
+
 }
+
+
