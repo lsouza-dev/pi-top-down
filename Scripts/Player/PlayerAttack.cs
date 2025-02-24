@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
@@ -25,7 +26,6 @@ public class PlayerAttack : MonoBehaviour
         spawnersPositions = Resources.LoadAll<GameObject>("Spawners").ToList();
         spawnerParent = GameObject.Find("Spawner").transform;
     }
-
 
     void Start()
     {
@@ -61,27 +61,27 @@ public class PlayerAttack : MonoBehaviour
         
         PlayerController.instance.isAttack = false;
         
-        // Pegamos a posição do mouse na tela e convertemos para coordenadas do mundo
+        
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePosition.z = 0;
 
-        // Pegamos a posição do spawner baseado na direção do mouse
+        
         Transform spawner = spawnersPositions[PlayerController.instance.mouseDirection].transform;
         Vector3 spawnPosition = spawner.position;
 
-        // Calculamos a direção do tiro
+        
         Vector3 direction = (mousePosition - spawnPosition).normalized;
 
-        // Criamos a bala
+        
         var bulletInstance = Instantiate(bullet, spawnPosition, Quaternion.identity);
         PlayerController.instance.shootCooldownTime = PlayerController.instance.shootCooldownTimeDefault;
         
 
-        // Calculamos o ângulo de rotação baseado no mouse
+        
         float angle = Mathf.Atan2(-direction.y, -direction.x) * Mathf.Rad2Deg;
         bulletInstance.transform.rotation = Quaternion.Euler(0, 0, angle);
 
-        // Aplicamos a velocidade na direção calculada
+        
         bulletInstance.GetComponent<Rigidbody2D>().velocity = direction * speed;
     }
 }

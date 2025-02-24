@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 917423e9a78e89e4a8e3e6922c33a2b9
+guid: 7a8a0419cc511e04f8ad0a6477af3045
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,10 +123,10 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Attack_0
+      name: IdleSide_0
       rect:
         serializedVersion: 2
-        x: 194
+        x: 64
         y: 0
         width: 32
         height: 32
@@ -137,8 +137,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f2f834b296a78f947aa4d60395e592d4
-      internalID: -2072618312
+      spriteID: 83ff4819ce4afda42950011b15a92f2d
+      internalID: 1839293935
       vertices: []
       indices: 
       edges: []
@@ -154,8 +154,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Attack_0: -2072618312
-      Attack_1: 1951239594
+      IdleSide_0: 1839293935
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 917423e9a78e89e4a8e3e6922c33a2b9
+guid: 8a1ed0e8897f59e4883ebc33928d3a72
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,12 +123,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Attack_0
+      name: SideWalk_0
       rect:
         serializedVersion: 2
-        x: 194
+        x: 115
         y: 0
-        width: 32
+        width: 38
         height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -137,8 +137,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f2f834b296a78f947aa4d60395e592d4
-      internalID: -2072618312
+      spriteID: a5a763aef12fe2b46bc55c89cd1cb10e
+      internalID: -1251115825
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SideWalk_1
+      rect:
+        serializedVersion: 2
+        x: 153
+        y: 0
+        width: 38
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21627686c1f341e4fa1d27e3af9f1304
+      internalID: -810229785
       vertices: []
       indices: 
       edges: []
@@ -154,8 +175,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Attack_0: -2072618312
-      Attack_1: 1951239594
+      SideWalk_0: -1251115825
+      SideWalk_1: -810229785
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

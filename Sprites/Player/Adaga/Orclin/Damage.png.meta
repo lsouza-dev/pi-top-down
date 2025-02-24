@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 917423e9a78e89e4a8e3e6922c33a2b9
+guid: 6b8142e4740d49f4796db33b887119d9
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,12 +123,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Attack_0
+      name: Damage_0
       rect:
         serializedVersion: 2
-        x: 194
+        x: 648
         y: 0
-        width: 32
+        width: 38
         height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -137,8 +137,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f2f834b296a78f947aa4d60395e592d4
-      internalID: -2072618312
+      spriteID: 3d68545ff5adbeb48a6fbe1a0ca12c6b
+      internalID: -299130976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Damage_1
+      rect:
+        serializedVersion: 2
+        x: 686
+        y: 0
+        width: 38
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13c1ea678567c244eb4fbdcd66745421
+      internalID: -1070158795
       vertices: []
       indices: 
       edges: []
@@ -154,8 +175,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Attack_0: -2072618312
-      Attack_1: 1951239594
+      Damage_0: -299130976
+      Damage_1: -1070158795
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

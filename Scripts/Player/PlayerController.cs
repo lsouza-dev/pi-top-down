@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
@@ -9,6 +10,7 @@ using UnityEngine.U2D.Animation;
 public class PlayerController : MonoBehaviour
 {
     [Header("Player Attributes")]
+    [SerializeField] private int level = 1;
     [SerializeField] private float hp = 100;
     [SerializeField] private float mana = 50;
     [SerializeField] private int ammo = 10;
@@ -32,9 +34,13 @@ public class PlayerController : MonoBehaviour
 
     [Header("Class")]
 
+    [SerializeField] public int evolutionIndex = 0;
+    [SerializeField] public int playerClass = 0;
     [SerializeField] public SpriteLibrary library;
     [SerializeField] public SpriteLibraryAsset spriteLibraryAsset;
     [SerializeField] public Bullet currentBullet;
+    [SerializeField] public bool isEvolving;
+
 
     [Header("Movement")]
     [SerializeField] private float maxSpeed;
@@ -47,8 +53,6 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private float distanciamaxdogizmos;
     [SerializeField] private Vector3 mouseLimit;
-    [SerializeField] private GameObject mouseCursor;
-
 
     private void Awake()
     {
@@ -58,22 +62,21 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         bCollider = GetComponent<BoxCollider2D>();
         playerAttack = GetComponent<PlayerAttack>();
+        playerClass = PlayerPrefs.GetInt("PlayerClass");
     }
 
     void Start()
     {
         instance = instance == null ? instance = this : instance;
-        int playerClass = PlayerPrefs.GetInt("PlayerClass");
-        print($"Player Class: {playerClass}");
-        (spriteLibraryAsset, currentBullet) = ClassSelector.instance.ClassChoice(0, playerClass);
-        library.spriteLibraryAsset = spriteLibraryAsset;
-        mouseCursor = GameObject.FindGameObjectWithTag("Mouse");
-        Cursor.visible = false;
+        EvolvePlayer(evolutionIndex, playerClass);
+        print($"Evolution: {evolutionIndex}, Class: {currentBullet}");
+        if (spriteLibraryAsset == null) print($"Sprite Library Asset is Null");
+        if (currentBullet == null) print($"Bullet is Null");
     }
 
     void Update()
     {
-        if (!isAlive) return;
+        if (!isAlive || spriteLibraryAsset == null || currentBullet == null) return;
         if (stoppedTime <= 0)
         {
             PlayerMovement();
@@ -81,9 +84,17 @@ public class PlayerController : MonoBehaviour
             UpdateMouseDirection();
             PlayerInvencible();
         }
-
         if (Input.GetKeyUp(KeyCode.Escape)) SceneManager.LoadScene("Menu");
-        mouseCursor.transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            this.isEvolving = true;
+            this.level = 10;
+            evolutionIndex += 1;
+            EvolvePlayer(evolutionIndex, playerClass);
+            this.isEvolving = false;
+        }
+        ;
+
         ChangeAnimations();
         DecrementTime();
     }
@@ -124,7 +135,6 @@ public class PlayerController : MonoBehaviour
     private void UpdateMouseDirection()
     {
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        mouseCursor.transform.position = mousePosition;
         mousePosition.z = 0;
 
         Vector3 direction = (mousePosition - playerTransform.position).normalized;
@@ -204,6 +214,10 @@ public class PlayerController : MonoBehaviour
         stoppedTime -= Time.deltaTime;
     }
 
+
+    public void EvolvePlayer(int evolution, int classIndex)
+    {
+        (this.spriteLibraryAsset, this.currentBullet) = ClassSelector.instance.ClassChoice(evolutionIndex, playerClass);
+        this.library.spriteLibraryAsset = spriteLibraryAsset;
+    }
 }
-
-

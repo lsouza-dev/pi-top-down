@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 917423e9a78e89e4a8e3e6922c33a2b9
+guid: 7648078b93a6a2d42870fa3d1680ba56
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,10 +123,10 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Attack_0
+      name: AttackBack_0
       rect:
         serializedVersion: 2
-        x: 194
+        x: 355
         y: 0
         width: 32
         height: 32
@@ -137,8 +137,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f2f834b296a78f947aa4d60395e592d4
-      internalID: -2072618312
+      spriteID: 5e0ee355c963cf444a0044e0dd1a9a1c
+      internalID: -1632116028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AttackBack_1
+      rect:
+        serializedVersion: 2
+        x: 452
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb73ea6a9d8fb9849a35a899327589dd
+      internalID: 1621527075
       vertices: []
       indices: 
       edges: []
@@ -154,8 +175,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Attack_0: -2072618312
-      Attack_1: 1951239594
+      AttackBack_0: -1632116028
+      AttackBack_1: 1621527075
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

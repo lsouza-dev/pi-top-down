@@ -15,6 +15,7 @@ public class menuprincipal : MonoBehaviour
    private ToggleGroup toggleGroup;
    [SerializeField] private List<Toggle> toggles = new List<Toggle>();
    [SerializeField] private Toggle activeToggle;
+   [SerializeField] private Button playButton;
 
 
    private void Awake()
@@ -42,6 +43,8 @@ public class menuprincipal : MonoBehaviour
       Toggle[] togglesArray = FindObjectsOfType<Toggle>();
       // Adicionar os toggles a lista por ordem alfabética
       toggles.AddRange(togglesArray.OrderBy(t => t.name));
+      activeToggle = toggles.FirstOrDefault(t => t.isOn);
+      PlayerPrefs.SetInt("PlayerClass", toggles.IndexOf(activeToggle));
    }
 
    public void opções()
@@ -72,9 +75,14 @@ public class menuprincipal : MonoBehaviour
 
    public void GetSelectedToggleIndex()
    {
+      playButton = GameObject.Find("Play").GetComponent<Button>();
+      
       activeToggle = toggles.FirstOrDefault(t => t.isOn);
-      if(activeToggle != null) print($"Toggle selecionado: {toggles.IndexOf(activeToggle)} | Classe: {activeToggle.name}");
-
+      if (activeToggle != null) { 
+         print($"Toggle selecionado: {toggles.IndexOf(activeToggle)} | Classe: {activeToggle.name}"); 
+         playButton.interactable = true;
+      } else playButton.interactable = false;
+      
       PlayerPrefs.SetInt("PlayerClass", toggles.IndexOf(activeToggle));
    }
 }

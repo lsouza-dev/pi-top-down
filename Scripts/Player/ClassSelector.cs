@@ -43,13 +43,9 @@ public class ClassSelector : MonoBehaviour
         orcLibraries = Resources.LoadAll<SpriteLibraryAsset>("Libraries\\Orc").ToList();
 
         playerController = FindObjectOfType<PlayerController>();
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
+
         instance = instance == null ? instance = this : instance;
     }
-
 
     public (SpriteLibraryAsset, Bullet) ClassChoice(int evolution, int classIndex)
     {

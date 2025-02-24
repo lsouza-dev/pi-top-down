@@ -2239,6 +2239,7 @@ MonoBehaviour:
   classes: {fileID: 325581183}
   toggles: []
   activeToggle: {fileID: 0}
+  playButton: {fileID: 0}
 --- !u!1 &939603641
 GameObject:
   m_ObjectHideFlags: 0
@@ -3190,7 +3191,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1418602932}
   m_OnClick:
     m_PersistentCalls:

@@ -194,7 +194,6 @@ MonoBehaviour:
   invencibleTime: 0
   distanciamaxdogizmos: 4.87
   mouseLimit: {x: 0, y: 0, z: 0}
-  mouseCursor: {fileID: 0}
 --- !u!50 &285281582
 Rigidbody2D:
   serializedVersion: 4
@@ -989,7 +988,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!61 &1835713654
 BoxCollider2D:
   m_ObjectHideFlags: 0
