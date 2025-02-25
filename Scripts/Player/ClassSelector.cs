@@ -14,9 +14,7 @@ public class ClassSelector : MonoBehaviour
     [SerializeField] public SpriteLibraryAsset currentLibrary;
 
     [Header("Bullets")]
-    [SerializeField] public List<Bullet> goblinBullets;
-    [SerializeField] public List<Bullet> orclinBullets;
-    [SerializeField] public List<Bullet> orcBullets;
+    [SerializeField] public List<Bullet> bullets;
     [SerializeField] public Bullet currentBullet;
 
     [SerializeField] public PlayerController playerController;
@@ -29,17 +27,15 @@ public class ClassSelector : MonoBehaviour
 
 
     public static ClassSelector instance;
+    public int evolutionIndex = -1;
 
 
     void Awake()
     {
-        goblinBullets = Resources.LoadAll<Bullet>("Bullets\\Goblin").ToList();
+        bullets = Resources.LoadAll<Bullet>("Bullets").ToList();
+
         goblinLibraries = Resources.LoadAll<SpriteLibraryAsset>("Libraries\\Goblin").ToList();
-
-        orclinBullets = Resources.LoadAll<Bullet>("Bullets\\Orclin").ToList();
         orclinLibraries = Resources.LoadAll<SpriteLibraryAsset>("Libraries\\Orclin").ToList();
-
-        orcBullets = Resources.LoadAll<Bullet>("Bullets\\Orc").ToList();
         orcLibraries = Resources.LoadAll<SpriteLibraryAsset>("Libraries\\Orc").ToList();
 
         playerController = FindObjectOfType<PlayerController>();
@@ -47,71 +43,78 @@ public class ClassSelector : MonoBehaviour
         instance = instance == null ? instance = this : instance;
     }
 
-    public (SpriteLibraryAsset, Bullet) ClassChoice(int evolution, int classIndex)
+    public (SpriteLibraryAsset, Bullet) ClassChoice(int classIndex)
     {
-        print($"Evolution: {evolution}, Class: {classIndex}");
-        currentEvolution = playerEvolutions[evolution];
-        currentClass = playerClass[classIndex];
+        this.evolutionIndex += 1;
+        this.currentClass = classIndex;
 
-        switch (currentEvolution)
+        print($"Evolution: {currentEvolution}, Class: {currentClass}");
+        if (evolutionIndex <= playerEvolutions.Count)
         {
-            case 0:
-                switch (currentClass)
-                {
-                    case 0:
-                        currentLibrary = goblinLibraries[classIndex];
-                        currentBullet = goblinBullets[classIndex];
-                    break;
-                    case 1:
-                        currentLibrary = goblinLibraries[classIndex];
-                        currentBullet = goblinBullets[classIndex];
-                    break;
-                    case 2:
-                        currentLibrary = goblinLibraries[classIndex];
-                        currentBullet = goblinBullets[classIndex];
-                    break;
+            switch (evolutionIndex)
+            {
+                case 0:
 
-                }
-            break;
-            case 1:
-                switch (currentClass)
-                {
-                    case 0:
-                        currentLibrary = orclinLibraries[classIndex];
-                        currentBullet = orclinBullets[classIndex];
-                    break;
-                    case 1:
-                        currentLibrary = orclinLibraries[classIndex];
-                        currentBullet = orclinBullets[classIndex];
-                    break;
-                    case 2:
-                        currentLibrary = orclinLibraries[classIndex];
-                        currentBullet = orclinBullets[classIndex];
-                    break;
+                    switch (currentClass)
+                    {
+                        case 0:
+                            currentLibrary = goblinLibraries[currentClass];
+                            currentBullet = bullets[currentClass];
+                            break;
+                        case 1:
+                            currentLibrary = goblinLibraries[currentClass];
+                            currentBullet = bullets[currentClass];
+                            break;
+                        case 2:
+                            currentLibrary = goblinLibraries[currentClass];
+                            currentBullet = bullets[currentClass];
+                            break;
 
-                }
-            break;
-            case 2:
-                switch (currentClass)
-                {
-                    case 0:
-                        currentLibrary = orcLibraries[classIndex];
-                        currentBullet = orcBullets[classIndex];
+                    }
                     break;
-                    case 1:
-                        currentLibrary = orcLibraries[classIndex];
-                        currentBullet = orcBullets[classIndex];
+                case 1:
+
+                    switch (currentClass)
+                    {
+                        case 0:
+
+                            currentLibrary = orclinLibraries[currentClass];
+
+                            currentBullet = bullets[currentClass];
+
+                            break;
+                        case 1:
+                            currentLibrary = orclinLibraries[currentClass];
+                            currentBullet = bullets[currentClass];
+                            break;
+                        case 2:
+                            currentLibrary = orclinLibraries[currentClass];
+                            currentBullet = bullets[currentClass];
+                            break;
+
+                    }
                     break;
-                    case 2:
-                        currentLibrary = orcLibraries[classIndex];
-                        currentBullet = orcBullets[classIndex];
+                case 2:
+
+                    switch (currentClass)
+                    {
+                        case 0:
+                            currentLibrary = orcLibraries[currentClass];
+                            currentBullet = bullets[currentClass];
+                            break;
+                        case 1:
+                            currentLibrary = orcLibraries[currentClass];
+                            currentBullet = bullets[currentClass];
+                            break;
+                        case 2:
+                            currentLibrary = orcLibraries[currentClass];
+                            currentBullet = bullets[currentClass];
+                            break;
+                    }
                     break;
-                }
-            break;
-            default:
-                return (null, null);
+            }
         }
-
+        print($"{currentLibrary.name} - {currentBullet}");
         return (currentLibrary, currentBullet);
 
     }

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 36c5f4b9dfbb3524994fea8d5c872ee4
+guid: 9189f6fa9907a424780409cd54594f92
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,13 +123,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Attack_0
+      name: WalkingAttack_9
       rect:
         serializedVersion: 2
-        x: 0
+        x: 378
         y: 0
-        width: 32
-        height: 32
+        width: 42
+        height: 34
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,20 +137,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fc3345acc5ce9fc42b8773adfba39a6c
-      internalID: 172254546
+      spriteID: 7e0dac7c8317dc24599b318ef88d44ef
+      internalID: 42083077
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Attack_1
+      name: WalkingAttack_10
       rect:
         serializedVersion: 2
-        x: 32
+        x: 420
         y: 0
-        width: 32
-        height: 32
+        width: 42
+        height: 34
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -158,8 +158,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 67fbbc62a36eeed439f44a2fb386ab45
-      internalID: -1329704832
+      spriteID: 9ef4a1ca9d839084a9fd03b5a06cd248
+      internalID: -692195388
       vertices: []
       indices: 
       edges: []
@@ -175,8 +175,27 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Attack_0: 172254546
-      Attack_1: -1329704832
+      WalkingAttack_0: -1420798394
+      WalkingAttack_1: -1055372254
+      WalkingAttack_10: -692195388
+      WalkingAttack_11: 1102388952
+      WalkingAttack_12: 232686032
+      WalkingAttack_13: -1519926675
+      WalkingAttack_14: -10572733
+      WalkingAttack_15: 2017307918
+      WalkingAttack_16: 12400545
+      WalkingAttack_17: 166543585
+      WalkingAttack_18: 822552848
+      WalkingAttack_19: 1927323528
+      WalkingAttack_2: 2036674884
+      WalkingAttack_20: -1957282514
+      WalkingAttack_3: -1003174136
+      WalkingAttack_4: -1119129358
+      WalkingAttack_5: -629820040
+      WalkingAttack_6: -268088059
+      WalkingAttack_7: 206008048
+      WalkingAttack_8: -467040436
+      WalkingAttack_9: 42083077
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

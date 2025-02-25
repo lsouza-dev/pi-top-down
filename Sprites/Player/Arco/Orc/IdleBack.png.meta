@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 36c5f4b9dfbb3524994fea8d5c872ee4
+guid: 542c876d1229e62418e3e3f28fe07820
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,43 +123,22 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Attack_0
+      name: IdleBack_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 352
         y: 0
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fc3345acc5ce9fc42b8773adfba39a6c
-      internalID: 172254546
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Attack_1
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 67fbbc62a36eeed439f44a2fb386ab45
-      internalID: -1329704832
+      spriteID: a788576c3eb2e364b8c55ade49618491
+      internalID: -1584021494
       vertices: []
       indices: 
       edges: []
@@ -175,8 +154,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Attack_0: 172254546
-      Attack_1: -1329704832
+      IdleBack_0: -1584021494
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

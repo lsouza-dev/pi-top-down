@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 36c5f4b9dfbb3524994fea8d5c872ee4
+guid: cf376ffa278314e4da89bb255debf30e
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,13 +123,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Attack_0
+      name: WalkingAttack_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 432
         y: 0
-        width: 32
-        height: 32
+        width: 48
+        height: 44
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,20 +137,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fc3345acc5ce9fc42b8773adfba39a6c
-      internalID: 172254546
+      spriteID: 1ee4f4658fa14e84b98fe3d04c92c9ae
+      internalID: -1420798394
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Attack_1
+      name: WalkingAttack_1
       rect:
         serializedVersion: 2
-        x: 32
+        x: 480
         y: 0
-        width: 32
-        height: 32
+        width: 48
+        height: 44
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -158,8 +158,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 67fbbc62a36eeed439f44a2fb386ab45
-      internalID: -1329704832
+      spriteID: 93868235b2090d24c8d83c9101211c61
+      internalID: -1055372254
       vertices: []
       indices: 
       edges: []
@@ -175,8 +175,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Attack_0: 172254546
-      Attack_1: -1329704832
+      WalkingAttack_0: -1420798394
+      WalkingAttack_1: -1055372254
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

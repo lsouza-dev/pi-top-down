@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 36c5f4b9dfbb3524994fea8d5c872ee4
+guid: fe7227d45c860ca47869f656ae6b8da7
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,43 +123,43 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Attack_0
+      name: SideWalk_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 32
-        height: 32
+        width: 42
+        height: 34
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fc3345acc5ce9fc42b8773adfba39a6c
-      internalID: 172254546
+      spriteID: c776047284422f64f9a98af8eb012d36
+      internalID: -1251115825
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Attack_1
+      name: SideWalk_1
       rect:
         serializedVersion: 2
-        x: 32
+        x: 42
         y: 0
-        width: 32
-        height: 32
+        width: 42
+        height: 34
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 67fbbc62a36eeed439f44a2fb386ab45
-      internalID: -1329704832
+      spriteID: d975f4adbd72d0d4bab8b39e2f474a0a
+      internalID: -810229785
       vertices: []
       indices: 
       edges: []
@@ -175,8 +175,27 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Attack_0: 172254546
-      Attack_1: -1329704832
+      SideWalk_0: -1251115825
+      SideWalk_1: -810229785
+      SideWalk_10: -805965771
+      SideWalk_11: 1929596992
+      SideWalk_12: -612714513
+      SideWalk_13: -824391024
+      SideWalk_14: 521298196
+      SideWalk_15: 1724202077
+      SideWalk_16: 1627819348
+      SideWalk_17: -597608095
+      SideWalk_18: -1337452639
+      SideWalk_19: 860859626
+      SideWalk_2: -1244273033
+      SideWalk_20: 2020646203
+      SideWalk_3: 507496300
+      SideWalk_4: 74541010
+      SideWalk_5: 205685525
+      SideWalk_6: -984778280
+      SideWalk_7: -820803993
+      SideWalk_8: -56029541
+      SideWalk_9: 485871314
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

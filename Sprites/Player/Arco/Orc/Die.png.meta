@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 36c5f4b9dfbb3524994fea8d5c872ee4
+guid: febc13f291fdcee49ac45d608c3753ac
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,43 +123,43 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Attack_0
+      name: Die_19
       rect:
         serializedVersion: 2
-        x: 0
+        x: 608
         y: 0
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fc3345acc5ce9fc42b8773adfba39a6c
-      internalID: 172254546
+      spriteID: e0a27a0e2ec75384d83c90e343b4acf0
+      internalID: -1271436671
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Attack_1
+      name: Die_20
       rect:
         serializedVersion: 2
-        x: 32
+        x: 640
         y: 0
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 67fbbc62a36eeed439f44a2fb386ab45
-      internalID: -1329704832
+      spriteID: 70fe67f1b089c0c45bb98e2cba2a713c
+      internalID: -35347510
       vertices: []
       indices: 
       edges: []
@@ -175,8 +175,27 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Attack_0: 172254546
-      Attack_1: -1329704832
+      Die_0: 316048481
+      Die_1: 730264987
+      Die_10: -1040410384
+      Die_11: -115863047
+      Die_12: -156330128
+      Die_13: 1228978315
+      Die_14: -889643794
+      Die_15: -1996814952
+      Die_16: 411464351
+      Die_17: -1194431747
+      Die_18: 2071644673
+      Die_19: -1271436671
+      Die_2: -1280796027
+      Die_20: -35347510
+      Die_3: 701214995
+      Die_4: -1650467010
+      Die_5: 684545789
+      Die_6: 110500114
+      Die_7: 527569506
+      Die_8: 312385777
+      Die_9: -1541802454
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

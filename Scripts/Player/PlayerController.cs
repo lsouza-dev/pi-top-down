@@ -69,7 +69,6 @@ public class PlayerController : MonoBehaviour
     {
         instance = instance == null ? instance = this : instance;
         EvolvePlayer(evolutionIndex, playerClass);
-        print($"Evolution: {evolutionIndex}, Class: {currentBullet}");
         if (spriteLibraryAsset == null) print($"Sprite Library Asset is Null");
         if (currentBullet == null) print($"Bullet is Null");
     }
@@ -89,7 +88,6 @@ public class PlayerController : MonoBehaviour
         {
             this.isEvolving = true;
             this.level = 10;
-            evolutionIndex += 1;
             EvolvePlayer(evolutionIndex, playerClass);
             this.isEvolving = false;
         }
@@ -217,7 +215,7 @@ public class PlayerController : MonoBehaviour
 
     public void EvolvePlayer(int evolution, int classIndex)
     {
-        (this.spriteLibraryAsset, this.currentBullet) = ClassSelector.instance.ClassChoice(evolutionIndex, playerClass);
+        (this.spriteLibraryAsset, this.currentBullet) = ClassSelector.instance.ClassChoice(classIndex);
         this.library.spriteLibraryAsset = spriteLibraryAsset;
     }
 }

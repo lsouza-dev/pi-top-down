@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 36c5f4b9dfbb3524994fea8d5c872ee4
+guid: eeeb4d23d8527c34a999a389f5c6308d
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,43 +123,43 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Attack_0
+      name: Walk_6
       rect:
         serializedVersion: 2
-        x: 0
+        x: 192
         y: 0
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fc3345acc5ce9fc42b8773adfba39a6c
-      internalID: 172254546
+      spriteID: ac0afb18b0fda9c4fba4bae7a7d4da16
+      internalID: 1983515256
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Attack_1
+      name: Walk_7
       rect:
         serializedVersion: 2
-        x: 32
+        x: 224
         y: 0
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 67fbbc62a36eeed439f44a2fb386ab45
-      internalID: -1329704832
+      spriteID: d72ec2cbe6b8f234f94e0f94352565b8
+      internalID: -1999145193
       vertices: []
       indices: 
       edges: []
@@ -175,8 +175,27 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Attack_0: 172254546
-      Attack_1: -1329704832
+      Walk_0: 260800708
+      Walk_1: 1627042151
+      Walk_10: 1623789978
+      Walk_11: -1548649105
+      Walk_12: 1361126975
+      Walk_13: 589840123
+      Walk_14: 922045707
+      Walk_15: -36841751
+      Walk_16: -1093487672
+      Walk_17: 43092732
+      Walk_18: 1291999332
+      Walk_19: 1333383831
+      Walk_2: -638297261
+      Walk_20: -1279175212
+      Walk_3: -942887493
+      Walk_4: -535910019
+      Walk_5: -1302631014
+      Walk_6: 1983515256
+      Walk_7: -1999145193
+      Walk_8: 1489505861
+      Walk_9: -1911482355
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

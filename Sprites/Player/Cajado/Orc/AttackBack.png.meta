@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 36c5f4b9dfbb3524994fea8d5c872ee4
+guid: 34e7f4295462f0e44a364bb4b9f78d78
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,43 +123,43 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Attack_0
+      name: AttackBack_11
       rect:
         serializedVersion: 2
-        x: 0
+        x: 462
         y: 0
-        width: 32
-        height: 32
+        width: 42
+        height: 34
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fc3345acc5ce9fc42b8773adfba39a6c
-      internalID: 172254546
+      spriteID: 6a0556ebbaf2dcf44b32e61a0fbe71a0
+      internalID: -769270335
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Attack_1
+      name: AttackBack_14
       rect:
         serializedVersion: 2
-        x: 32
+        x: 588
         y: 0
-        width: 32
-        height: 32
+        width: 42
+        height: 34
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 67fbbc62a36eeed439f44a2fb386ab45
-      internalID: -1329704832
+      spriteID: 48675dd40f2adfd43ba1dbcc47f2483c
+      internalID: -1855370001
       vertices: []
       indices: 
       edges: []
@@ -175,8 +175,27 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Attack_0: 172254546
-      Attack_1: -1329704832
+      AttackBack_0: -1632116028
+      AttackBack_1: 1621527075
+      AttackBack_10: -1920543873
+      AttackBack_11: -769270335
+      AttackBack_12: -1341601644
+      AttackBack_13: -794888746
+      AttackBack_14: -1855370001
+      AttackBack_15: -1116251618
+      AttackBack_16: -320218632
+      AttackBack_17: 1737336225
+      AttackBack_18: 443108033
+      AttackBack_19: -477094856
+      AttackBack_2: 1432360041
+      AttackBack_20: 1208361919
+      AttackBack_3: 1611828873
+      AttackBack_4: 761802075
+      AttackBack_5: -825861944
+      AttackBack_6: -2034168994
+      AttackBack_7: 48538711
+      AttackBack_8: 1236666308
+      AttackBack_9: -161709273
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

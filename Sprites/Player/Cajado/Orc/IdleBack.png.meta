@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 36c5f4b9dfbb3524994fea8d5c872ee4
+guid: 2417e654da29585418cb6a2e715f6be2
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,43 +123,22 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Attack_0
+      name: IdleBack_11
       rect:
         serializedVersion: 2
-        x: 0
+        x: 462
         y: 0
-        width: 32
-        height: 32
+        width: 42
+        height: 34
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fc3345acc5ce9fc42b8773adfba39a6c
-      internalID: 172254546
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Attack_1
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 67fbbc62a36eeed439f44a2fb386ab45
-      internalID: -1329704832
+      spriteID: 3ffbe34d8ca949c41b23ae2144e22117
+      internalID: -2102648706
       vertices: []
       indices: 
       edges: []
@@ -175,8 +154,27 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Attack_0: 172254546
-      Attack_1: -1329704832
+      IdleBack_0: -1584021494
+      IdleBack_1: -2044946306
+      IdleBack_10: 1479318683
+      IdleBack_11: -2102648706
+      IdleBack_12: 572263098
+      IdleBack_13: -648206187
+      IdleBack_14: -1113309205
+      IdleBack_15: -1604877645
+      IdleBack_16: 546364974
+      IdleBack_17: -297075970
+      IdleBack_18: -1936137161
+      IdleBack_19: -1811128596
+      IdleBack_2: -1875331834
+      IdleBack_20: -1182445412
+      IdleBack_3: 574079175
+      IdleBack_4: 1544303846
+      IdleBack_5: -1125234416
+      IdleBack_6: 1311471659
+      IdleBack_7: 880996758
+      IdleBack_8: -308515129
+      IdleBack_9: -855075818
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

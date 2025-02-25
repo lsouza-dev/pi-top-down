@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 36c5f4b9dfbb3524994fea8d5c872ee4
+guid: f4ce82f40301340449cecfd7035730e9
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,43 +123,43 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Attack_0
+      name: BackWalk_12
       rect:
         serializedVersion: 2
-        x: 0
+        x: 504
         y: 0
-        width: 32
-        height: 32
+        width: 42
+        height: 34
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fc3345acc5ce9fc42b8773adfba39a6c
-      internalID: 172254546
+      spriteID: 68bd8943286a7e34f9df9b3beda4ce67
+      internalID: -152236743
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Attack_1
+      name: BackWalk_13
       rect:
         serializedVersion: 2
-        x: 32
+        x: 546
         y: 0
-        width: 32
-        height: 32
+        width: 42
+        height: 34
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 67fbbc62a36eeed439f44a2fb386ab45
-      internalID: -1329704832
+      spriteID: 17ccf744753961142a93ae14de542b00
+      internalID: 1254068013
       vertices: []
       indices: 
       edges: []
@@ -175,8 +175,27 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Attack_0: 172254546
-      Attack_1: -1329704832
+      BackWalk_0: 45163320
+      BackWalk_1: 138065640
+      BackWalk_10: 1548793961
+      BackWalk_11: -613640134
+      BackWalk_12: -152236743
+      BackWalk_13: 1254068013
+      BackWalk_14: -185337539
+      BackWalk_15: 500561186
+      BackWalk_16: -1319298761
+      BackWalk_17: 285723746
+      BackWalk_18: 2100224512
+      BackWalk_19: -526091182
+      BackWalk_2: 464958326
+      BackWalk_20: -1740001857
+      BackWalk_3: -11630779
+      BackWalk_4: -1760210684
+      BackWalk_5: 1899625129
+      BackWalk_6: -1867943380
+      BackWalk_7: -1003615866
+      BackWalk_8: 1936950921
+      BackWalk_9: 120281269
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 36c5f4b9dfbb3524994fea8d5c872ee4
+guid: ee97d6554ae109445917a9c7e24cf775
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,43 +123,43 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Attack_0
+      name: Damage_17
       rect:
         serializedVersion: 2
-        x: 0
+        x: 714
         y: 0
-        width: 32
-        height: 32
+        width: 42
+        height: 34
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fc3345acc5ce9fc42b8773adfba39a6c
-      internalID: 172254546
+      spriteID: c58ca387c7065cb4f875177e9881ab88
+      internalID: -301358182
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Attack_1
+      name: Damage_18
       rect:
         serializedVersion: 2
-        x: 32
+        x: 756
         y: 0
-        width: 32
-        height: 32
+        width: 42
+        height: 34
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 67fbbc62a36eeed439f44a2fb386ab45
-      internalID: -1329704832
+      spriteID: e2ec7149ac18d9d479191c89caec893d
+      internalID: -559549421
       vertices: []
       indices: 
       edges: []
@@ -175,8 +175,27 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Attack_0: 172254546
-      Attack_1: -1329704832
+      Damage_0: -299130976
+      Damage_1: -1070158795
+      Damage_10: -1474120504
+      Damage_11: 267564073
+      Damage_12: 619499298
+      Damage_13: -1332554603
+      Damage_14: 2071099236
+      Damage_15: -1131146855
+      Damage_16: 709269465
+      Damage_17: -301358182
+      Damage_18: -559549421
+      Damage_19: -98949102
+      Damage_2: 2075663697
+      Damage_20: 1325748680
+      Damage_3: -514336998
+      Damage_4: -272143636
+      Damage_5: 1114851856
+      Damage_6: -75904878
+      Damage_7: -1425671107
+      Damage_8: 510400358
+      Damage_9: -342590286
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
