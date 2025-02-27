@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
@@ -13,13 +14,7 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private float speed;
 
     // Posições relativas dos spawners filhos ao spawner principal
-    private Vector3[] spawnerOffsets = new Vector3[]
-    {
-        new Vector3(0f, 0.3f, 0f),   // Posição 0 (Cima)
-        new Vector3(0.6f, -0.2f, 0f), // Posição 1 (Direita)
-        new Vector3(0f, -0.3f, 0f),  // Posição 2 (Baixo)
-        new Vector3(-0.6f, -0.2f, 0f) // Posição 3 (Esquerda)
-    };
+    public Vector3[] spawnerOffsets;
 
     void Awake()
     {

@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Animator animator;
     private Transform playerTransform;
     private Rigidbody2D rb;
-    private BoxCollider2D bCollider;
+    private CapsuleCollider2D collider;
 
     [Header("Scripts")]
     [SerializeField] private PlayerAttack playerAttack;
@@ -39,6 +39,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] public SpriteLibrary library;
     [SerializeField] public SpriteLibraryAsset spriteLibraryAsset;
     [SerializeField] public Bullet currentBullet;
+    [SerializeField] public Vector2 colliderOffset ;
+    [SerializeField] public Vector2 colliderSize ;
+
     [SerializeField] public bool isEvolving;
 
 
@@ -53,6 +56,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private float distanciamaxdogizmos;
     [SerializeField] private Vector3 mouseLimit;
+    [SerializeField] private Vector3[] spawnersOffset;
 
     private void Awake()
     {
@@ -60,7 +64,7 @@ public class PlayerController : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
         playerTransform = GetComponent<Transform>();
         rb = GetComponent<Rigidbody2D>();
-        bCollider = GetComponent<BoxCollider2D>();
+        collider = GetComponent<CapsuleCollider2D>();
         playerAttack = GetComponent<PlayerAttack>();
         playerClass = PlayerPrefs.GetInt("PlayerClass");
     }
@@ -215,7 +219,10 @@ public class PlayerController : MonoBehaviour
 
     public void EvolvePlayer(int evolution, int classIndex)
     {
-        (this.spriteLibraryAsset, this.currentBullet) = ClassSelector.instance.ClassChoice(classIndex);
+        (this.spriteLibraryAsset, this.currentBullet,this.colliderOffset,this.colliderSize,this.spawnersOffset) = ClassSelector.instance.ClassChoice(classIndex);
         this.library.spriteLibraryAsset = spriteLibraryAsset;
+        playerAttack.spawnerOffsets = this.spawnersOffset;
+        this.collider.offset = colliderOffset;
+        this.collider.size = colliderSize;
     }
 }
