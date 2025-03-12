@@ -1,19 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.U2D.Animation;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
     [Header("Player Attributes")]
     [SerializeField] private int level = 1;
-    [SerializeField] private float hp = 100;
-    [SerializeField] private float mana = 50;
-    [SerializeField] private int ammo = 10;
+    [SerializeField] private float nexLevelPoints = 50;
+    [SerializeField] public float currentHp = 100;
+    [SerializeField] private float maxHp = 100;
+    [SerializeField] private float xp = 00;
+    [SerializeField] public float def = 3;
+    [SerializeField] public float strength = 5;
+    [SerializeField] public float atkSpeed = .3f;
+    [SerializeField] private List<TMP_Text> uiAttributes = new List<TMP_Text>();
+
+    
 
     [Header("Animator Variables")]
     private float xInput;
@@ -41,12 +51,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] public Bullet currentBullet;
     [SerializeField] public Vector2 colliderOffset ;
     [SerializeField] public Vector2 colliderSize ;
-
     [SerializeField] public bool isEvolving;
 
 
     [Header("Movement")]
-    [SerializeField] private float maxSpeed;
+    [SerializeField] public float maxSpeed;
     [SerializeField] public float shootCooldownTime = 0;
     [SerializeField] public float shootCooldownTimeDefault = 1.8f;
     public static PlayerController instance;
@@ -67,6 +76,7 @@ public class PlayerController : MonoBehaviour
         collider = GetComponent<CapsuleCollider2D>();
         playerAttack = GetComponent<PlayerAttack>();
         playerClass = PlayerPrefs.GetInt("PlayerClass");
+        uiAttributes = GameObject.FindGameObjectsWithTag("Attributes").OrderBy(a => a.name).Select(go => go.GetComponent<TMP_Text>()).ToList();
     }
 
     void Start()
@@ -75,6 +85,7 @@ public class PlayerController : MonoBehaviour
         EvolvePlayer(evolutionIndex, playerClass);
         if (spriteLibraryAsset == null) print($"Sprite Library Asset is Null");
         if (currentBullet == null) print($"Bullet is Null");
+        SetAttributesValuesToUI();
     }
 
     void Update()
@@ -165,12 +176,12 @@ public class PlayerController : MonoBehaviour
     {
         if (invencibleTime >= 0) return;
 
-        this.hp -= damage;
+        this.currentHp -= damage;
         animator.SetTrigger("isDamage");
 
         rb.velocity = Vector2.zero;
 
-        if (this.hp <= 0)
+        if (this.currentHp <= 0)
         {
             isAlive = false;
             animator.SetBool("isAlive", isAlive);
@@ -224,5 +235,18 @@ public class PlayerController : MonoBehaviour
         playerAttack.spawnerOffsets = this.spawnersOffset;
         this.collider.offset = colliderOffset;
         this.collider.size = colliderSize;
+    }
+
+
+    public void SetAttributesValuesToUI(){
+        for (int i = 0; i < uiAttributes.Count; i++) {
+            if(i == 0) uiAttributes[i].text = atkSpeed.ToString();
+            if(i == 1) uiAttributes[i].text = def.ToString();
+            if(i == 2) uiAttributes[i].text = $"{currentHp} / {maxHp}";
+            if(i == 3) uiAttributes[i].text = $"Lv: {level}";
+            if(i == 4) uiAttributes[i].text = maxSpeed.ToString();
+            if(i == 5) uiAttributes[i].text = strength.ToString();
+            if(i == 6) uiAttributes[i].text = $"{xp} / {nexLevelPoints}";
+        }
     }
 }
