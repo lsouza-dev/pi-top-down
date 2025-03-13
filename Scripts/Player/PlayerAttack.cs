@@ -9,7 +9,6 @@ public class PlayerAttack : MonoBehaviour
 {
     [SerializeField] private Transform spawnerParent; // O spawner principal
     [SerializeField] private List<GameObject> spawnersPositions; // Lista dos spawners filhos
-    [SerializeField] private int currentBullet = 0;
     [SerializeField] private float timeToDestroy;
     [SerializeField] private float speed;
 

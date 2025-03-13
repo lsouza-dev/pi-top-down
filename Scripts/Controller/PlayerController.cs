@@ -13,15 +13,13 @@ using UnityEngine.UI;
 public class PlayerController : MonoBehaviour
 {
     [Header("Player Attributes")]
-    [SerializeField] private int level = 1;
-    [SerializeField] private float nexLevelPoints = 50;
+    [SerializeField] public int level = 1;
+    [SerializeField] public float nexLevelPoints = 50;
     [SerializeField] public float currentHp = 100;
-    [SerializeField] private float maxHp = 100;
-    [SerializeField] private float xp = 00;
-    [SerializeField] public float def = 3;
+    [SerializeField] public float maxHp = 100;
+    [SerializeField] public float xp = 00;
     [SerializeField] public float strength = 5;
-    [SerializeField] public float atkSpeed = .3f;
-    [SerializeField] private List<TMP_Text> uiAttributes = new List<TMP_Text>();
+    [SerializeField] public float atkSpeed = .3f;   
 
     
 
@@ -37,13 +35,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Animator animator;
     private Transform playerTransform;
     private Rigidbody2D rb;
-    private CapsuleCollider2D collider;
+    private CapsuleCollider2D capCollider;
 
     [Header("Scripts")]
     [SerializeField] private PlayerAttack playerAttack;
+    [SerializeField] private UIAtributtesController uIAtributtesController;
 
     [Header("Class")]
-
     [SerializeField] public int evolutionIndex = 0;
     [SerializeField] public int playerClass = 0;
     [SerializeField] public SpriteLibrary library;
@@ -58,6 +56,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] public float maxSpeed;
     [SerializeField] public float shootCooldownTime = 0;
     [SerializeField] public float shootCooldownTimeDefault = 1.8f;
+
     public static PlayerController instance;
 
     [SerializeField] private float stoppedTime;
@@ -73,10 +72,10 @@ public class PlayerController : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
         playerTransform = GetComponent<Transform>();
         rb = GetComponent<Rigidbody2D>();
-        collider = GetComponent<CapsuleCollider2D>();
+        capCollider = GetComponent<CapsuleCollider2D>();
         playerAttack = GetComponent<PlayerAttack>();
         playerClass = PlayerPrefs.GetInt("PlayerClass");
-        uiAttributes = GameObject.FindGameObjectsWithTag("Attributes").OrderBy(a => a.name).Select(go => go.GetComponent<TMP_Text>()).ToList();
+        uIAtributtesController = FindObjectOfType<UIAtributtesController>();
     }
 
     void Start()
@@ -85,7 +84,8 @@ public class PlayerController : MonoBehaviour
         EvolvePlayer(evolutionIndex, playerClass);
         if (spriteLibraryAsset == null) print($"Sprite Library Asset is Null");
         if (currentBullet == null) print($"Bullet is Null");
-        SetAttributesValuesToUI();
+        uIAtributtesController.SetAttributesValuesToUI();
+
     }
 
     void Update()
@@ -99,15 +99,8 @@ public class PlayerController : MonoBehaviour
             PlayerInvencible();
         }
         if (Input.GetKeyUp(KeyCode.Escape)) SceneManager.LoadScene("Menu");
-        if (Input.GetKeyUp(KeyCode.Space))
-        {
-            this.isEvolving = true;
-            this.level = 10;
-            EvolvePlayer(evolutionIndex, playerClass);
-            this.isEvolving = false;
-        }
-        ;
 
+        uIAtributtesController.SetAttributesValuesToUI();
         ChangeAnimations();
         DecrementTime();
     }
@@ -233,20 +226,10 @@ public class PlayerController : MonoBehaviour
         (this.spriteLibraryAsset, this.currentBullet,this.colliderOffset,this.colliderSize,this.spawnersOffset) = ClassSelector.instance.ClassChoice(classIndex);
         this.library.spriteLibraryAsset = spriteLibraryAsset;
         playerAttack.spawnerOffsets = this.spawnersOffset;
-        this.collider.offset = colliderOffset;
-        this.collider.size = colliderSize;
+        this.capCollider.offset = colliderOffset;
+        this.capCollider.size = colliderSize;
     }
 
 
-    public void SetAttributesValuesToUI(){
-        for (int i = 0; i < uiAttributes.Count; i++) {
-            if(i == 0) uiAttributes[i].text = atkSpeed.ToString();
-            if(i == 1) uiAttributes[i].text = def.ToString();
-            if(i == 2) uiAttributes[i].text = $"{currentHp} / {maxHp}";
-            if(i == 3) uiAttributes[i].text = $"Lv: {level}";
-            if(i == 4) uiAttributes[i].text = maxSpeed.ToString();
-            if(i == 5) uiAttributes[i].text = strength.ToString();
-            if(i == 6) uiAttributes[i].text = $"{xp} / {nexLevelPoints}";
-        }
-    }
+    
 }

@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    public PlayerController playerController;
 
     [Header("Attributes")]
     [SerializeField] float timeToDestroy = .5f;
-    [SerializeField] float damage = 1f;
+    [SerializeField] float damage;
     [SerializeField] float defaultX = 1f;
     [SerializeField] float defaultY = 1f;
     [SerializeField] float incrementValue = .01f;
@@ -21,7 +22,9 @@ public class Bullet : MonoBehaviour
 
     void Awake()
     {
+        playerController = FindObjectOfType<PlayerController>();
         sr = GetComponentInChildren<SpriteRenderer>();
+        damage = playerController.strength;
     }
 
     // Start is called before the first frame update

@@ -6,23 +6,24 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] float health = 5f;
     [SerializeField] float collisionDamage = 5f;
+    [SerializeField] LevelUpController levelUpController;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
+        levelUpController = FindObjectOfType<LevelUpController>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void TakeDamage(float damage){
         this.health -= damage;
         if(this.health <= 0){
+            var player = FindObjectOfType<PlayerController>();
+            player.xp += 20;
+            if(player.xp >= player.nexLevelPoints) levelUpController.LevelUp();
             Destroy(this.gameObject);
         }
+
+
     }
 
     public void PlayerHit(PlayerController player){
