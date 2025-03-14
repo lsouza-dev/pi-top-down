@@ -7,10 +7,13 @@ public class Enemy : MonoBehaviour
     [SerializeField] float health = 5f;
     [SerializeField] float collisionDamage = 5f;
     [SerializeField] LevelUpController levelUpController;
+
+    [SerializeField] protected GameObject player;
     // Start is called before the first frame update
     void Awake()
     {
         levelUpController = FindObjectOfType<LevelUpController>();
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
 
@@ -22,8 +25,6 @@ public class Enemy : MonoBehaviour
             if(player.xp >= player.nexLevelPoints) levelUpController.LevelUp();
             Destroy(this.gameObject);
         }
-
-
     }
 
     public void PlayerHit(PlayerController player){

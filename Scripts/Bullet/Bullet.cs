@@ -84,6 +84,7 @@ public class Bullet : MonoBehaviour
         {
             case "Archer":
                 print("Flecha");
+                timeToDestroy = 3;
                 break;
             case "Dagger":
                 print("Slash");
@@ -92,6 +93,7 @@ public class Bullet : MonoBehaviour
                 break;
             case "Mage":
                 print("Bola de Fogo");
+                timeToDestroy = 3;
                 break;
 
         }

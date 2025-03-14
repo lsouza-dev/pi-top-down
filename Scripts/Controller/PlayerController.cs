@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Xml;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.U2D.Animation;
 using UnityEngine.UI;
@@ -53,6 +55,7 @@ public class PlayerController : MonoBehaviour
 
 
     [Header("Movement")]
+    [SerializeField] public Vector2 direction;
     [SerializeField] public float maxSpeed;
     [SerializeField] public float shootCooldownTime = 0;
     [SerializeField] public float shootCooldownTimeDefault = 1.8f;
@@ -104,13 +107,15 @@ public class PlayerController : MonoBehaviour
         ChangeAnimations();
         DecrementTime();
     }
+    public void SetMovement(InputAction.CallbackContext value)
+    {
+        direction = value.ReadValue<Vector2>();
+    }
 
     private void PlayerMovement()
     {
-        xInput = Input.GetAxisRaw("Horizontal");
-        yInput = Input.GetAxisRaw("Vertical");
 
-        Vector2 direction = new Vector2(xInput, yInput);
+        direction = new Vector2(direction.x, direction.y);
         float currentSpeed = Mathf.Lerp(0, maxSpeed, direction.magnitude);
 
         rb.velocity = direction * currentSpeed;
@@ -125,15 +130,15 @@ public class PlayerController : MonoBehaviour
 
         if (isAttack)
         {
-            animator.SetBool("isAttack", true);
             playerAttack.Shoot(currentBullet);
+            animator.SetBool("isAttack", true);
         }
     }
 
     private void ChangeAnimations()
     {
-        animator.SetFloat("xSpeed", xInput);
-        animator.SetFloat("ySpeed", yInput);
+        animator.SetFloat("xSpeed", direction.x);
+        animator.SetFloat("ySpeed", direction.y);
         animator.SetInteger("mouseDirection", mouseDirection);
         animator.SetBool("isIdle", isIdle);
     }

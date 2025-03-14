@@ -54,7 +54,7 @@ public class ClassSelector : MonoBehaviour
         this.currentClass = classIndex;
 
 
-        print($"Evolution: {currentEvolution}, Class: {currentClass}");
+        
         if (evolutionIndex <= playerEvolutions.Count)
         {
             switch (evolutionIndex)
@@ -195,9 +195,6 @@ public class ClassSelector : MonoBehaviour
                     break;
             }
         }
-        print($"{currentLibrary.name} - {currentBullet}");
-
-        for(int i = 0; i < spawnersOffset.Length; i++) print(spawnersOffset[i]);
 
         return (currentLibrary, currentBullet, colliderOffset, colliderSize, spawnersOffset);
 
