@@ -1,0 +1,136 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &1
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5e6fedc2472449cead18ef23b5cb30d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Library:
+  - m_Name: SideWalk
+    m_Hash: 787848572
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: CentaurWalk_0
+      m_Hash: 231508173
+      m_Sprite: {fileID: 1250622798, guid: 829a46c2509e85d45a82a86f7bb758fb, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 1250622798, guid: 829a46c2509e85d45a82a86f7bb758fb, type: 3}
+    - m_Name: CentaurWalk_1
+      m_Hash: 986429531
+      m_Sprite: {fileID: 382502480, guid: 829a46c2509e85d45a82a86f7bb758fb, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 382502480, guid: 829a46c2509e85d45a82a86f7bb758fb, type: 3}
+    m_FromMain: 1
+    m_EntryOverrideCount: 0
+  - m_Name: BackWalk
+    m_Hash: 255749239
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: CentaurWalk_2
+      m_Hash: 599976417
+      m_Sprite: {fileID: -1080005205, guid: 829a46c2509e85d45a82a86f7bb758fb, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -1080005205, guid: 829a46c2509e85d45a82a86f7bb758fb, type: 3}
+    - m_Name: CentaurWalk_3
+      m_Hash: 348510583
+      m_Sprite: {fileID: -1282686262, guid: 829a46c2509e85d45a82a86f7bb758fb, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -1282686262, guid: 829a46c2509e85d45a82a86f7bb758fb, type: 3}
+    m_FromMain: 1
+    m_EntryOverrideCount: 0
+  - m_Name: SideDamage
+    m_Hash: 736124728
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: CentaurDmg_0
+      m_Hash: 694989225
+      m_Sprite: {fileID: 882484778, guid: bd724413cb063ac4ba9a9f3ef43c9999, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 882484778, guid: bd724413cb063ac4ba9a9f3ef43c9999, type: 3}
+    - m_Name: CentaurDmg_1
+      m_Hash: 510361919
+      m_Sprite: {fileID: -1569519472, guid: bd724413cb063ac4ba9a9f3ef43c9999, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -1569519472, guid: bd724413cb063ac4ba9a9f3ef43c9999, type: 3}
+    m_FromMain: 1
+    m_EntryOverrideCount: 0
+  - m_Name: BackDamage
+    m_Hash: 44983730
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: CentaurDmg_2
+      m_Hash: 123916421
+      m_Sprite: {fileID: -604871941, guid: bd724413cb063ac4ba9a9f3ef43c9999, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -604871941, guid: bd724413cb063ac4ba9a9f3ef43c9999, type: 3}
+    - m_Name: CentaurDmg_3
+      m_Hash: 811982867
+      m_Sprite: {fileID: 519809334, guid: bd724413cb063ac4ba9a9f3ef43c9999, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 519809334, guid: bd724413cb063ac4ba9a9f3ef43c9999, type: 3}
+    m_FromMain: 1
+    m_EntryOverrideCount: 0
+  - m_Name: SideIdle
+    m_Hash: 1061179964
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: CentaurIdle_0
+      m_Hash: 913197404
+      m_Sprite: {fileID: 398380620, guid: ad8899ba3f05a254f8f20f31e9462473, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 398380620, guid: ad8899ba3f05a254f8f20f31e9462473, type: 3}
+    m_FromMain: 1
+    m_EntryOverrideCount: 0
+  - m_Name: BackIdle
+    m_Hash: 512467767
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: CentaurIdle_2
+      m_Hash: 408954992
+      m_Sprite: {fileID: 1777251861, guid: ad8899ba3f05a254f8f20f31e9462473, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 1777251861, guid: ad8899ba3f05a254f8f20f31e9462473, type: 3}
+    m_FromMain: 1
+    m_EntryOverrideCount: 0
+  - m_Name: SideAttack
+    m_Hash: 1038624367
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: CentaurAttack_0
+      m_Hash: 923228623
+      m_Sprite: {fileID: -1291264227, guid: 912ae96dcdd151f469c9978021d5e7b2, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -1291264227, guid: 912ae96dcdd151f469c9978021d5e7b2, type: 3}
+    - m_Name: CentaurAttack_1
+      m_Hash: 26969
+      m_Sprite: {fileID: 1181649954, guid: 912ae96dcdd151f469c9978021d5e7b2, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 1181649954, guid: 912ae96dcdd151f469c9978021d5e7b2, type: 3}
+    m_FromMain: 1
+    m_EntryOverrideCount: 0
+  - m_Name: BackAttack
+    m_Hash: 346430693
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: CentaurAttack_2
+      m_Hash: 420034787
+      m_Sprite: {fileID: 529880952, guid: 912ae96dcdd151f469c9978021d5e7b2, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 529880952, guid: 912ae96dcdd151f469c9978021d5e7b2, type: 3}
+    - m_Name: CentaurAttack_3
+      m_Hash: 772671605
+      m_Sprite: {fileID: -1291245018, guid: 912ae96dcdd151f469c9978021d5e7b2, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -1291245018, guid: 912ae96dcdd151f469c9978021d5e7b2, type: 3}
+    m_FromMain: 1
+    m_EntryOverrideCount: 0
+  m_PrimaryLibraryGUID: f729d1930c82a9d428f73bfcd9142097
+  m_ModificationHash: 638778218038846742
+  m_Version: 1

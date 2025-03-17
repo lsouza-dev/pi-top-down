@@ -10,22 +10,23 @@ public class EnemyController : Enemy
     private Vector2 rndPatrolPos;
     private float patrolTimer;
     private float distance;
-    
+
     private float spd = 1;
     [SerializeField] private BoxCollider2D meleeCollider;
 
     void Awake()
     {
         meleeCollider = GameObject.FindGameObjectWithTag("MeleeCollider").GetComponent<BoxCollider2D>();
+        player = GameObject.FindGameObjectWithTag("Player");
     }
-    // Update is called once per frame
 
     public void Update()
     {
-        
+
         distance = Vector2.Distance(player.transform.position, transform.position);
 
-        if(distance < atkDistance){
+        if (distance < atkDistance)
+        {
             print("ataque");
             meleeCollider.enabled = true;
         }
