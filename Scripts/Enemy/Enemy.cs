@@ -1,33 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Callbacks;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] float health = 5f;
-    [SerializeField] float collisionDamage = 5f;
-    [SerializeField] LevelUpController levelUpController;
-
+    [SerializeField] protected float health = 5f;
+    [SerializeField] protected Animator animator;
     [SerializeField] protected GameObject player;
+    [SerializeField] protected bool isAlive = true;
+    protected Rigidbody2D rb;
     // Start is called before the first frame update
-    void Awake()
-    {
-        levelUpController = FindObjectOfType<LevelUpController>();
-        player = GameObject.FindGameObjectWithTag("Player");
-    }
-
-
-    public void TakeDamage(float damage){
-        this.health -= damage;
-        if(this.health <= 0){
-            var player = FindObjectOfType<PlayerController>();
-            player.xp += 20;
-            if(player.xp >= player.nexLevelPoints) levelUpController.LevelUp();
-            Destroy(this.gameObject);
-        }
-    }
-
-    public void PlayerHit(PlayerController player){
-        player.TakeDamage(collisionDamage);
-    }
 }

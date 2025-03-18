@@ -21,9 +21,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] public float maxHp = 100;
     [SerializeField] public float xp = 00;
     [SerializeField] public float strength = 5;
-    [SerializeField] public float atkSpeed = .3f;   
+    [SerializeField] public float atkSpeed = .3f;
 
-    
+
 
     [Header("Animator Variables")]
     private float xInput;
@@ -49,8 +49,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] public SpriteLibrary library;
     [SerializeField] public SpriteLibraryAsset spriteLibraryAsset;
     [SerializeField] public Bullet currentBullet;
-    [SerializeField] public Vector2 colliderOffset ;
-    [SerializeField] public Vector2 colliderSize ;
+    [SerializeField] public Vector2 colliderOffset;
+    [SerializeField] public Vector2 colliderSize;
     [SerializeField] public bool isEvolving;
 
 
@@ -115,7 +115,10 @@ public class PlayerController : MonoBehaviour
     private void PlayerMovement()
     {
 
-        direction = new Vector2(direction.x, direction.y);
+        xInput = Input.GetAxisRaw("Horizontal");
+        yInput = Input.GetAxisRaw("Vertical");
+
+        Vector2 direction = new Vector2(xInput, yInput);
         float currentSpeed = Mathf.Lerp(0, maxSpeed, direction.magnitude);
 
         rb.velocity = direction * currentSpeed;
@@ -137,8 +140,8 @@ public class PlayerController : MonoBehaviour
 
     private void ChangeAnimations()
     {
-        animator.SetFloat("xSpeed", direction.x);
-        animator.SetFloat("ySpeed", direction.y);
+        animator.SetFloat("xSpeed", xInput);
+        animator.SetFloat("ySpeed", yInput);
         animator.SetInteger("mouseDirection", mouseDirection);
         animator.SetBool("isIdle", isIdle);
     }
@@ -188,16 +191,22 @@ public class PlayerController : MonoBehaviour
         stoppedTime = .5f;
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    void OnTriggerStay2D(Collider2D other)
     {
         if (invencibleTime > 0) return;
 
         if (other.gameObject.CompareTag("Enemy"))
         {
-            var enemy = other.gameObject.GetComponent<Enemy>();
+            var enemy = other.gameObject.GetComponent<EnemyController>();
             enemy.PlayerHit(this);
             invencibleTime = 2f;
         }
+
+        // if(other.gameObject.CompareTag("MeleeCollider")){
+        //     var enemy = other.gameObject.GetComponentInParent<EnemyController>();
+        //     enemy.PlayerHit(this);
+        //     invencibleTime = 2f;
+        // }
     }
 
     private void PlayerInvencible()
@@ -228,7 +237,7 @@ public class PlayerController : MonoBehaviour
 
     public void EvolvePlayer(int evolution, int classIndex)
     {
-        (this.spriteLibraryAsset, this.currentBullet,this.colliderOffset,this.colliderSize,this.spawnersOffset) = ClassSelector.instance.ClassChoice(classIndex);
+        (this.spriteLibraryAsset, this.currentBullet, this.colliderOffset, this.colliderSize, this.spawnersOffset) = ClassSelector.instance.ClassChoice(classIndex);
         this.library.spriteLibraryAsset = spriteLibraryAsset;
         playerAttack.spawnerOffsets = this.spawnersOffset;
         this.capCollider.offset = colliderOffset;
@@ -236,5 +245,5 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    
+
 }
