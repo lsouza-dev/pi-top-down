@@ -10,14 +10,14 @@ public class EnemyController : Enemy
     private Vector2 rndPatrolPos;
     private float patrolTimer;
     private float distance;
-    
+
     [SerializeField] float collisionDamage = 5f;
 
     private float spd = 1;
     [SerializeField] private BoxCollider2D meleeCollider;
 
     private LevelUpController levelUpController;
-    [SerializeField]private float attackDelay;
+    [SerializeField] private float attackDelay;
 
     [Header("Animator Variables")]
     private bool isWalking;
@@ -25,42 +25,49 @@ public class EnemyController : Enemy
 
     void Awake()
     {
-        // meleeCollider = GameObject.FindGameObjectWithTag("MeleeCollider").GetComponent<BoxCollider2D>();
+        // meleeCollider = GetComponentInChildren<BoxCollider2D>();
         player = GameObject.FindGameObjectWithTag("Player");
         animator = GetComponentInChildren<Animator>();
         levelUpController = FindObjectOfType<LevelUpController>();
         rb = GetComponent<Rigidbody2D>();
+        meleeCollider.enabled = false;
     }
 
     public void Update()
-    {   
-        if(!isAlive) return;
+    {
+        if (!isAlive) return;
         distance = Vector2.Distance(player.transform.position, transform.position);
 
         if (distance < atkDistance)
         {
+            this.meleeCollider.enabled = true;
             AttackPlayer();
         }
         else if (distance < chaseDistance)
         {
+            this.meleeCollider.enabled = false;
             ChasePlayer();
         }
         else
         {
+            this.meleeCollider.enabled = false;
             Patrol();
         }
 
+        print("Colisor - "+meleeCollider.enabled);
+
         ChangeAnimations();
+
+        UpdatePlayerTransform();
 
         if (transform.position.y < player.transform.position.y) isBack = true;
         else isBack = false;
-        
+
         attackDelay -= Time.deltaTime;
     }
 
     void Patrol()
     {
-        meleeCollider.enabled = false;
         isWalking = true;
 
         if (patrolTimer <= 0)
@@ -92,10 +99,47 @@ public class EnemyController : Enemy
     void ChasePlayer()
     {
         transform.position = Vector2.MoveTowards(transform.position, player.transform.position, spd * Time.deltaTime);
-        meleeCollider.enabled = false;
         isWalking = true;
+    }
 
+    void AttackPlayer()
+    {
+        if (attackDelay <= 0)
+        {
+            animator.SetTrigger("isAttack");
+            attackDelay = 2f;
+            isWalking = false;
+        }
+        else
+        {
+            isWalking = true;
+        }
+    }
 
+    public void TakeDamage(float damage)
+    {
+        this.health -= damage;
+        animator.SetTrigger("isDamage");
+        if (this.health <= 0)
+        {
+            var player = FindObjectOfType<PlayerController>();
+            player.xp += 20;
+            rb.velocity = Vector2.zero;
+            isAlive = false;
+
+            BoxCollider2D parentCollider = GetComponentInParent<BoxCollider2D>();
+            parentCollider.enabled = false;
+
+            Destroy(gameObject, 2f);
+
+            if (player.xp >= player.nexLevelPoints) levelUpController.LevelUp();
+
+            animator.SetTrigger("isDie");
+            animator.SetBool("isAlive", isAlive);
+        }
+    }
+
+    public void UpdatePlayerTransform(){
         if (player.transform.position.x > transform.position.x)
         {
             transform.localScale = new(1, 1);
@@ -107,40 +151,8 @@ public class EnemyController : Enemy
         }
     }
 
-    void AttackPlayer()
+    public void PlayerHit(PlayerController player)
     {
-        if (attackDelay <= 0)
-        {
-            animator.SetTrigger("isAttack");
-            meleeCollider.enabled = true;
-            attackDelay = 2f;
-            isWalking = false;
-        } else isWalking = true;
-    }
-
-    public void TakeDamage(float damage){
-        this.health -= damage;
-        animator.SetTrigger("isDamage");
-        if(this.health <= 0){
-            var player = FindObjectOfType<PlayerController>();
-            player.xp += 20;
-            rb.velocity = Vector2.zero;
-            isAlive = false;
-
-            BoxCollider2D parentCollider = GetComponentInParent<BoxCollider2D>();
-            parentCollider.enabled = false;
-            meleeCollider.enabled = false;
-
-            Destroy(gameObject,2f);
-
-            if(player.xp >= player.nexLevelPoints) levelUpController.LevelUp();
-
-            animator.SetTrigger("isDie");
-            animator.SetBool("isAlive", isAlive);
-        }
-    }
-
-    public void PlayerHit(PlayerController player){
         player.TakeDamage(collisionDamage);
     }
 

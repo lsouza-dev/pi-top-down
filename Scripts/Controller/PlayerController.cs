@@ -202,11 +202,11 @@ public class PlayerController : MonoBehaviour
             invencibleTime = 2f;
         }
 
-        // if(other.gameObject.CompareTag("MeleeCollider")){
-        //     var enemy = other.gameObject.GetComponentInParent<EnemyController>();
-        //     enemy.PlayerHit(this);
-        //     invencibleTime = 2f;
-        // }
+        if(other.gameObject.CompareTag("MeleeCollider")){
+            var enemy = other.gameObject.GetComponentInParent<EnemyController>();
+            enemy.PlayerHit(this);
+            invencibleTime = 2f;
+        }
     }
 
     private void PlayerInvencible()
