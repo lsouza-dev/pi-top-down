@@ -14,10 +14,12 @@ public class EnemyController : Enemy
     [SerializeField] float collisionDamage = 5f;
 
     private float spd = 1;
-    [SerializeField] private BoxCollider2D meleeCollider;
+    [SerializeField] private BoxCollider2D frontMeleeCollider;
+    [SerializeField] private BoxCollider2D backMeleeCollider;
 
     private LevelUpController levelUpController;
     [SerializeField] private float attackDelay;
+
 
     [Header("Animator Variables")]
     private bool isWalking;
@@ -25,12 +27,19 @@ public class EnemyController : Enemy
 
     void Awake()
     {
-        // meleeCollider = GetComponentInChildren<BoxCollider2D>();
         player = GameObject.FindGameObjectWithTag("Player");
         animator = GetComponentInChildren<Animator>();
         levelUpController = FindObjectOfType<LevelUpController>();
         rb = GetComponent<Rigidbody2D>();
-        meleeCollider.enabled = false;
+    }
+
+    void Start()
+    {
+        if (this.gameObject.tag != "TowerEnemy")
+        {
+            frontMeleeCollider.enabled = false;
+            backMeleeCollider.enabled = false;
+        }
     }
 
     public void Update()
@@ -40,21 +49,34 @@ public class EnemyController : Enemy
 
         if (distance < atkDistance)
         {
-            this.meleeCollider.enabled = true;
+            if (this.gameObject.tag == "TowerEnemy")
+            {
+                print("TowerEnemy");
+            }
+            else
+            {
+                if (isBack) this.backMeleeCollider.enabled = true;
+                else this.frontMeleeCollider.enabled = true;
+            }
+
             AttackPlayer();
         }
-        else if (distance < chaseDistance)
+        else if (distance < chaseDistance && this.gameObject.tag != "TowerEnemy")
         {
-            this.meleeCollider.enabled = false;
+            this.frontMeleeCollider.enabled = false;
+            this.backMeleeCollider.enabled = false;
             ChasePlayer();
         }
         else
         {
-            this.meleeCollider.enabled = false;
-            Patrol();
-        }
+            if (this.gameObject.tag != "TowerEnemy")
+            {
 
-        print("Colisor - "+meleeCollider.enabled);
+                this.frontMeleeCollider.enabled = false;
+                this.backMeleeCollider.enabled = false;
+                Patrol();
+            }
+        }
 
         ChangeAnimations();
 
@@ -130,7 +152,8 @@ public class EnemyController : Enemy
             BoxCollider2D parentCollider = GetComponentInParent<BoxCollider2D>();
             parentCollider.enabled = false;
 
-            Destroy(gameObject, 2f);
+            if(this.gameObject.tag != "TowerEnemy") Destroy(gameObject, 2f);
+            else isAlive = false;
 
             if (player.xp >= player.nexLevelPoints) levelUpController.LevelUp();
 
@@ -139,7 +162,8 @@ public class EnemyController : Enemy
         }
     }
 
-    public void UpdatePlayerTransform(){
+    public void UpdatePlayerTransform()
+    {
         if (player.transform.position.x > transform.position.x)
         {
             transform.localScale = new(1, 1);

@@ -77,28 +77,6 @@ MonoBehaviour:
       m_SpriteOverride: {fileID: 519809334, guid: bd724413cb063ac4ba9a9f3ef43c9999, type: 3}
     m_FromMain: 0
     m_EntryOverrideCount: 2
-  - m_Name: SideIdle
-    m_Hash: 1061179964
-    m_CategoryList: []
-    m_OverrideEntries:
-    - m_Name: CentaurIdle_0
-      m_Hash: 913197404
-      m_Sprite: {fileID: 398380620, guid: ad8899ba3f05a254f8f20f31e9462473, type: 3}
-      m_FromMain: 0
-      m_SpriteOverride: {fileID: 398380620, guid: ad8899ba3f05a254f8f20f31e9462473, type: 3}
-    m_FromMain: 0
-    m_EntryOverrideCount: 1
-  - m_Name: BackIdle
-    m_Hash: 512467767
-    m_CategoryList: []
-    m_OverrideEntries:
-    - m_Name: CentaurIdle_2
-      m_Hash: 408954992
-      m_Sprite: {fileID: 1777251861, guid: ad8899ba3f05a254f8f20f31e9462473, type: 3}
-      m_FromMain: 0
-      m_SpriteOverride: {fileID: 1777251861, guid: ad8899ba3f05a254f8f20f31e9462473, type: 3}
-    m_FromMain: 0
-    m_EntryOverrideCount: 1
   - m_Name: SideAttack
     m_Hash: 1038624367
     m_CategoryList: []
@@ -148,5 +126,5 @@ MonoBehaviour:
     m_FromMain: 0
     m_EntryOverrideCount: 2
   m_PrimaryLibraryGUID: 
-  m_ModificationHash: 638778234335164829
+  m_ModificationHash: 638780787950445096
   m_Version: 1
