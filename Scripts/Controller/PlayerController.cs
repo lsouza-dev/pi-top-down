@@ -42,6 +42,7 @@ public class PlayerController : MonoBehaviour
     [Header("Scripts")]
     [SerializeField] private PlayerAttack playerAttack;
     [SerializeField] private UIAtributtesController uIAtributtesController;
+    [SerializeField] private PowerUpController playerPowerUp;
 
     [Header("Class")]
     [SerializeField] public int evolutionIndex = 0;
@@ -62,8 +63,14 @@ public class PlayerController : MonoBehaviour
 
     public static PlayerController instance;
 
+    [Header("Timers")]
     [SerializeField] private float stoppedTime;
     [SerializeField] private float invencibleTime;
+    [SerializeField] private float firstSkillTimer;
+    [SerializeField] private float firstSkillDefaultTime = 5f;
+    [SerializeField] private float secondSkillTimer;
+    [SerializeField] private float secondSkillDefaultTime = 10f;
+
 
     [SerializeField] private float distanciamaxdogizmos;
     [SerializeField] private Vector3 mouseLimit;
@@ -79,6 +86,7 @@ public class PlayerController : MonoBehaviour
         playerAttack = GetComponent<PlayerAttack>();
         playerClass = PlayerPrefs.GetInt("PlayerClass");
         uIAtributtesController = FindObjectOfType<UIAtributtesController>();
+        playerPowerUp = FindObjectOfType<PowerUpController>();
     }
 
     void Start()
@@ -88,6 +96,8 @@ public class PlayerController : MonoBehaviour
         if (spriteLibraryAsset == null) print($"Sprite Library Asset is Null");
         if (currentBullet == null) print($"Bullet is Null");
         uIAtributtesController.SetAttributesValuesToUI();
+        firstSkillTimer = firstSkillDefaultTime;
+        secondSkillTimer = secondSkillDefaultTime;
 
     }
 
@@ -100,14 +110,38 @@ public class PlayerController : MonoBehaviour
             PlayerAttack();
             UpdateMouseDirection();
             PlayerInvencible();
+            PlayerUseSkill();
         }
         if (Input.GetKeyUp(KeyCode.Escape)) SceneManager.LoadScene("Menu");
+
 
         uIAtributtesController.SetAttributesValuesToUI();
         ChangeAnimations();
         DecrementTime();
     }
-    public void SetMovement(InputAction.CallbackContext value)
+
+    private void PlayerUseSkill()
+    {
+        if (Input.GetKeyDown(KeyCode.E) && firstSkillTimer <= 0)
+        {
+            firstSkillTimer = firstSkillDefaultTime;
+
+            playerPowerUp.AttackOnMousePosition();
+        }
+
+        if (Input.GetKeyDown(KeyCode.R) && secondSkillTimer <= 0)
+        {
+            secondSkillTimer = secondSkillDefaultTime;
+
+            playerPowerUp.MultiDirectionalAttack();
+        }
+
+        firstSkillTimer -= Time.deltaTime;
+        secondSkillTimer -= Time.deltaTime;
+
+    }
+
+    private void SetMovement(InputAction.CallbackContext value)
     {
         direction = value.ReadValue<Vector2>();
     }
@@ -122,6 +156,7 @@ public class PlayerController : MonoBehaviour
         float currentSpeed = Mathf.Lerp(0, maxSpeed, direction.magnitude);
 
         rb.velocity = direction * currentSpeed;
+        print(rb.velocity);
 
         isIdle = rb.velocity == Vector2.zero;
     }
@@ -202,7 +237,8 @@ public class PlayerController : MonoBehaviour
             invencibleTime = 2f;
         }
 
-        if(other.gameObject.CompareTag("MeleeCollider")){
+        if (other.gameObject.CompareTag("MeleeCollider"))
+        {
             var enemy = other.gameObject.GetComponentInParent<EnemyController>();
             enemy.PlayerHit(this);
             invencibleTime = 2f;

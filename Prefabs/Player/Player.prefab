@@ -137,8 +137,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed8b1ae4e4e52b34ea557c1c11e076fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_CategoryHash: 0.009161512
-  m_labelHash: 1.3971405e-28
+  m_CategoryHash: 1.3061122e-19
+  m_labelHash: 1.6954902e-18
   m_SpriteKey: 0
   m_SpriteHash: 707258795
 --- !u!1 &3975290186986964961
@@ -186,8 +186,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1887342867010537932}
   - component: {fileID: 9026970655102764844}
-  - component: {fileID: 4283367481896405922}
   - component: {fileID: 2991006514622240838}
+  - component: {fileID: 586102906998677954}
+  - component: {fileID: 3447108383594152707}
+  - component: {fileID: 4283367481896405922}
   - component: {fileID: 2567594268146112582}
   m_Layer: 0
   m_Name: Player
@@ -227,13 +229,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 1
-  hp: 20
-  mana: 50
-  ammo: 10
+  nexLevelPoints: 50
+  currentHp: 100
+  maxHp: 100
+  xp: 0
+  strength: 5
+  atkSpeed: 0.3
   mouseDirection: 0
   isAttack: 0
   animator: {fileID: 0}
   playerAttack: {fileID: 0}
+  uIAtributtesController: {fileID: 0}
+  playerPowerUp: {fileID: 0}
   evolutionIndex: 0
   playerClass: 0
   library: {fileID: 0}
@@ -242,13 +249,73 @@ MonoBehaviour:
   colliderOffset: {x: 0, y: 0}
   colliderSize: {x: 0, y: 0}
   isEvolving: 0
+  direction: {x: 0, y: 0}
   maxSpeed: 3
   shootCooldownTime: 0
   shootCooldownTimeDefault: 1.8
   stoppedTime: 0
   invencibleTime: 0
+  firstSkillTimer: 0
+  firstSkillDefaultTime: 5
+  secondSkillTimer: 0
+  secondSkillDefaultTime: 10
   distanciamaxdogizmos: 4.87
   mouseLimit: {x: 0, y: 0, z: 0}
+  spawnersOffset: []
+--- !u!114 &2991006514622240838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4960589485371639800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbf26bd1050ab3a418f1a6fe241fe1d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnerParent: {fileID: 0}
+  spawnersPositions: []
+  timeToDestroy: 2
+  speed: 5
+  spawnerOffsets: []
+--- !u!114 &586102906998677954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4960589485371639800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da8a9b6d35eab2844b6c55dd59d246bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeToHitGround: 3
+  timeToDestroy: 8
+  collisionDamage: 100
+  onStayAreaDamage: 50
+  damageArea: {fileID: 0}
+  parentSpriteRenderer: {fileID: 0}
+  areaSpriteRenderer: {fileID: 0}
+  parentCollider: {fileID: 0}
+  areaCollider: {fileID: 0}
+--- !u!114 &3447108383594152707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4960589485371639800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34e362bb9ff004d49be6a23b40cbbbb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  magePowerUp: {fileID: 0}
+  playerClass: 0
+  rb: {fileID: 0}
+  isOnGround: 0
 --- !u!50 &4283367481896405922
 Rigidbody2D:
   serializedVersion: 4
@@ -276,24 +343,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &2991006514622240838
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4960589485371639800}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bbf26bd1050ab3a418f1a6fe241fe1d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawnerParent: {fileID: 0}
-  spawnersPositions: []
-  currentBullet: 0
-  timeToDestroy: 2
-  speed: 5
-  spawnerOffsets: []
 --- !u!70 &2567594268146112582
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
