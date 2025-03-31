@@ -40,15 +40,6 @@ public class PowerUp : MonoBehaviour
         PowerUpLifeCicle();
     }
 
-    private void PowerUpLifeCicle()
-    {
-        if (PowerUpController.instance.isOnGround)
-        {
-            StartCoroutine(WaitToDisableMeteor());
-        }
-        if(timeToDestroy <= 0) Destroy(gameObject);
-    }
-
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("TowerEnemy"))
@@ -68,14 +59,32 @@ public class PowerUp : MonoBehaviour
         }
     }
 
+    private bool isCoroutineRunning = false; // Variável de controle
+
+    private void PowerUpLifeCicle()
+    {
+        if (PowerUpController.instance.isOnGround && !isCoroutineRunning)
+        {
+            StartCoroutine(WaitToDisableMeteor());
+        }
+        if (timeToDestroy <= 0) Destroy(gameObject);
+    }
+
     private IEnumerator WaitToDisableMeteor()
     {
-        yield return new WaitForSeconds(.5f);
+        isCoroutineRunning = true; // Marca que a coroutine está em execução
+
+        timeToDestroy = 3f;
+
         parentSpriteRenderer.enabled = false;
         parentCollider.enabled = false;
 
         areaSpriteRenderer.enabled = true;
         areaCollider.enabled = true;
-        timeToDestroy = 3f;
+
+        yield return new WaitForSeconds(3f);
+
+        Destroy(gameObject); // Destroi o objeto após 3 segundos
+        isCoroutineRunning = false; // Reseta a variável de controle (opcional, mas não necessário aqui)
     }
 }

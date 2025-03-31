@@ -37,6 +37,7 @@ public class ClassSelector : MonoBehaviour
 
     void Awake()
     {
+        instance = instance == null ? instance = this : instance;
         bullets = Resources.LoadAll<Bullet>("Bullets").ToList();
 
         goblinLibraries = Resources.LoadAll<SpriteLibraryAsset>("Libraries\\Goblin").ToList();
@@ -45,15 +46,12 @@ public class ClassSelector : MonoBehaviour
 
         playerController = FindObjectOfType<PlayerController>();
 
-        instance = instance == null ? instance = this : instance;
     }
 
     public (SpriteLibraryAsset, Bullet, Vector2, Vector2, Vector3[]) ClassChoice(int classIndex)
     {
         this.evolutionIndex += 1;
         this.currentClass = classIndex;
-
-
         
         if (evolutionIndex <= playerEvolutions.Count)
         {

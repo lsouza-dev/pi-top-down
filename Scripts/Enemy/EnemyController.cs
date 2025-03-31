@@ -177,6 +177,7 @@ public class EnemyController : Enemy
 
     public void PlayerHit(PlayerController player)
     {
+        print("Player Hit");
         player.TakeDamage(collisionDamage);
     }
 

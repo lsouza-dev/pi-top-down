@@ -17,7 +17,7 @@ public class PlayerAttack : MonoBehaviour
 
     void Awake()
     {
-        spawnersPositions = Resources.LoadAll<GameObject>("Spawners").ToList();
+        spawnersPositions = Resources.LoadAll<GameObject>("Spawners\\Attack").ToList();
         spawnerParent = GameObject.Find("Spawner").transform;
     }
 
@@ -53,29 +53,22 @@ public class PlayerAttack : MonoBehaviour
     {
         if (spawnersPositions.Count == 0 ) return;
         
-        PlayerController.instance.isAttack = false;
-        
+        PlayerController.instance.isAttack = false;        
 
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePosition.z = 0;
-
         
         Transform spawner = spawnersPositions[PlayerController.instance.mouseDirection].transform;
         Vector3 spawnPosition = spawner.position;
-
         
         Vector3 direction = (mousePosition - spawnPosition).normalized;
 
-        
         var bulletInstance = Instantiate(bullet, spawnPosition, Quaternion.identity);
         PlayerController.instance.shootCooldownTime = PlayerController.instance.shootCooldownTimeDefault;
         
-
-        
         float angle = Mathf.Atan2(-direction.y, -direction.x) * Mathf.Rad2Deg;
         bulletInstance.transform.rotation = Quaternion.Euler(0, 0, angle);
-
         
-        bulletInstance.GetComponent<Rigidbody2D>().velocity = direction * speed;
+        bulletInstance.GetComponent<Rigidbody2D>().velocity = direction * bulletInstance.speed;
     }
 }

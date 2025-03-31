@@ -14,6 +14,7 @@ public class Bullet : MonoBehaviour
     [SerializeField] float incrementValue = .01f;
     [SerializeField] float scaleX;
     [SerializeField] float scaleY;
+    [SerializeField] public float speed = 10f;
 
     [Header("Compontents")]
     [SerializeField] SpriteRenderer sr;

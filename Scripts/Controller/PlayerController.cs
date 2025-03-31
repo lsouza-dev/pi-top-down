@@ -98,7 +98,7 @@ public class PlayerController : MonoBehaviour
         uIAtributtesController.SetAttributesValuesToUI();
         firstSkillTimer = firstSkillDefaultTime;
         secondSkillTimer = secondSkillDefaultTime;
-
+        PowerUpController.instance.currentBullet = currentBullet;
     }
 
     void Update()
@@ -133,17 +133,12 @@ public class PlayerController : MonoBehaviour
         {
             secondSkillTimer = secondSkillDefaultTime;
 
-            playerPowerUp.MultiDirectionalAttack();
+            playerPowerUp.MultiDirectionalAttack(ClassSelector.instance.evolutionIndex);
         }
 
         firstSkillTimer -= Time.deltaTime;
         secondSkillTimer -= Time.deltaTime;
 
-    }
-
-    private void SetMovement(InputAction.CallbackContext value)
-    {
-        direction = value.ReadValue<Vector2>();
     }
 
     private void PlayerMovement()
@@ -156,7 +151,6 @@ public class PlayerController : MonoBehaviour
         float currentSpeed = Mathf.Lerp(0, maxSpeed, direction.magnitude);
 
         rb.velocity = direction * currentSpeed;
-        print(rb.velocity);
 
         isIdle = rb.velocity == Vector2.zero;
     }
