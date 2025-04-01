@@ -5,35 +5,35 @@ using Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PowerUpController : MonoBehaviour
+public class SkillController : MonoBehaviour
 {
     private Vector3 mousePosition;
 
-    [SerializeField] private PowerUp magePowerUp;
+    [SerializeField] private Skill magePowerUp;
     [SerializeField] public int playerClass;
     [SerializeField] private Rigidbody2D rb;
     public bool isOnGround;
-    public static PowerUpController instance;
+    public static SkillController instance;
     public List<Transform> spawnPoints = new List<Transform>();
     [SerializeField] public Bullet currentBullet;
     [SerializeField] public GameObject multidirectionalSpawner; // Prefab da bullet a ser instanciada
 
-   void Awake()
-{
-    instance = instance == null ? this : instance;
+    void Awake()
+    {
+        instance = instance == null ? this : instance;
 
-    magePowerUp = Resources.Load<PowerUp>("PowerUps\\Mage\\Meteor");
+        magePowerUp = Resources.Load<Skill>("PowerUps\\Mage\\Meteor");
 
-    // Busca os spawnPoints dinamicamente a partir do MultiDirectionalSpawners
-    Transform spawnerParent = transform.Find("MultiDirectionalSpawners");
-    if (spawnerParent != null)
-        spawnPoints = spawnerParent.GetComponentsInChildren<Transform>().Where(t => t != spawnerParent).ToList();
-    else
-        Debug.LogError("MultiDirectionalSpawners não encontrado como filho do Player.");
-    
+        // Busca os spawnPoints dinamicamente a partir do MultiDirectionalSpawners
+        Transform spawnerParent = transform.Find("MultiDirectionalSpawners");
+        if (spawnerParent != null)
+            spawnPoints = spawnerParent.GetComponentsInChildren<Transform>().Where(t => t != spawnerParent).ToList();
+        else
+            Debug.LogError("MultiDirectionalSpawners não encontrado como filho do Player.");
 
-    rb = GetComponent<Rigidbody2D>();
-}
+
+        rb = GetComponent<Rigidbody2D>();
+    }
 
     void Start()
     {
@@ -102,13 +102,13 @@ public class PowerUpController : MonoBehaviour
         switch (playerClass)
         {
             case 0:
-                SpawnBulletsInDirections(1); // Exemplo: 3 bullets (uma reta e duas diagonais)
+                SpawnBulletsInDirections(playerClass); // Exemplo: 3 bullets (uma reta e duas diagonais)
                 break;
-            case 1: 
-                SpawnBulletsInDirections(3); // Exemplo: 5 bullets (mais ângulos)
+            case 1:
+                SpawnBulletsInDirections(playerClass); // Exemplo: 5 bullets (mais ângulos)
                 break;
-            case 2: 
-                SpawnBulletsInDirections(5); // Exemplo: 7 bullets (ainda mais ângulos)
+            case 2:
+                SpawnBulletsInDirections(playerClass); // Exemplo: 7 bullets (ainda mais ângulos)
                 break;
             default:
                 print("Classe inválida para utilizar Skill");
@@ -116,66 +116,55 @@ public class PowerUpController : MonoBehaviour
         }
     }
 
-    private void SpawnBulletsInDirections(int bulletCount)
+    private void SpawnBulletsInDirections(int evolutionLevel)
     {
-        if (bulletCount < 1 || bulletCount > 5) return; // Garante que o número de bullets seja válido (1 a 3)
+        if (evolutionLevel < 0 || evolutionLevel > 2) return;
 
-        // Define os índices dos spawners com base no bulletCount
-        List<int> spawnerIndices = new List<int>();
-        if (bulletCount == 1)
+        // Define os spawners com base na evolução
+        Dictionary<int, List<int>> evolutionSpawns = new Dictionary<int, List<int>>
+    {
+        { 0, new List<int> { 2 } },
+        { 1, new List<int> { 1, 2, 3 } },
+        { 2, new List<int> { 0, 1, 2, 3, 4 } }
+    };
+
+        List<int> spawnerIndices = evolutionSpawns[evolutionLevel];
+        float directionMultiplier = transform.localScale.x > 0 ? -1f : 1f;
+
+        foreach (int index in spawnerIndices)
         {
-            spawnerIndices.Add(2); // Apenas o spawner central
-        }
-        else if (bulletCount == 3)
-        {
-            spawnerIndices.AddRange(new[] { 1, 2, 3 }); // Spawners 1, 2 e 3
-        }
-        else if (bulletCount == 5)
-        {
-            spawnerIndices.AddRange(new[] { 0, 1, 2, 3, 4 }); // Todos os spawners
-        }
-
-        // Calcula o ângulo inicial e o incremento entre as bullets
-        float angleStep = spawnerIndices.Count > 1 ? 45f / (spawnerIndices.Count - 1) : 0f; // Evita divisão por zero
-        float startAngle = -22.5f; // Começa com um ângulo inclinado para cima
-
-        for (int i = 0; i < spawnerIndices.Count; i++)
-        {
-            // Calcula o ângulo para cada bullet
-            float angle = startAngle + (i * angleStep);
-
-            // Converte o ângulo para um vetor de direção
-            Vector3 direction = new Vector3(Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad), 0);
-
-            // Garante que o vetor de direção seja válido
-            if (direction.magnitude == 0)
+            if (index < 0 || index >= spawnPoints.Count)
             {
-                Debug.LogWarning($"Direção inválida para a bullet no índice {i}. Ignorando esta instância.");
+                Debug.LogWarning($"Spawner inválido no índice {index}. Ignorando.");
                 continue;
             }
 
-            direction.Normalize(); // Normaliza o vetor de direção
-
-            // Obtém a posição do spawner correspondente
-            if (spawnerIndices[i] < 0 || spawnerIndices[i] >= spawnPoints.Count)
-            {
-                Debug.LogWarning($"Spawner inválido no índice {i}. Ignorando esta instância.");
-                continue;
-            }
-
-            Transform spawner = spawnPoints[spawnerIndices[i]];
+            Transform spawner = spawnPoints[index];
             Vector3 spawnPosition = spawner.position;
+            float angle = GetBulletAngle(index) * directionMultiplier;
 
-            // Instancia a bullet
-            var bulletInstance = Instantiate(currentBullet, spawnPosition, Quaternion.identity);
+            Vector3 direction = new Vector3(Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad), 0).normalized * directionMultiplier;
 
-            // Define a rotação da bullet
-            bulletInstance.transform.rotation = Quaternion.Euler(0, 0, angle);
-
-            // Define a velocidade da bullet
+            var bulletInstance = Instantiate(currentBullet, spawnPosition, Quaternion.Euler(0, 0, angle));
+            bulletInstance.damage *= 1.25f;
             bulletInstance.GetComponent<Rigidbody2D>().velocity = direction * currentBullet.speed;
         }
     }
+
+    private float GetBulletAngle(int index)
+    {
+        switch (index)
+        {
+            case 0: return 45f;  // Diagonal para cima à esquerda
+            case 1: return 22.5f; // Levemente inclinado para cima
+            case 2: return 0f;   // Reto
+            case 3: return -22.5f; // Levemente inclinado para baixo
+            case 4: return -45f; // Diagonal para baixo à direita
+            default: return 0f;
+        }
+    }
+
+
 
     private Vector3 GetSpawnPosition()
     {

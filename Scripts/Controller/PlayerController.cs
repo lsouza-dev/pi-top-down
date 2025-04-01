@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour
     [Header("Scripts")]
     [SerializeField] private PlayerAttack playerAttack;
     [SerializeField] private UIAtributtesController uIAtributtesController;
-    [SerializeField] private PowerUpController playerPowerUp;
+    [SerializeField] private SkillController playerPowerUp;
 
     [Header("Class")]
     [SerializeField] public int evolutionIndex = 0;
@@ -86,7 +86,7 @@ public class PlayerController : MonoBehaviour
         playerAttack = GetComponent<PlayerAttack>();
         playerClass = PlayerPrefs.GetInt("PlayerClass");
         uIAtributtesController = FindObjectOfType<UIAtributtesController>();
-        playerPowerUp = FindObjectOfType<PowerUpController>();
+        playerPowerUp = FindObjectOfType<SkillController>();
     }
 
     void Start()
@@ -98,7 +98,7 @@ public class PlayerController : MonoBehaviour
         uIAtributtesController.SetAttributesValuesToUI();
         firstSkillTimer = firstSkillDefaultTime;
         secondSkillTimer = secondSkillDefaultTime;
-        PowerUpController.instance.currentBullet = currentBullet;
+        SkillController.instance.currentBullet = currentBullet;
     }
 
     void Update()

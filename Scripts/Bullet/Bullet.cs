@@ -8,7 +8,7 @@ public class Bullet : MonoBehaviour
 
     [Header("Attributes")]
     [SerializeField] float timeToDestroy = .5f;
-    [SerializeField] float damage;
+    [SerializeField] public float damage;
     [SerializeField] float defaultX = 1f;
     [SerializeField] float defaultY = 1f;
     [SerializeField] float incrementValue = .01f;

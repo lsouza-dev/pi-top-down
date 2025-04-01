@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PowerUp : MonoBehaviour
+public class Skill : MonoBehaviour
 {
     [Header("Timers")]
     [SerializeField] private float timeToHitGround = 3f;
@@ -63,7 +63,7 @@ public class PowerUp : MonoBehaviour
 
     private void PowerUpLifeCicle()
     {
-        if (PowerUpController.instance.isOnGround && !isCoroutineRunning)
+        if (SkillController.instance.isOnGround && !isCoroutineRunning)
         {
             StartCoroutine(WaitToDisableMeteor());
         }
