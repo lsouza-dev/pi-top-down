@@ -38,6 +38,7 @@ public class PlayerController : MonoBehaviour
     private Transform playerTransform;
     private Rigidbody2D rb;
     private CapsuleCollider2D capCollider;
+    private BoxCollider2D boxCollider;
 
     [Header("Scripts")]
     [SerializeField] private PlayerAttack playerAttack;
@@ -83,6 +84,7 @@ public class PlayerController : MonoBehaviour
         playerTransform = GetComponent<Transform>();
         rb = GetComponent<Rigidbody2D>();
         capCollider = GetComponent<CapsuleCollider2D>();
+        boxCollider = GetComponent<BoxCollider2D>();
         playerAttack = GetComponent<PlayerAttack>();
         playerClass = PlayerPrefs.GetInt("PlayerClass");
         uIAtributtesController = FindObjectOfType<UIAtributtesController>();
@@ -267,11 +269,13 @@ public class PlayerController : MonoBehaviour
 
     public void EvolvePlayer(int evolution, int classIndex)
     {
-        print("Evolve Player chamado");
         (this.spriteLibraryAsset, this.currentBullet, this.colliderOffset, this.colliderSize, this.spawnersOffset) = ClassSelector.instance.ClassChoice(classIndex);
         this.library.spriteLibraryAsset = spriteLibraryAsset;
         playerAttack.spawnerOffsets = this.spawnersOffset;
         this.capCollider.offset = colliderOffset;
         this.capCollider.size = colliderSize;
+
+        this.boxCollider.offset = colliderOffset;
+        this.boxCollider.size = colliderSize;
     }
 }

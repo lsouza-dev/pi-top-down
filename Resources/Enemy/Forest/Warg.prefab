@@ -219,9 +219,9 @@ MonoBehaviour:
   animator: {fileID: 0}
   player: {fileID: 0}
   isAlive: 1
-  chaseDistance: 5
+  chaseDistance: 4
   atkDistance: 1.5
-  patrolArea: 8
+  patrolArea: 6
   collisionDamage: 5
   frontMeleeCollider: {fileID: 8993785876401909866}
   backMeleeCollider: {fileID: 892017441278414482}

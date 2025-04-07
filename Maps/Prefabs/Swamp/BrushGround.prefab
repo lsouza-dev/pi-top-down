@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 715447143649207269}
   m_Layer: 0
   m_Name: BrushGround
-  m_TagString: Untagged
+  m_TagString: Objects
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

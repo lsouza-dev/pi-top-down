@@ -76,6 +76,9 @@ public class Bullet : MonoBehaviour
                 Destroy(gameObject);
             }
         }
+
+        if(other.gameObject.CompareTag("Wall") || other.gameObject.CompareTag("Objects")) Destroy(gameObject);
+
     }
 
 

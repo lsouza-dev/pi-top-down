@@ -41,7 +41,6 @@ public class PlayerAttack : MonoBehaviour
     {
         // Atualiza a posição do spawner principal para seguir o jogador
         spawnerParent.position = PlayerController.instance.transform.position;
-        print(spawnersPositions.Count);
         // Atualiza a posição dos spawners filhos com base no pai
         for (int i = 0; i < spawnersPositions.Count; i++)
         {

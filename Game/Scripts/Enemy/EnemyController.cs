@@ -6,19 +6,23 @@ using UnityEngine;
 public class EnemyController : Enemy
 {
     [SerializeField] float chaseDistance, atkDistance;
-    [SerializeField] float patrolArea;
+    [SerializeField] float patrolArea = 3f;
     private Vector2 rndPatrolPos;
     private float patrolTimer;
     private float distance;
+    [SerializeField] private float spawnerDistance;
+    private float maxDistanceOfSpawner = 6f;
 
     [SerializeField] float collisionDamage = 5f;
 
     private float spd = 1;
     [SerializeField] private BoxCollider2D frontMeleeCollider;
     [SerializeField] private BoxCollider2D backMeleeCollider;
+    [SerializeField] public GameObject spawner;
 
     private LevelUpController levelUpController;
     [SerializeField] private float attackDelay;
+    public static EnemyController instance;
 
 
     [Header("Animator Variables")]
@@ -27,6 +31,7 @@ public class EnemyController : Enemy
 
     void Awake()
     {
+        instance = instance == null ? this : instance;
         player = GameObject.FindGameObjectWithTag("Player");
         animator = GetComponentInChildren<Animator>();
         levelUpController = FindObjectOfType<LevelUpController>();
@@ -35,6 +40,7 @@ public class EnemyController : Enemy
 
     void Start()
     {
+
         if (this.gameObject.tag != "TowerEnemy")
         {
             frontMeleeCollider.enabled = false;
@@ -46,12 +52,44 @@ public class EnemyController : Enemy
     {
         if (!isAlive) return;
         distance = Vector2.Distance(player.transform.position, transform.position);
+        spawnerDistance = Vector2.Distance(spawner.transform.position, transform.position);
 
+        CalculatePlayerDistance();
+        CalculateSpawnerDistance();
+        ChangeAnimations();
+        UpdatePlayerTransform();
+
+        if (transform.position.y < player.transform.position.y) isBack = true;
+        else isBack = false;
+
+        attackDelay -= Time.deltaTime;
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+
+        if (other.gameObject.CompareTag("Wall") || other.gameObject.CompareTag("Objects"))
+        {
+            rndPatrolPos = spawner.transform.position;
+        }
+
+    }
+
+    private void CalculateSpawnerDistance()
+    {
+        if (spawnerDistance > maxDistanceOfSpawner)
+        {
+            rndPatrolPos = spawner.transform.position;
+        }
+    }
+
+    private void CalculatePlayerDistance()
+    {
         if (distance < atkDistance)
         {
             if (this.gameObject.tag == "TowerEnemy")
             {
-                print("TowerEnemy");
+
             }
             else
             {
@@ -77,15 +115,6 @@ public class EnemyController : Enemy
                 Patrol();
             }
         }
-
-        ChangeAnimations();
-
-        UpdatePlayerTransform();
-
-        if (transform.position.y < player.transform.position.y) isBack = true;
-        else isBack = false;
-
-        attackDelay -= Time.deltaTime;
     }
 
     void Patrol()
@@ -97,7 +126,7 @@ public class EnemyController : Enemy
             rndPatrolPos = new Vector2(transform.position.x + Random.Range(-patrolArea, patrolArea),
                                        transform.position.y + Random.Range(-patrolArea, patrolArea));
 
-            patrolTimer = Random.Range(5f, 7f);
+            patrolTimer = Random.Range(2f, 5f);
         }
 
         transform.position = Vector2.MoveTowards(transform.position, rndPatrolPos, spd * Time.deltaTime);
@@ -152,7 +181,10 @@ public class EnemyController : Enemy
             BoxCollider2D parentCollider = GetComponentInParent<BoxCollider2D>();
             parentCollider.enabled = false;
 
-            if(this.gameObject.tag != "TowerEnemy") Destroy(gameObject, 2f);
+            if (this.gameObject.tag != "TowerEnemy")
+            {
+                Destroy(gameObject, 2f);
+            }
             else isAlive = false;
 
             if (player.xp >= player.nexLevelPoints) levelUpController.LevelUp();
@@ -177,7 +209,6 @@ public class EnemyController : Enemy
 
     public void PlayerHit(PlayerController player)
     {
-        print("Player Hit");
         player.TakeDamage(collisionDamage);
     }
 
