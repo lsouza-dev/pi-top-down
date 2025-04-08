@@ -20,7 +20,7 @@ public class EnemyController : Enemy
     [SerializeField] private BoxCollider2D backMeleeCollider;
     [SerializeField] public GameObject spawner;
 
-    private LevelUpController levelUpController;
+    [SerializeField] private LevelUpController levelUpController;
     [SerializeField] private float attackDelay;
     public static EnemyController instance;
 

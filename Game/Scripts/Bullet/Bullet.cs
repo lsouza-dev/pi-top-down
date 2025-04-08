@@ -56,7 +56,7 @@ public class Bullet : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("TowerEnemy"))
         {
-
+            print("Hit Enemy");
             var Enemy = other.gameObject.GetComponent<EnemyController>();
             Enemy.TakeDamage(damage);
 

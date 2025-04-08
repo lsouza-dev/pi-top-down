@@ -104,6 +104,7 @@ public class AttributeUpgradeController : MonoBehaviour
     {
         var player = FindObjectOfType<PlayerController>();
         var uiAttributesController = FindObjectOfType<UIAtributtesController>();
+        Time.timeScale = 1f;
 
         player.maxHp += hp * 10;
         player.maxSpeed += speed * .05f;

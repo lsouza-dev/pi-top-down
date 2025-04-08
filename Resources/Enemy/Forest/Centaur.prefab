@@ -299,9 +299,11 @@ MonoBehaviour:
   chaseDistance: 4
   atkDistance: 0.65
   patrolArea: 6
+  spawnerDistance: 0
   collisionDamage: 5
   frontMeleeCollider: {fileID: 8993785876401909866}
   backMeleeCollider: {fileID: 3292673618109546615}
+  spawner: {fileID: 0}
   attackDelay: 0
 --- !u!1 &7628097972543603424
 GameObject:

@@ -21,6 +21,7 @@ public class LevelUpController : MonoBehaviour
 
     public void LevelUp()
     {
+        Time.timeScale = 0f;
         var canva = GameObject.Find("Canvas");
         Instantiate(fadeUpgradePannel, canva.transform);
 
