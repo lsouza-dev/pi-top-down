@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Player Attributes")]
     [SerializeField] public int level = 1;
+    [SerializeField] public float critDamage = 10f;
+    [SerializeField] public float critRate = 5f;
     [SerializeField] public float nexLevelPoints = 50;
     [SerializeField] public float currentHp = 100;
     [SerializeField] public float maxHp = 100;
