@@ -231,7 +231,7 @@ MonoBehaviour:
   backMeleeCollider: {fileID: 892017441278414482}
   spawner: {fileID: 0}
   levelUpController: {fileID: 0}
-  healthBar: {fileID: 0}
+  healthBar: {fileID: 1133004270527209009}
   attackDelay: 0
 --- !u!1 &5987479121747865040
 GameObject:
@@ -553,6 +553,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 25082181168adda4d952534c58bdf1d3, type: 3}
+--- !u!114 &1133004270527209009 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6265931489565616272, guid: 25082181168adda4d952534c58bdf1d3, type: 3}
+  m_PrefabInstance: {fileID: 6434573065051993761}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c29054a3bb2aa94086c118938bfddee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &6094871765190393411 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 997942627527772386, guid: 25082181168adda4d952534c58bdf1d3, type: 3}

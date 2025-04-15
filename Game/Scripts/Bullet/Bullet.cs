@@ -56,9 +56,11 @@ public class Bullet : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("TowerEnemy"))
         {
-            print("Hit Enemy");
             var enemy = other.gameObject.GetComponent<EnemyController>();
+            print("Hit Enemy: " + enemy.gameObject.name);
+            print("Health Bar Active: " + enemy.healthBar.isActive);
             enemy.healthBar.isActive = true;
+            print("Health Bar Active: " + enemy.healthBar.isActive);
             enemy.TakeDamage(damage);
 
             if (bulletName == "Dagger")

@@ -97,7 +97,6 @@ public class SpawnerController : MonoBehaviour
     {
         spawnedEnemies.Clear();
         enemiesSpawnedsCount++;
-        print($"Max enemies on spawner: {enemiesSpawnedsCount}");
 
         for (int i = 1; i <= enemiesSpawnedsCount; i++)
         {
