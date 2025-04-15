@@ -19,8 +19,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] public float critDamage = 10f;
     [SerializeField] public float critRate = 5f;
     [SerializeField] public float nexLevelPoints = 50;
-    [SerializeField] public float currentHp = 100;
-    [SerializeField] public float maxHp = 100;
+    [SerializeField] public float currentHealth = 100;
+    [SerializeField] public float maxHealth = 100;
     [SerializeField] public float xp = 00;
     [SerializeField] public float strength = 5;
     [SerializeField] public float atkSpeed = .3f;
@@ -210,12 +210,12 @@ public class PlayerController : MonoBehaviour
     {
         if (invencibleTime >= 0) return;
 
-        this.currentHp -= damage;
+        this.currentHealth -= damage;
         animator.SetTrigger("isDamage");
 
         rb.velocity = Vector2.zero;
 
-        if (this.currentHp <= 0)
+        if (this.currentHealth <= 0)
         {
             isAlive = false;
             animator.SetBool("isAlive", isAlive);

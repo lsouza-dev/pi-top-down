@@ -21,6 +21,7 @@ public class EnemyController : Enemy
     [SerializeField] public GameObject spawner;
 
     [SerializeField] private LevelUpController levelUpController;
+    [SerializeField] public EnemyHealthBar healthBar;
     [SerializeField] private float attackDelay;
     public static EnemyController instance;
 
@@ -31,6 +32,8 @@ public class EnemyController : Enemy
 
     void Awake()
     {
+        currentHealth = maxHealth;
+        healthBar = GameObject.Find("EnemyHealthBar").GetComponentInChildren<EnemyHealthBar>();
         instance = instance == null ? this : instance;
         player = GameObject.FindGameObjectWithTag("Player");
         animator = GetComponentInChildren<Animator>();
@@ -169,9 +172,9 @@ public class EnemyController : Enemy
 
     public void TakeDamage(float damage)
     {
-        this.health -= damage;
+        this.currentHealth -= damage;
         animator.SetTrigger("isDamage");
-        if (this.health <= 0)
+        if (this.currentHealth <= 0)
         {
             var player = FindObjectOfType<PlayerController>();
             player.xp += 20;

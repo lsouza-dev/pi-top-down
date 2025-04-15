@@ -9,7 +9,7 @@ public class GameController : MonoBehaviour
     private GameObject attributesUI;
     public string sceneName;
     public GameObject canvasPos;
-
+    public GameObject attributesBackground;
 
     void Awake()
     {
@@ -17,6 +17,7 @@ public class GameController : MonoBehaviour
         sceneName = SceneManager.GetActiveScene().name;
         attributesUI = Resources.Load<GameObject>("Attributes\\AttributeUpgradeController");
         canvasPos = GameObject.Find("Canvas");
+        attributesBackground = GameObject.FindGameObjectWithTag("AttributesBackground");
         if(sceneName == "Forest") PlayerPrefs.SetInt("maxEnemiesOnSpawner", 1);
     }
 
@@ -28,6 +29,16 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            if (attributesBackground.activeSelf)
+            {
+                attributesBackground.SetActive(false);
+            }
+            else
+            {
+                attributesBackground.SetActive(true);
+            }
+        }
     }
 }
