@@ -8,32 +8,28 @@ public class EnemyHealthBar : MonoBehaviour
 {
     [SerializeField] private Slider lifeBar;
     public bool isActive = false;
-    [SerializeField] private EnemyController enemy;
-    public static EnemyHealthBar instance;
+    [SerializeField] public EnemyController enemy;
     // Start is called before the first frame update
 
     void Awake()
     {
-        instance = instance == null ? this : instance;
         lifeBar = GetComponent<Slider>();
-        enemy = GetComponentInParent<EnemyController>();
 
         if (lifeBar == null) Debug.LogError("Slider component not found in children of Canvas.");        
-        if(enemy == null) Debug.LogError("EnemyController component not found in children of Canvas. In the Object: " + gameObject.name);
+        // if(enemy == null) Debug.LogError("EnemyController component not found in children of Canvas. In the Object: " + gameObject.name);
     }
 
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
     void Update()
+    {
+        UpdateHealthBar();
+    }
+
+    public void UpdateHealthBar()
     {
         if(isActive){
             gameObject.SetActive(true);
             print("Barra do inimigo ativada no " + enemy.gameObject.name);
-            this.transform.position = Camera.main.WorldToScreenPoint(enemy.transform.position + new Vector3(0, .3f, 0));
+            this.transform.position = Camera.main.WorldToScreenPoint(this.enemy.transform.position + new Vector3(0, .3f, 0));
             lifeBar.value = enemy.currentHealth / enemy.maxHealth;
         }else{
             print("Barra do inimigo desativada!!! Enemy: " + enemy.gameObject.name);
