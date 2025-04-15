@@ -106,11 +106,11 @@ public class AttributeUpgradeController : MonoBehaviour
         var uiAttributesController = FindObjectOfType<UIAtributtesController>();
         Time.timeScale = 1f;
 
-        player.maxHp += hp * 10;
+        player.maxHealth += hp * 10;
         player.maxSpeed += speed * .05f;
         player.strength += strength;
         player.atkSpeed += atkSpeed * .1f;
-        player.currentHp = player.maxHp;
+        player.currentHealth = player.maxHealth;
 
         uiAttributesController.SetAttributesValuesToUI();
         Destroy(this.gameObject);

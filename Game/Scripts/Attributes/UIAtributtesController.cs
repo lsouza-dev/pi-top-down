@@ -21,11 +21,13 @@ public class UIAtributtesController : MonoBehaviour
     public void SetAttributesValuesToUI(){
         for (int i = 0; i < uiAttributes.Count; i++) {
             if(i == 0) uiAttributes[i].text = playerController.atkSpeed.ToString();
-            if(i == 1) uiAttributes[i].text = $"{playerController.currentHp} / {playerController.maxHp}";
-            if(i == 2) uiAttributes[i].text = $"Lv: {playerController.level}";
-            if(i == 3) uiAttributes[i].text = playerController.maxSpeed.ToString();
-            if(i == 4) uiAttributes[i].text = playerController.strength.ToString();
-            if(i == 5) uiAttributes[i].text = $"{playerController.xp} / {playerController.nexLevelPoints}";
+            if(i == 1) uiAttributes[i].text = $"{playerController.critDamage} %";
+            if(i == 2) uiAttributes[i].text = $"{playerController.critRate} %";
+            if(i == 3) uiAttributes[i].text = $"{playerController.currentHealth} / {playerController.maxHealth}";
+            if(i == 4) uiAttributes[i].text = $"Lv: {playerController.level}";
+            if(i == 5) uiAttributes[i].text = playerController.maxSpeed.ToString();
+            if(i == 6) uiAttributes[i].text = playerController.strength.ToString();
+            if(i == 7) uiAttributes[i].text = $"{playerController.xp} / {playerController.nexLevelPoints}";
         }
     }
 }
