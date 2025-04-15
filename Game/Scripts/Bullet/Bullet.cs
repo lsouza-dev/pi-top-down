@@ -59,6 +59,7 @@ public class Bullet : MonoBehaviour
             var enemy = other.gameObject.GetComponent<EnemyController>();
             enemy.healthBar.isActive = true;
             enemy.healthBar.UpdateHealthBar();
+            //
             enemy.TakeDamage(damage);
 
             if (bulletName == "Dagger")
