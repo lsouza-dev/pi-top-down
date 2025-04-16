@@ -28,11 +28,9 @@ public class EnemyHealthBar : MonoBehaviour
     {
         if(isActive){
             gameObject.SetActive(true);
-            print("Barra do inimigo ativada no " + enemy.gameObject.name);
             this.transform.position = Camera.main.WorldToScreenPoint(this.enemy.transform.position + new Vector3(0, .3f, 0));
             lifeBar.value = enemy.currentHealth / enemy.maxHealth;
         }else{
-            print("Barra do inimigo desativada!!! Enemy: " + enemy.gameObject.name);
             gameObject.SetActive(false);
         }
     }

@@ -20,14 +20,14 @@ public class UIAtributtesController : MonoBehaviour
 
     public void SetAttributesValuesToUI(){
         for (int i = 0; i < uiAttributes.Count; i++) {
-            if(i == 0) uiAttributes[i].text = playerController.atkSpeed.ToString();
-            if(i == 1) uiAttributes[i].text = $"{playerController.critDamage} %";
-            if(i == 2) uiAttributes[i].text = $"{playerController.critRate} %";
+            if(i == 0) uiAttributes[i].text = $"Atk. Speed: {playerController.atkSpeed}";
+            if(i == 1) uiAttributes[i].text = $"Crít. Damage: {playerController.critDamage}%";
+            if(i == 2) uiAttributes[i].text = $"Crít. Rate: {playerController.critRate}%";
             if(i == 3) uiAttributes[i].text = $"{playerController.currentHealth} / {playerController.maxHealth}";
-            if(i == 4) uiAttributes[i].text = $"Lv: {playerController.level}";
-            if(i == 5) uiAttributes[i].text = playerController.maxSpeed.ToString();
-            if(i == 6) uiAttributes[i].text = playerController.strength.ToString();
-            if(i == 7) uiAttributes[i].text = $"{playerController.xp} / {playerController.nexLevelPoints}";
+            if(i == 4) uiAttributes[i].text = $"Level: {playerController.level}";
+            if(i == 5) uiAttributes[i].text = $"Power: {playerController.strength}";
+            if(i == 6) uiAttributes[i].text = $"Speed: {playerController.maxSpeed}";
+            if(i == 7) uiAttributes[i].text = $"XP: {playerController.xp} / {playerController.nexLevelPoints}";
         }
     }
 }

@@ -49,9 +49,11 @@ MonoBehaviour:
   enemies: []
   spawnedEnemies: []
   spriteRenderer: {fileID: 0}
-  capsuleCollider: {fileID: 0}
+  boxCollider: {fileID: 0}
   animator: {fileID: 0}
-  maxEnemiesOnSpawner: 0
+  isRespawningCoroutineRunning: 0
+  enemiesSpawnedsCount: 0
+  maxEnemiesSpawneds: 5
   sceneName: 
 --- !u!61 &1961863398003919890
 BoxCollider2D:
@@ -171,7 +173,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: -2001082648, guid: bd996d7642c65614d96ca9107f8b655a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
