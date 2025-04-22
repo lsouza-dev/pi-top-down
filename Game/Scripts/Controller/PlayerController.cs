@@ -210,6 +210,13 @@ public class PlayerController : MonoBehaviour
     {
         if (invencibleTime >= 0) return;
 
+        var dmgController = GetComponent<DamageFeedbackController>();
+
+        dmgController.xOffset = 7.7f;
+        dmgController.yOffset = 1f;
+        dmgController.isDamageTextActive = true;
+        dmgController.ShowDamageFeedback(damage);
+
         this.currentHealth -= damage;
         animator.SetTrigger("isDamage");
 

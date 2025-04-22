@@ -57,6 +57,14 @@ public class Bullet : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("TowerEnemy"))
         {
             var enemy = other.gameObject.GetComponent<EnemyController>();
+            var dmg = other.gameObject.GetComponent<DamageFeedbackController>();
+
+            dmg.xOffset = 7.7f;
+            dmg.yOffset = 1f;
+            dmg.isDamageTextActive = true;
+            dmg.ShowDamageFeedback(damage);
+
+            enemy.healthBar.timeToDisappear = 5f;
             enemy.healthBar.isActive = true;
             enemy.healthBar.UpdateHealthBar();
             enemy.TakeDamage(damage);
