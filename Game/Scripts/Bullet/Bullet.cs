@@ -59,9 +59,6 @@ public class Bullet : MonoBehaviour
             var enemy = other.gameObject.GetComponent<EnemyController>();
             var dmg = other.gameObject.GetComponent<DamageFeedbackController>();
 
-            dmg.xOffset = 7.7f;
-            dmg.yOffset = 1f;
-            dmg.isDamageTextActive = true;
             dmg.ShowDamageFeedback(damage);
 
             enemy.healthBar.timeToDisappear = 5f;
