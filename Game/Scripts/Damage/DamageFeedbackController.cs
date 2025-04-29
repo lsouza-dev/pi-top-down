@@ -8,6 +8,7 @@ public class DamageFeedbackController : MonoBehaviour
     [SerializeField] private PlayerController player;
 
     [SerializeField] public float xOffset = 1f;
+    [SerializeField] public Color color;
 
     private bool isPlayer = false;
 
@@ -27,24 +28,24 @@ public class DamageFeedbackController : MonoBehaviour
     {
         var gmPos = isPlayer ? player.transform.position : transform.position;
 
-        // Instancia o texto no canvas
         var instance = Instantiate(damageTextGO, canvas.transform);
-
-        // Converte para posição de tela corretamente
-        Vector3 worldPos = gmPos;
-        Vector3 screenPos = Camera.main.WorldToScreenPoint(worldPos);
-
-        // Aplica a posição na tela com base no Canvas
+        Vector3 screenPos = Camera.main.WorldToScreenPoint(gmPos);
         instance.transform.position = screenPos;
 
-        // Inicializa texto e comportamento
-        var floatingText = instance.GetComponent<FloatingDamageText>();
+        var floatingComponent = instance.GetComponent<FloatingDamageText>();
+        if (floatingComponent == null) return;
 
-        floatingText.target = isPlayer ? player.transform : transform;
-        floatingText.offset += new Vector3(xOffset, 0, 0);
-        floatingText.SetText($"-{damageAmount}");
-        print($"Object: - {gameObject.name} - PLAYER??? {isPlayer}");
-        var color = isPlayer ? Color.red : Color.white;
-        floatingText.SetColor(color);
+        floatingComponent.tmpText.text = $"-{damageAmount}";
+        floatingComponent.target = isPlayer ? player.transform : transform;
+        floatingComponent.offset += new Vector3(xOffset, 0, 0);
+
+        color = isPlayer ? Color.red : Color.white;
+        floatingComponent.tmpText.color = color;
+
+        var canvasGroup = instance.GetComponent<CanvasGroup>();
+        if (canvasGroup != null)
+        {
+            canvasGroup.alpha = 1f;
+        }
     }
 }

@@ -9,6 +9,7 @@ public class Bullet : MonoBehaviour
     [Header("Attributes")]
     [SerializeField] float timeToDestroy = .5f;
     [SerializeField] public float damage;
+    [SerializeField] bool isCrit = false;
     [SerializeField] float defaultX = 1f;
     [SerializeField] float defaultY = 1f;
     [SerializeField] float incrementValue = .01f;
@@ -58,6 +59,12 @@ public class Bullet : MonoBehaviour
         {
             var enemy = other.gameObject.GetComponent<EnemyController>();
             var dmg = other.gameObject.GetComponent<DamageFeedbackController>();
+            isCrit = IsCriticalDamage();
+
+            if(isCrit){
+                damage *= 1 + playerController.critDamage / 100f;
+                dmg.color = Color.red;
+            }
 
             dmg.ShowDamageFeedback(damage);
 
@@ -85,6 +92,15 @@ public class Bullet : MonoBehaviour
 
         if(other.gameObject.CompareTag("Wall") || other.gameObject.CompareTag("Objects")) Destroy(gameObject);
 
+    }
+
+    private bool IsCriticalDamage(){
+        
+        var critRate = playerController.critRate / 100f;
+        var critChance = Random.Range(0f, 1f);
+
+        if( critChance <= critRate) return true;
+        return false;
     }
 
 
