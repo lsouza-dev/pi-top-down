@@ -90,6 +90,7 @@ GameObject:
   - component: {fileID: 3054788508057420648}
   - component: {fileID: 2491261557308865664}
   - component: {fileID: 5921470528859192769}
+  - component: {fileID: -4788310724095136474}
   m_Layer: 0
   m_Name: Trasgo
   m_TagString: Enemy
@@ -231,8 +232,25 @@ MonoBehaviour:
   backMeleeCollider: {fileID: 892017441278414482}
   spawner: {fileID: 0}
   levelUpController: {fileID: 0}
-  healthBar: {fileID: 0}
+  healthBar: {fileID: 4026206795670672247}
   attackDelay: 0
+--- !u!114 &-4788310724095136474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1877620256806826917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7154cfaac3676d49b91c9fe0d1152da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvas: {fileID: 0}
+  damageTextGO: {fileID: 0}
+  player: {fileID: 0}
+  xOffset: 1
+  color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &5987479121747865040
 GameObject:
   m_ObjectHideFlags: 0
@@ -536,6 +554,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6265931489565616272, guid: 25082181168adda4d952534c58bdf1d3, type: 3}
+      propertyPath: enemyController
+      value: 
+      objectReference: {fileID: 5921470528859192769}
     - target: {fileID: 8687949685559419670, guid: 25082181168adda4d952534c58bdf1d3, type: 3}
       propertyPath: m_Name
       value: EnemyHealthBar
@@ -553,6 +575,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 25082181168adda4d952534c58bdf1d3, type: 3}
+--- !u!114 &4026206795670672247 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6265931489565616272, guid: 25082181168adda4d952534c58bdf1d3, type: 3}
+  m_PrefabInstance: {fileID: 7001684283815951335}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c29054a3bb2aa94086c118938bfddee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &7850791517568086789 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 997942627527772386, guid: 25082181168adda4d952534c58bdf1d3, type: 3}

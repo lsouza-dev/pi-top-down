@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 1129598663906685804}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.643, y: -0.049, z: 0}
+  m_LocalPosition: {x: 0.643, y: -0.172, z: 0}
   m_LocalScale: {x: 2, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -90,6 +90,7 @@ GameObject:
   - component: {fileID: 3054788508057420648}
   - component: {fileID: 2491261557308865664}
   - component: {fileID: 5921470528859192769}
+  - component: {fileID: -1470360016853549875}
   m_Layer: 0
   m_Name: Troll
   m_TagString: Enemy
@@ -231,8 +232,25 @@ MonoBehaviour:
   backMeleeCollider: {fileID: 892017441278414482}
   spawner: {fileID: 0}
   levelUpController: {fileID: 0}
-  healthBar: {fileID: 0}
+  healthBar: {fileID: 3411398676819749827}
   attackDelay: 0
+--- !u!114 &-1470360016853549875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1877620256806826917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7154cfaac3676d49b91c9fe0d1152da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvas: {fileID: 0}
+  damageTextGO: {fileID: 0}
+  player: {fileID: 0}
+  xOffset: 1
+  color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &5987479121747865040
 GameObject:
   m_ObjectHideFlags: 0
@@ -259,7 +277,7 @@ Transform:
   m_GameObject: {fileID: 5987479121747865040}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.643, y: -0.049, z: 0}
+  m_LocalPosition: {x: 0.643, y: -0.172, z: 0}
   m_LocalScale: {x: 2, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -339,7 +357,7 @@ Transform:
   m_GameObject: {fileID: 7628097972543603424}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.123, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -536,6 +554,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6265931489565616272, guid: 25082181168adda4d952534c58bdf1d3, type: 3}
+      propertyPath: enemyController
+      value: 
+      objectReference: {fileID: 5921470528859192769}
     - target: {fileID: 8687949685559419670, guid: 25082181168adda4d952534c58bdf1d3, type: 3}
       propertyPath: m_Name
       value: EnemyHealthBar
@@ -553,6 +575,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 25082181168adda4d952534c58bdf1d3, type: 3}
+--- !u!114 &3411398676819749827 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6265931489565616272, guid: 25082181168adda4d952534c58bdf1d3, type: 3}
+  m_PrefabInstance: {fileID: 8764768452963074899}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c29054a3bb2aa94086c118938bfddee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &8393533160019282865 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 997942627527772386, guid: 25082181168adda4d952534c58bdf1d3, type: 3}

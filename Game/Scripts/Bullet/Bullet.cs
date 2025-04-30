@@ -9,6 +9,7 @@ public class Bullet : MonoBehaviour
     [Header("Attributes")]
     [SerializeField] float timeToDestroy = .5f;
     [SerializeField] public float damage;
+    [SerializeField] bool isCrit = false;
     [SerializeField] float defaultX = 1f;
     [SerializeField] float defaultY = 1f;
     [SerializeField] float incrementValue = .01f;
@@ -54,12 +55,47 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("TowerEnemy"))
+        var isEnemy = other.gameObject.CompareTag("Enemy");
+        var isTower = other.gameObject.CompareTag("TowerEnemy");
+        var isSpawner = other.gameObject.CompareTag("Spawner");
+        
+        print($" {other.gameObject.name} ||Enemy: {isEnemy} - Tower: {isTower} - Spawner: {isSpawner}");
+
+        if (isEnemy || isTower || isSpawner)
         {
-            print("Hit Enemy");
-            var enemy = other.gameObject.GetComponent<EnemyController>();
-            enemy.healthBar.isActive = true;
-            enemy.TakeDamage(damage);
+            var dmg = other.gameObject.GetComponent<DamageFeedbackController>();
+
+            if (!isSpawner)
+            {
+                print("Isn't a spawner....");
+                var enemy = other.gameObject.GetComponent<EnemyController>();
+                isCrit = IsCriticalDamage();
+
+                if (isCrit)
+                {
+                    damage *= 1 + playerController.critDamage / 100f;
+                    dmg.color = Color.red;
+                }
+
+                enemy.healthBar.timeToDisappear = 5f;
+                enemy.healthBar.isActive = true;
+                enemy.healthBar.yOffset = .3f;
+                enemy.healthBar.UpdateHealthBar();
+                enemy.TakeDamage(damage);
+            }
+            
+            if(isSpawner){
+                print("Is a spawner");
+                var spawner = other.gameObject.GetComponent<SpawnerController>();
+                spawner.healthBar.timeToDisappear = 5f;
+                spawner.healthBar.isActive = true;
+                spawner.healthBar.yOffset = 1.2f;
+                spawner.healthBar.UpdateHealthBar();
+                spawner.TakeDamage(damage);
+            }
+
+            dmg.ShowDamageFeedback(damage);
+
 
             if (bulletName == "Dagger")
             {
@@ -70,16 +106,28 @@ public class Bullet : MonoBehaviour
                 color.a = Mathf.Clamp01(color.a - .15f);
                 sr.color = color;
             }
-            if (bulletName == "Mage"){
+            if (bulletName == "Mage")
+            {
                 Destroy(gameObject);
             }
-            if (bulletName == "Archer"){
+            if (bulletName == "Archer")
+            {
                 Destroy(gameObject);
             }
         }
 
-        if(other.gameObject.CompareTag("Wall") || other.gameObject.CompareTag("Objects")) Destroy(gameObject);
+        if (other.gameObject.CompareTag("Wall") || other.gameObject.CompareTag("Objects")) Destroy(gameObject);
 
+    }
+
+    private bool IsCriticalDamage()
+    {
+
+        var critRate = playerController.critRate / 100f;
+        var critChance = Random.Range(0f, 1f);
+
+        if (critChance <= critRate) return true;
+        return false;
     }
 
 
@@ -88,16 +136,13 @@ public class Bullet : MonoBehaviour
         switch (bulletName)
         {
             case "Archer":
-                print("Flecha");
                 timeToDestroy = 3;
                 break;
             case "Dagger":
-                print("Slash");
                 defaultX = .3f;
                 defaultY = .3f;
                 break;
             case "Mage":
-                print("Bola de Fogo");
                 timeToDestroy = 3;
                 break;
 

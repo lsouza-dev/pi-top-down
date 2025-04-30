@@ -24,7 +24,7 @@ public class Scroll : MonoBehaviour
 
     private void Update()
     {
-        if (CanInteract && Input.GetKeyDown(KeyCode.E) && isLanguageScroll)
+        if (CanInteract && Input.GetKeyDown(KeyCode.Space) && isLanguageScroll)
         {
             if (uiManager.activatedPanel != null)
                 return; // Se já há um painel aberto, não faz nada
@@ -32,7 +32,7 @@ public class Scroll : MonoBehaviour
             uiManager.LanguageRead();
             LearnLanguage();
         }
-        else if (CanInteract && Input.GetKeyDown(KeyCode.E) && !isLanguageScroll)
+        else if (CanInteract && Input.GetKeyDown(KeyCode.Space) && !isLanguageScroll)
         {
             if (uiManager.activatedPanel != null)
                 return; // Se já há um painel aberto, não faz nada

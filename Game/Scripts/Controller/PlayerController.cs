@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] public float maxHealth = 100;
     [SerializeField] public float xp = 00;
     [SerializeField] public float strength = 5;
-    [SerializeField] public float atkSpeed = .3f;
+    [SerializeField] public float atkSpeed = .1f;
 
 
 
@@ -209,6 +209,9 @@ public class PlayerController : MonoBehaviour
     public void TakeDamage(float damage)
     {
         if (invencibleTime >= 0) return;
+
+        var dmgController = GetComponent<DamageFeedbackController>();
+        dmgController.ShowDamageFeedback(damage);
 
         this.currentHealth -= damage;
         animator.SetTrigger("isDamage");
