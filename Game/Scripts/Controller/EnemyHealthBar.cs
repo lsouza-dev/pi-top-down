@@ -8,9 +8,12 @@ public class EnemyHealthBar : MonoBehaviour
 {
     [SerializeField] private Slider lifeBar;
     public bool isActive = false;
-    [SerializeField] public EnemyController enemy;
+    [SerializeField] public EnemyController enemyController;
+    [SerializeField] public SpawnerController spawnerController;
+
     public List<Image> heatlthBarImages = new List<Image>();
     public float timeToDisappear = 5f;
+    public float yOffset = .3f;
     // Start is called before the first frame update
 
     void Awake()
@@ -25,14 +28,24 @@ public class EnemyHealthBar : MonoBehaviour
         UpdateHealthBar();
     }
 
+
     public void UpdateHealthBar()
     {
         if (isActive)
         {
-            
-            gameObject.SetActive(true);
-            this.transform.position = Camera.main.WorldToScreenPoint(this.enemy.transform.position + new Vector3(0, .3f, 0));
-            lifeBar.value = enemy.currentHealth / enemy.maxHealth;
+            if (enemyController != null)
+            {
+                gameObject.SetActive(true);
+                this.transform.position = Camera.main.WorldToScreenPoint(this.enemyController.transform.position + new Vector3(0, yOffset, 0));
+                lifeBar.value = enemyController.currentHealth / enemyController.maxHealth;
+            }
+            else if(spawnerController != null){
+                gameObject.SetActive(true);
+                this.transform.position = Camera.main.WorldToScreenPoint(this.spawnerController.transform.position + new Vector3(0, yOffset, 0));
+                lifeBar.value = spawnerController.currentHealth / spawnerController.maxHealth;
+            }
+           
+
             LifeBarOpacityController();
         }
         else
@@ -48,4 +61,6 @@ public class EnemyHealthBar : MonoBehaviour
         if (timeToDisappear <= 0) heatlthBarImages.ForEach(h => h.color = new Color(h.color.r, h.color.g, h.color.b, .5f));
         else heatlthBarImages.ForEach(h => h.color = new Color(h.color.r, h.color.g, h.color.b, 1f));
     }
+
+
 }

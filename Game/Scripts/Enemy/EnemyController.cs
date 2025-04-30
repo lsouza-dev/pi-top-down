@@ -33,7 +33,7 @@ public class EnemyController : Enemy
     void Awake()
     {
         currentHealth = maxHealth;
-        healthBar.enemy = this;
+        if(healthBar.enemyController != null) healthBar.enemyController = this;
         instance = instance == null ? this : instance;
         player = GameObject.FindGameObjectWithTag("Player");
         animator = GetComponentInChildren<Animator>();

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8660639258216263214}
   - component: {fileID: 6054155611986710396}
   - component: {fileID: 1961863398003919890}
+  - component: {fileID: 3338570817356997779}
   m_Layer: 0
   m_Name: Spawner
   m_TagString: Spawner
@@ -49,9 +50,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemies: []
   spawnedEnemies: []
+  healthBar: {fileID: 3945338764540492702}
   spriteRenderer: {fileID: 0}
   boxCollider: {fileID: 0}
   animator: {fileID: 0}
+  currentHealth: 0
+  maxHealth: 30
   isRespawningCoroutineRunning: 0
   enemiesSpawnedsCount: 0
   maxEnemiesSpawneds: 5
@@ -101,6 +105,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.14390945, y: 0.3430554}
   m_EdgeRadius: 0
+--- !u!114 &3338570817356997779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4110803184018059757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7154cfaac3676d49b91c9fe0d1152da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvas: {fileID: 0}
+  damageTextGO: {fileID: 0}
+  player: {fileID: 0}
+  xOffset: 1
+  color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &5820607092379476916
 GameObject:
   m_ObjectHideFlags: 0
@@ -114,7 +135,7 @@ GameObject:
   - component: {fileID: 5974316307017209241}
   m_Layer: 0
   m_Name: Cristal
-  m_TagString: Spawner
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -295,6 +316,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1530045759815628632, guid: 2129e2f857c81a14c8447220a47a1390, type: 3}
+      propertyPath: spawnerController
+      value: 
+      objectReference: {fileID: 6054155611986710396}
     - target: {fileID: 8687949685559419670, guid: 2129e2f857c81a14c8447220a47a1390, type: 3}
       propertyPath: m_Name
       value: EnemyCanva
@@ -317,3 +342,14 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 997942627527772386, guid: 2129e2f857c81a14c8447220a47a1390, type: 3}
   m_PrefabInstance: {fileID: 2592798161942908102}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3945338764540492702 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1530045759815628632, guid: 2129e2f857c81a14c8447220a47a1390, type: 3}
+  m_PrefabInstance: {fileID: 2592798161942908102}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c29054a3bb2aa94086c118938bfddee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
