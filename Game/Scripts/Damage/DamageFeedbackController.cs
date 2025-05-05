@@ -11,6 +11,7 @@ public class DamageFeedbackController : MonoBehaviour
     [SerializeField] public Color color;
 
     private bool isPlayer = false;
+    private bool isSpawner = false;
 
     void Awake()
     {
@@ -21,7 +22,7 @@ public class DamageFeedbackController : MonoBehaviour
 
     void Start()
     {
-        isPlayer = !gameObject.name.Contains("(Clone)");
+        isPlayer = !gameObject.name.Contains("(Clone)") && !gameObject.name.Contains("Spawner");
     }
 
     public void ShowDamageFeedback(float damageAmount)
@@ -40,6 +41,8 @@ public class DamageFeedbackController : MonoBehaviour
         floatingComponent.offset += new Vector3(xOffset, 0, 0);
 
         color = isPlayer ? Color.red : Color.white;
+
+        print("Color: " + color + "Is player: " + isPlayer + "Is Spawner: " + isSpawner);
         floatingComponent.tmpText.color = color;
 
         var canvasGroup = instance.GetComponent<CanvasGroup>();

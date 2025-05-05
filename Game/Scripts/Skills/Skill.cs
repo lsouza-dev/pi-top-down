@@ -17,6 +17,8 @@ public class Skill : MonoBehaviour
     [SerializeField] private CircleCollider2D parentCollider;
     [SerializeField] private CircleCollider2D areaCollider;
 
+    private float elapsedTime = 0f;
+
     void Awake()
     {
         parentSpriteRenderer = GetComponent<SpriteRenderer>();
@@ -35,10 +37,12 @@ public class Skill : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        elapsedTime += Time.deltaTime;
         timeToDestroy -= Time.deltaTime;
-
         PowerUpLifeCicle();
     }
+
+   
 
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -46,6 +50,10 @@ public class Skill : MonoBehaviour
         {
             print("Inimigo entrou no PowerUp");
             var enemy = other.gameObject.GetComponent<EnemyController>();
+            enemy.healthBar.timeToDisappear = 5f;
+            enemy.healthBar.isActive = true;
+            enemy.healthBar.yOffset = .3f;
+            enemy.healthBar.UpdateHealthBar();
             enemy.TakeDamage(collisionDamage);
         }
     }
@@ -55,6 +63,10 @@ public class Skill : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("TowerEnemy"))
         {
             var enemy = other.gameObject.GetComponent<EnemyController>();
+            enemy.healthBar.timeToDisappear = 5f;
+            enemy.healthBar.isActive = true;
+            enemy.healthBar.yOffset = .3f;
+            enemy.healthBar.UpdateHealthBar();
             enemy.TakeDamage(onStayAreaDamage);
         }
     }

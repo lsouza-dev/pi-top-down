@@ -38,6 +38,10 @@ public class EnemyHealthBar : MonoBehaviour
                 gameObject.SetActive(true);
                 this.transform.position = Camera.main.WorldToScreenPoint(this.enemyController.transform.position + new Vector3(0, yOffset, 0));
                 lifeBar.value = enemyController.currentHealth / enemyController.maxHealth;
+
+                if(!enemyController.isAlive){
+                    Destroy(lifeBar.gameObject);
+                }
             }
             else if(spawnerController != null){
                 gameObject.SetActive(true);

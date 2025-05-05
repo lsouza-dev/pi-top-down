@@ -86,7 +86,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.605
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -104,11 +104,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lifeBar: {fileID: 0}
   isActive: 0
-  enemy: {fileID: 0}
+  enemyController: {fileID: 0}
+  spawnerController: {fileID: 0}
   heatlthBarImages:
   - {fileID: 8601492242097448906}
   - {fileID: 6579607435885125995}
   timeToDisappear: 5
+  yOffset: 0.3
 --- !u!1 &2191483936020283877
 GameObject:
   m_ObjectHideFlags: 0
