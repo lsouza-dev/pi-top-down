@@ -41,8 +41,7 @@ public class DamageFeedbackController : MonoBehaviour
         floatingComponent.offset += new Vector3(xOffset, 0, 0);
 
         color = isPlayer ? Color.red : Color.white;
-
-        print("Color: " + color + "Is player: " + isPlayer + "Is Spawner: " + isSpawner);
+        
         floatingComponent.tmpText.color = color;
 
         var canvasGroup = instance.GetComponent<CanvasGroup>();

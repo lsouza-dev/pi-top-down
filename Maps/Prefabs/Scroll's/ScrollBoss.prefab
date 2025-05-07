@@ -152,8 +152,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c2b2625c3dacf04a8ca1632b41020f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textoOriginal: "Texto em l\xEDngua desconhecida..."
-  textoTraduzido: "Agora voc\xEA entende o que est\xE1 escrito!"
+  OriginalTxt: "Texto em l\xEDngua desconhecida..."
+  TranslateTxt: "Agora voc\xEA entende o que est\xE1 escrito!"
+  CanInteract: 0
+  isLanguageScroll: 0
+  actionTextGO: {fileID: 0}
 --- !u!61 &-1302073535152244697
 BoxCollider2D:
   m_ObjectHideFlags: 0

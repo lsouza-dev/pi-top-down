@@ -52,37 +52,37 @@ public class SkillController : MonoBehaviour
     }
 
     public void AttackOnMousePosition()
-{
-    playerClass = ClassSelector.instance.currentClass;
-    print("Player Class on PowerUpController: " + playerClass);
-
-    switch (playerClass)
     {
-        case 0:
-            print("Arqueiro");
-            break;
-        case 1:
-            print("Guerreiro");
-            break;
-        case 2:
-            Vector3 spawnPosition = GetSpawnPosition();
+        playerClass = ClassSelector.instance.currentClass;
+        print("Player Class on PowerUpController: " + playerClass);
 
-            // Instancia o meteoro
-            GameObject meteor = Instantiate(magePowerUp.gameObject, spawnPosition, Quaternion.identity);
+        switch (playerClass)
+        {
+            case 0:
+                print("Arqueiro");
+                break;
+            case 1:
+                print("Guerreiro");
+                break;
+            case 2:
+                Vector3 spawnPosition = GetSpawnPosition();
 
-            // Instancia a sombra no chão, no ponto do mouse
-            shadow = Instantiate(meteorShadowPrefab, mousePosition, Quaternion.identity);
-            shadow.SetActive(true);
-            StartCoroutine(AnimateShadowGrowth(shadow));
+                // Instancia o meteoro
+                GameObject meteor = Instantiate(magePowerUp.gameObject, spawnPosition, Quaternion.identity);
 
-            // Verifica quando o meteoro toca o chão
-            StartCoroutine(WaitForMeteorToReachTarget(meteor.GetComponent<Rigidbody2D>(), mousePosition.y));
-            break;
-        default:
-            print("Classe inválida para utilizar Skill");
-            break;
+                // Instancia a sombra no chão, no ponto do mouse
+                shadow = Instantiate(meteorShadowPrefab, mousePosition, Quaternion.identity);
+                shadow.SetActive(true);
+                StartCoroutine(AnimateShadowGrowth(shadow));
+
+                // Verifica quando o meteoro toca o chão
+                StartCoroutine(WaitForMeteorToReachTarget(meteor.GetComponent<Rigidbody2D>(), mousePosition.y));
+                break;
+            default:
+                print("Classe inválida para utilizar Skill");
+                break;
+        }
     }
-}
 
     public void MultiDirectionalAttack(int playerClass)
     {
@@ -207,22 +207,23 @@ public class SkillController : MonoBehaviour
 
 
     private IEnumerator AnimateShadowGrowth(GameObject shadow)
-{
-    float duration = 1f; // Mesmo tempo de queda do meteoro
-    float elapsed = 0f;
-    Vector3 initialScale = Vector3.zero;
-    Vector3 targetScale = Vector3.one * 1.5f;
-
-    while (elapsed < duration)
     {
-        float t = elapsed / duration;
-        shadow.transform.localScale = Vector3.Lerp(initialScale, targetScale, t);
-        shadow.transform.localRotation = new Quaternion(-72f,0f,0f,0);
-        elapsed += Time.deltaTime;
-        yield return null;
-    }
+        float duration = 1f; // Mesmo tempo de queda do meteoro
+        float elapsed = 0f;
+        Vector3 initialScale = Vector3.zero;
+        Vector3 targetScale = Vector3.one * 1.5f;
 
-    Destroy(shadow.gameObject); // Sombra desaparece pouco depois do impacto
-}
+        while (elapsed < duration)
+        {
+            if (shadow != null)
+            {
+                float t = elapsed / duration;
+                shadow.transform.localScale = Vector3.Lerp(initialScale, targetScale, t);
+                shadow.transform.localRotation = new Quaternion(-72f, 0f, 0f, 0);
+                elapsed += Time.deltaTime;
+                yield return null;
+            }
+        }
+    }
 
 }

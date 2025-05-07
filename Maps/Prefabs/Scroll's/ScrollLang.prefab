@@ -201,3 +201,4 @@ MonoBehaviour:
   TranslateTxt: "Agora voc\uFFFD entende o que est\uFFFD escrito!"
   CanInteract: 0
   isLanguageScroll: 0
+  actionTextGO: {fileID: 0}
