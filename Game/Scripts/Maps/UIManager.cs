@@ -5,7 +5,8 @@ using System.Linq;
 
 public class UIManager : MonoBehaviour
 {
-    public GameObject activatedPanel; // Painel do pergaminho ativado
+    public GameObject activatedPanel; // Painel do pergaminho ativado     
+    [SerializeField] private Canvas canvas;
     [SerializeField] public bool haveLanguage = false; // Painel do pergaminho ativado
 
     [Header("Encripted Scrolls")]
@@ -29,8 +30,6 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject languageSilvestre;
     [SerializeField] private GameObject languageUndercommon;
 
-    public TextMeshProUGUI scrollText; // Componente de texto para exibir o conte�do
-
     public static UIManager instance;
 
     void Awake()
@@ -42,8 +41,8 @@ public class UIManager : MonoBehaviour
         primordialEncript = Resources.Load<GameObject>("Encrip\\PrimordialEncrip");
         silvestreEncript = Resources.Load<GameObject>("Encrip\\SilvestreEncrip");
         subterraneaEncript = Resources.Load<GameObject>("Encrip\\UndercommonEncrip");
-        
-        
+
+
         abissalTranslate = Resources.Load<GameObject>("Resolv\\AbissalResolv");
         draconicTranslate = Resources.Load<GameObject>("Resolv\\DraconicResolv");
         primordialTranslate = Resources.Load<GameObject>("Resolv\\PrimordialResolv");
@@ -60,85 +59,78 @@ public class UIManager : MonoBehaviour
     public void BossRead()
     {
         var index = 3;
-        var canva = GameObject.Find("Canvas");
-        Time.timeScale = 0f; // Pausa o jogo enquanto o pergaminho est� aberto
-        Scroll.instance.CanInteract = false;
-
         if (!haveLanguage)
         {
             switch (index)
             {
                 case 0:
-                    activatedPanel = Instantiate(abissalEncript, canva.transform);
+                    activatedPanel = Instantiate(abissalEncript, canvas.transform);
                     break;
                 case 1:
-                    activatedPanel = Instantiate(draconicEncript, canva.transform);
+                    activatedPanel = Instantiate(draconicEncript, canvas.transform);
                     break;
                 case 2:
-                    activatedPanel = Instantiate(primordialEncript, canva.transform);
+                    activatedPanel = Instantiate(primordialEncript, canvas.transform);
                     break;
                 case 3:
-                    activatedPanel = Instantiate(silvestreEncript, canva.transform);
+                    activatedPanel = Instantiate(silvestreEncript, canvas.transform);
                     break;
                 case 4:
-                    activatedPanel = Instantiate(subterraneaEncript, canva.transform);
+                    activatedPanel = Instantiate(subterraneaEncript, canvas.transform);
                     break;
 
             }
-        }else
+        }
+        else
         {
             switch (index)
             {
                 case 0:
-                    activatedPanel = Instantiate(abissalTranslate, canva.transform);
+                    activatedPanel = Instantiate(abissalTranslate, canvas.transform);
                     break;
                 case 1:
-                    activatedPanel = Instantiate(draconicTranslate, canva.transform);
+                    activatedPanel = Instantiate(draconicTranslate, canvas.transform);
                     break;
                 case 2:
-                    activatedPanel = Instantiate(primordialTranslate, canva.transform);
+                    activatedPanel = Instantiate(primordialTranslate, canvas.transform);
                     break;
                 case 3:
-                    activatedPanel = Instantiate(silvestreTranslate, canva.transform); 
+                    activatedPanel = Instantiate(silvestreTranslate, canvas.transform);
                     break;
                 case 4:
-                    activatedPanel = Instantiate(subterraneaTranslate, canva.transform);
+                    activatedPanel = Instantiate(subterraneaTranslate, canvas.transform);
                     break;
             }
         }
     }
-   public void LanguageRead()
-   {
+    public void LanguageRead()
+    {
         var index = 3;
-        var canva = GameObject.Find("Canvas");
-        Scroll scroll = FindObjectOfType<Scroll>();
-        Scroll.instance.CanInteract = false;
-        Time.timeScale = 0f; // Pausa o jogo enquanto o pergaminho est� aberto
-
-      switch (index)
-            {
-                case 0:
-                    activatedPanel = Instantiate(languageAbissal, canva.transform);
-                    break;
-                case 1:
-                    activatedPanel = Instantiate(languageDraconic, canva.transform);
-                    break;    
-                case 2:
-                    activatedPanel = Instantiate(languagePrimordial, canva.transform);
-                    break;
-                case 3:
-                    activatedPanel = Instantiate(languageSilvestre, canva.transform);
-                    break;
-                case 4:
-                    activatedPanel = Instantiate(languageUndercommon, canva.transform);
-                    break;
-      }
-   } 
+        switch (index)
+        {
+            case 0:
+                activatedPanel = Instantiate(languageAbissal, canvas.transform);
+                break;
+            case 1:
+                activatedPanel = Instantiate(languageDraconic, canvas.transform);
+                break;
+            case 2:
+                activatedPanel = Instantiate(languagePrimordial, canvas.transform);
+                break;
+            case 3:
+                activatedPanel = Instantiate(languageSilvestre, canvas.transform);
+                break;
+            case 4:
+                activatedPanel = Instantiate(languageUndercommon, canvas.transform);
+                break;
+        }
+    }
 
     // Fecha o painel de leitura do pergaminho
     public void CloseRead()
     {
         Destroy(activatedPanel);
+        Scroll.instance.isActiveActionTextGO = false;
         Time.timeScale = 1f; // Retoma o jogo
     }
 }

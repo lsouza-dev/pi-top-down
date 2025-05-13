@@ -1,102 +1,77 @@
 using System.Collections;
-using System.Collections.Generic;
-using System.Data.Common;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Scroll : MonoBehaviour
 {
     public string OriginalTxt = "Texto em língua desconhecida...";
     public string TranslateTxt = "Agora você entende o que está escrito!";
-    public bool CanInteract = false;
+    public bool canInteract = false;
     public bool isLanguageScroll = false;
+
     [SerializeField] private GameObject actionTextGO;
-    private bool isActiveActionTextGO = false;
+    [SerializeField] private float yOffset = 1f; // Offset vertical do texto na tela
+    [SerializeField] public bool isActiveActionTextGO = false;
     private UIManager uiManager;
     public static Scroll instance;
+
+    // Animação
+    [SerializeField] private float pulseSpeed = .25f;
+    [SerializeField] private float pulseMutiplier = 5f;
+    [SerializeField] private float scaleMultiplier = 0.2f;
+    [SerializeField] private float alphaMin = 0.2f;
+    private bool pulsing = false;
+    private Coroutine pulseCoroutine;
+    private TextMeshProUGUI actionTMP;
 
     void Awake()
     {
         if (instance == null)
             instance = this;
-        actionTextGO = GameObject.FindGameObjectWithTag("ActionText");
     }
 
     private void Start()
     {
         actionTextGO.SetActive(false);
         uiManager = FindObjectOfType<UIManager>();
+        actionTMP = actionTextGO.GetComponentInChildren<TextMeshProUGUI>();
     }
 
     private void Update()
     {
-        if (CanInteract && Input.GetKeyDown(KeyCode.F))
+        if (canInteract && isActiveActionTextGO && Input.GetKeyDown(KeyCode.F))
         {
             if (uiManager.activatedPanel != null) return;
+            actionTextGO.SetActive(false);
 
-            if (isLanguageScroll)
-            {
-                Debug.Log("Aprendendo uma nova linguagem");
-                uiManager.LanguageRead();
-                LearnLanguage();
-            }
-            else
-            {
-                Debug.Log("Abrindo pergaminho do boss...");
-                OpenBossTxt();
-            }
+            if (isLanguageScroll) LearnLanguage();
+            else OpenBossTxt();
+            
         }
-        else if (Input.GetKeyDown(KeyCode.F) && !isActiveActionTextGO)
-        {
+        else if(canInteract &&  !isActiveActionTextGO && Input.GetKeyDown(KeyCode.F))
             uiManager.CloseRead();
-        }
-    }
+        
 
-    void LateUpdate()
-    {
         if (isActiveActionTextGO && actionTextGO != null)
         {
-            Vector3 offset = new Vector3(0, 1.5f, 0);
-            Vector3 worldPos = transform.position + offset;
-
-            // Converte posição do mundo para posição de tela
-            Vector3 screenPos = Camera.main.WorldToScreenPoint(worldPos);
-
-            // [Opcional] Limita para manter dentro da tela, caso haja exagero de posição
-            screenPos.x = Mathf.Clamp(screenPos.x, 0, Screen.width);
-            screenPos.y = Mathf.Clamp(screenPos.y, 0, Screen.height);
-
-            // Posiciona o UI diretamente
-            RectTransform actionRect = actionTextGO.GetComponent<RectTransform>();
-            actionRect.position = screenPos;
+            Vector3 screenPos = Camera.main.WorldToScreenPoint(transform.position + new Vector3(0, yOffset, 0));
+            actionTextGO.transform.position = screenPos;
         }
     }
-
-
-
-
-
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
-
-            CanInteract = true;
+            canInteract = true;
             if (gameObject.CompareTag("ScrollLang"))
                 isLanguageScroll = true;
 
-            actionTextGO.SetActive(true);
             isActiveActionTextGO = true;
-        }
-    }
+            actionTextGO.SetActive(isActiveActionTextGO);
 
-    private void OnTriggerStay2D(Collider2D other)
-    {
-        if (other.CompareTag("Player"))
-        {
-
+            pulsing = true;
+            pulseCoroutine = StartCoroutine(PulseText());
         }
     }
 
@@ -104,25 +79,62 @@ public class Scroll : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            CanInteract = false;
+            canInteract = false;
             isLanguageScroll = false;
-            actionTextGO.SetActive(false);
-            isActiveActionTextGO = true;
+            isActiveActionTextGO = false;
+            actionTextGO.SetActive(isActiveActionTextGO);
+
+            pulsing = false;
+            if (pulseCoroutine != null)
+                StopCoroutine(pulseCoroutine);
         }
+    }
+
+    IEnumerator PulseText()
+    {
+        Vector3 baseScale = actionTextGO.transform.localScale;
+
+        while (pulsing)
+        {
+            float scale = 1 + Mathf.PingPong(Time.time * pulseSpeed, scaleMultiplier);
+            float alpha = Mathf.Lerp(alphaMin, 1f, Mathf.PingPong(Time.time * (pulseSpeed * pulseMutiplier), 1f));
+
+            actionTextGO.transform.localScale = baseScale * scale;
+
+            if (actionTMP != null)
+            {
+                Color c = actionTMP.color;
+                c.a = alpha;
+                actionTMP.color = c;
+            }
+
+            yield return null;
+        }
+
+        // Reset
+        if (actionTMP != null)
+        {
+            Color c = actionTMP.color;
+            c.a = 1f;
+            actionTMP.color = c;
+        }
+
+        actionTextGO.transform.localScale = baseScale;
     }
 
     void OpenBossTxt()
     {
         isActiveActionTextGO = false;
+        Time.timeScale = 0f; // Pausa o jogo
         uiManager.BossRead();
-        // Pegou o pergaminho .... UIManager.instance.haveLanguage = ...
     }
+
+
     public void LearnLanguage()
     {
         isActiveActionTextGO = false;
         uiManager.haveLanguage = true;
-        //PlayerPrefs.SetInt("TemLinguagem", 1);
-        PlayerPrefs.Save();
-        Debug.Log("Linguagem aprendida!");
+        Time.timeScale = 0f; // Pausa o jogo
+        uiManager.LanguageRead();
     }
 }
