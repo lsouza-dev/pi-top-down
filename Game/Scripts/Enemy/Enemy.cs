@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] public float maxHealth = 100f;
     [SerializeField] protected Animator animator;
     [SerializeField] protected GameObject player;
-    [SerializeField] protected bool isAlive = true;
+    [SerializeField] public bool isAlive = true;
     protected Rigidbody2D rb;
 
 }

@@ -229,6 +229,9 @@ MonoBehaviour:
   areaSpriteRenderer: {fileID: 0}
   parentCollider: {fileID: 0}
   areaCollider: {fileID: 0}
+  shadowObject: {fileID: 0}
+  shadowTransform: {fileID: 0}
+  maxShadowScale: 1.5
 --- !u!58 &6332267283404116757
 CircleCollider2D:
   m_ObjectHideFlags: 0

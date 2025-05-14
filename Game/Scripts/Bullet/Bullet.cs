@@ -59,7 +59,6 @@ public class Bullet : MonoBehaviour
         var isTower = other.gameObject.CompareTag("TowerEnemy");
         var isSpawner = other.gameObject.CompareTag("Spawner");
         
-        print($" {other.gameObject.name} ||Enemy: {isEnemy} - Tower: {isTower} - Spawner: {isSpawner}");
 
         if (isEnemy || isTower || isSpawner)
         {
@@ -67,7 +66,6 @@ public class Bullet : MonoBehaviour
 
             if (!isSpawner)
             {
-                print("Isn't a spawner....");
                 var enemy = other.gameObject.GetComponent<EnemyController>();
                 isCrit = IsCriticalDamage();
 
@@ -85,7 +83,6 @@ public class Bullet : MonoBehaviour
             }
             
             if(isSpawner){
-                print("Is a spawner");
                 var spawner = other.gameObject.GetComponent<SpawnerController>();
                 spawner.healthBar.timeToDisappear = 5f;
                 spawner.healthBar.isActive = true;

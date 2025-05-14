@@ -580,6 +580,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activatedPanel: {fileID: 0}
+  canvas: {fileID: 7724451517906697066}
   haveLanguage: 0
   abissalEncript: {fileID: 0}
   draconicEncript: {fileID: 0}
@@ -596,7 +597,6 @@ MonoBehaviour:
   languagePrimordial: {fileID: 0}
   languageSilvestre: {fileID: 0}
   languageUndercommon: {fileID: 0}
-  scrollText: {fileID: 0}
 --- !u!1 &2557464990613748548
 GameObject:
   m_ObjectHideFlags: 0
