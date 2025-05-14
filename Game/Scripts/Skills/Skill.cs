@@ -5,7 +5,7 @@ using UnityEngine;
 public class Skill : MonoBehaviour
 {
     [Header("Timers")]
-    [SerializeField] private float timeToHitGround = 3f;
+    //[SerializeField] private float timeToHitGround = 3f;
     [SerializeField] private float timeToDestroy = 8f;
     [SerializeField] private float collisionDamage = 100f;
     [SerializeField] private float onStayAreaDamage = 50f;
