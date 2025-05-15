@@ -1,44 +1,77 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 
-public class Doors : MonoBehaviour
+public class DoorTeleporter : MonoBehaviour
 {
-    public Transform destination; // Outra porta para onde o jogador será enviado
-    public float delay = 0.4f; // Tempo de espera antes do teleporte
-    public float offsetY = -0.6f; // Valor para mover o player em Y em relação à porta de destino
-    public float offsetX = -0.1f; // Valor para mover o player em Y em relação à porta de destino
-    private bool isOpen = false; // Para evitar loops de teleporte
+    [Header("Destino da porta")]
+    public Transform destination;
 
-    private void OnTriggerEnter2D(Collider2D other)
+    [Header("Deslocamento aplicado ao destino")]
+    public Vector2 offset = new Vector2(-0.1f, -0.6f);
+
+    private bool playerInRange = false;
+    private bool canTeleport = true; // Controle de cooldown de teleporte
+
+    private GameObject player;
+
+    private void Update()
     {
-        if (other.CompareTag("Player") && !isOpen) // Verifica se é o jogador e se não está teleportando
+        if (playerInRange && canTeleport && Input.GetKeyDown(KeyCode.F))
         {
-            StartCoroutine(Teleport(other));
+            TeleportPlayer();
         }
     }
 
-    IEnumerator Teleport(Collider2D player)
+    private void TeleportPlayer()
     {
-        isOpen = true;
-        yield return new WaitForSeconds(delay); // Espera antes de teleportar
+        if (destination == null || player == null) return;
 
-        // Teleporta o jogador para a posição da porta de destino, com o offsetY aplicado
-        Vector3 teleportPosition = destination.position;
-        teleportPosition.y += offsetY; // Aplica o deslocamento em Y
-        teleportPosition.x += offsetX;
-        player.transform.position = teleportPosition;
+        // Teleporta o jogador com offset
+        player.transform.position = (Vector2)destination.position + offset;
 
-        // Garante que o jogador não teleporte de volta imediatamente
-        Doors otherDoor = destination.GetComponent<Doors>();
-        if (otherDoor != null)
+        // Avisa a porta de destino para nÃ£o teleportar imediatamente de volta
+        DoorTeleporter destinationDoor = destination.GetComponent<DoorTeleporter>();
+        if (destinationDoor != null)
         {
-            otherDoor.isOpen = true;
-            yield return new WaitForSeconds(delay); // Pequeno delay antes de permitir novo teleporte
-            otherDoor.isOpen = false;
+            destinationDoor.DisableTeleportTemporarily();
         }
 
-        isOpen = false;
+        // Desabilita teleporte temporariamente nesta porta
+        canTeleport = false;
+    }
+
+    // Usado pela porta de origem para desabilitar temporariamente o teleporte
+    public void DisableTeleportTemporarily()
+    {
+        canTeleport = false;
+        Invoke(nameof(EnableTeleport), 0.5f); // Reativa depois de meio segundo
+    }
+
+    private void EnableTeleport()
+    {
+        canTeleport = true;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            playerInRange = true;
+            player = collision.gameObject;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            playerInRange = false;
+            player = null;
+            EnableTeleport(); // Garante que a porta possa ser usada novamente depois
+        }
     }
 }

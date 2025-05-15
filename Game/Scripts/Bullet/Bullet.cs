@@ -5,7 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     public PlayerController playerController;
-
+    private Animator anim;
     [Header("Attributes")]
     [SerializeField] float timeToDestroy = .5f;
     [SerializeField] public float damage;
@@ -27,6 +27,7 @@ public class Bullet : MonoBehaviour
         playerController = FindObjectOfType<PlayerController>();
         sr = GetComponentInChildren<SpriteRenderer>();
         damage = playerController.strength;
+        anim = GetComponentInChildren<Animator>();
     }
 
     // Start is called before the first frame update
@@ -103,13 +104,9 @@ public class Bullet : MonoBehaviour
                 color.a = Mathf.Clamp01(color.a - .15f);
                 sr.color = color;
             }
-            if (bulletName == "Mage")
+            if (bulletName == "Mage" || bulletName == "Archer")
             {
-                Destroy(gameObject);
-            }
-            if (bulletName == "Archer")
-            {
-                Destroy(gameObject);
+                anim.SetTrigger("explode");
             }
         }
 
