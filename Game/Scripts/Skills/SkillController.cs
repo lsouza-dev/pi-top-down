@@ -1,229 +1,242 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class SkillController : MonoBehaviour
 {
-    private Vector3 mousePosition;
+    #region Variables
 
+    [Header("Skill Settings")]
     [SerializeField] private Skill magePowerUp;
     [SerializeField] public int playerClass;
-    [SerializeField] private Rigidbody2D rb;
-    public bool isOnGround;
-    public static SkillController instance;
-    public List<Transform> spawnPoints = new List<Transform>();
-    [SerializeField] public Bullet currentBullet;
-    [SerializeField] public GameObject multidirectionalSpawner; // Prefab da bullet a ser instanciada
-    public GameObject meteorShadowPrefab; // Referência pública ao prefab da sombra
-    private GameObject shadow;
 
-    void Awake()
+    [Header("Meteor")]
+    [SerializeField] private GameObject meteorShadowPrefab;
+
+    [Header("References")]
+    [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private GameObject multidirectionalSpawner;
+    [SerializeField] public Bullet currentBullet;
+
+    private GameObject shadow;
+    private Vector3 mousePosition;
+
+    public bool isOnGround;
+    public List<Transform> spawnPoints = new List<Transform>();
+
+    public static SkillController instance;
+
+    #endregion
+
+    #region Unity Methods
+
+    private void Awake()
     {
+        // Singleton
         instance = instance == null ? this : instance;
 
+        // Load Resources
         magePowerUp = Resources.Load<Skill>("PowerUps\\Mage\\Meteor");
         meteorShadowPrefab = Resources.Load<GameObject>("PowerUps\\Shadow");
 
-        // Busca os spawnPoints dinamicamente a partir do MultiDirectionalSpawners
+        // Get references
+        rb = GetComponent<Rigidbody2D>();
+
         Transform spawnerParent = transform.Find("MultiDirectionalSpawners");
         if (spawnerParent != null)
-            spawnPoints = spawnerParent.GetComponentsInChildren<Transform>().Where(t => t != spawnerParent).ToList();
+        {
+            spawnPoints = spawnerParent.GetComponentsInChildren<Transform>()
+                                       .Where(t => t != spawnerParent)
+                                       .ToList();
+        }
         else
+        {
             Debug.LogError("MultiDirectionalSpawners não encontrado como filho do Player.");
-
-
-        rb = GetComponent<Rigidbody2D>();
+        }
     }
 
-    void Start()
+    private void Start()
     {
-        currentBullet = ClassSelector.instance.currentBullet;
+        currentBullet = ClassSelector.instance?.currentBullet;
     }
 
-    void Update()
+    private void Update()
     {
-        // Captura a posição do mouse com base na Cinemachine Virtual Camera
         mousePosition = GetMouseWorldPosition();
         mousePosition.z = 0;
-
     }
+
+    #endregion
+
+    #region Public Methods
 
     public void AttackOnMousePosition()
     {
         playerClass = ClassSelector.instance.currentClass;
-        print("Player Class on PowerUpController: " + playerClass);
 
         switch (playerClass)
         {
-            case 0:
-                print("Arqueiro");
-                break;
-            case 1:
-                print("Guerreiro");
-                break;
             case 2:
-                Vector3 spawnPosition = GetSpawnPosition();
-
-                // Instancia o meteoro
-                GameObject meteor = Instantiate(magePowerUp.gameObject, spawnPosition, Quaternion.identity);
-
-                // Instancia a sombra no chão, no ponto do mouse
-                shadow = Instantiate(meteorShadowPrefab, mousePosition, Quaternion.identity);
-                shadow.SetActive(true);
-                StartCoroutine(AnimateShadowGrowth(shadow));
-
-                // Verifica quando o meteoro toca o chão
-                StartCoroutine(WaitForMeteorToReachTarget(meteor.GetComponent<Rigidbody2D>(), mousePosition.y));
+                CastMeteor();
                 break;
+
             default:
-                print("Classe inválida para utilizar Skill");
+                Debug.Log("Classe sem skill de meteoro.");
                 break;
         }
     }
 
-    public void MultiDirectionalAttack(int playerClass)
+    #endregion
+
+    #region Meteor Methods
+
+    private void CastMeteor()
     {
-        print("Player Class on PowerUpController: " + playerClass);
-        switch (playerClass)
-        {
-            case 0:
-                SpawnBullets(playerClass);
-                break;
-            case 1:
-                SpawnBullets(playerClass);
-                break;
-            case 2:
-                SpawnBullets(playerClass);
-                break;
-            default:
-                print("Classe inválida para utilizar Skill");
-                break;
-        }
+        Vector3 spawnPosition = GetMeteorSpawnPosition();
+        GameObject meteor = Instantiate(magePowerUp.gameObject, spawnPosition, Quaternion.identity);
+
+        // Criar sombra no chão
+        shadow = Instantiate(meteorShadowPrefab, mousePosition, Quaternion.identity);
+        shadow.SetActive(true);
+        StartCoroutine(AnimateShadowGrowth(shadow));
+
+        // Esperar meteoro atingir o chão
+        Rigidbody2D meteorRb = meteor.GetComponent<Rigidbody2D>();
+        Skill skillScript = meteor.GetComponent<Skill>();
+        StartCoroutine(WaitForMeteorToReachTarget(meteorRb, mousePosition.y, skillScript));
     }
 
-    private void SpawnBullets(int playerClass)
+    private IEnumerator WaitForMeteorToReachTarget(Rigidbody2D meteorRb, float targetY, Skill skillScript)
     {
-        if (spawnPoints.Count == 0) return;
-        print("SpawnPoints Count: " + spawnPoints.Count);
-        switch (playerClass)
-        {
-            case 0:
-                SpawnBulletsInDirections(playerClass); // Exemplo: 3 bullets (uma reta e duas diagonais)
-                break;
-            case 1:
-                SpawnBulletsInDirections(playerClass); // Exemplo: 5 bullets (mais ângulos)
-                break;
-            case 2:
-                SpawnBulletsInDirections(playerClass); // Exemplo: 7 bullets (ainda mais ângulos)
-                break;
-            default:
-                print("Classe inválida para utilizar Skill");
-                break;
-        }
-    }
+        float timeout = 5f;
+        float elapsed = 0f;
 
-    private void SpawnBulletsInDirections(int evolutionLevel)
-    {
-        if (evolutionLevel < 0 || evolutionLevel > 2) return;
-
-        // Define os spawners com base na evolução
-        Dictionary<int, List<int>> evolutionSpawns = new Dictionary<int, List<int>>
-    {
-        { 0, new List<int> { 2 } },
-        { 1, new List<int> { 1, 2, 3 } },
-        { 2, new List<int> { 0, 1, 2, 3, 4 } }
-    };
-
-        List<int> spawnerIndices = evolutionSpawns[evolutionLevel];
-        float directionMultiplier = transform.localScale.x > 0 ? -1f : 1f;
-
-        foreach (int index in spawnerIndices)
-        {
-            if (index < 0 || index >= spawnPoints.Count)
-            {
-                Debug.LogWarning($"Spawner inválido no índice {index}. Ignorando.");
-                continue;
-            }
-
-            Transform spawner = spawnPoints[index];
-            Vector3 spawnPosition = spawner.position;
-            float angle = GetBulletAngle(index) * directionMultiplier;
-
-            Vector3 direction = new Vector3(Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad), 0).normalized * directionMultiplier;
-
-            var bulletInstance = Instantiate(currentBullet, spawnPosition, Quaternion.Euler(0, 0, angle));
-            bulletInstance.damage *= 1.25f;
-            bulletInstance.GetComponent<Rigidbody2D>().velocity = direction * currentBullet.speed;
-        }
-    }
-
-    private float GetBulletAngle(int index)
-    {
-        switch (index)
-        {
-            case 0: return 45f;  // Diagonal para cima à esquerda
-            case 1: return 22.5f; // Levemente inclinado para cima
-            case 2: return 0f;   // Reto
-            case 3: return -22.5f; // Levemente inclinado para baixo
-            case 4: return -45f; // Diagonal para baixo à direita
-            default: return 0f;
-        }
-    }
-
-    private Vector3 GetSpawnPosition()
-    {
-        // Obtém a posição do topo da câmera virtual
-        Camera cam = Camera.main;
-        float cameraTopY = cam.ViewportToWorldPoint(new Vector3(0.5f, 1f, cam.nearClipPlane)).y;
-
-        // Define a posição inicial do meteoro (X do mouse, Y acima da câmera)
-        return new Vector3(mousePosition.x, cameraTopY + 1f, 0);
-    }
-
-    private Vector3 GetMouseWorldPosition()
-    {
-        // Obtém a posição do mouse convertida para o mundo
-        Camera cam = Camera.main;
-        return cam.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-    }
-
-    private IEnumerator WaitForMeteorToReachTarget(Rigidbody2D meteorRb, float targetY)
-    {
-        while (meteorRb.transform.position.y > targetY)
+        while (meteorRb != null && meteorRb.transform.position.y > targetY && elapsed < timeout)
         {
             isOnGround = false;
-            yield return null; // Espera um frame antes de verificar novamente
+            elapsed += Time.deltaTime;
+            yield return null;
         }
 
-        // Quando o meteoro atingir o Y do mouse, zera a gravidade e a velocidade
-        Destroy(shadow);
-        isOnGround = true;
-        meteorRb.gravityScale = 0;
-        meteorRb.velocity = Vector2.zero;
-    }
+        if (meteorRb != null)
+        {
+            Destroy(shadow);
+            isOnGround = true;
+            meteorRb.gravityScale = 0;
+            meteorRb.velocity = Vector2.zero;
 
+            skillScript?.LaunchMeteorEffect();
+        }
+    }
 
     private IEnumerator AnimateShadowGrowth(GameObject shadow)
     {
-        float duration = 1f; // Mesmo tempo de queda do meteoro
+        float duration = 1f;
         float elapsed = 0f;
         Vector3 initialScale = Vector3.zero;
         Vector3 targetScale = Vector3.one * 1.5f;
 
-        while (elapsed < duration)
+        while (elapsed < duration && shadow != null)
         {
-            if (shadow != null)
-            {
-                float t = elapsed / duration;
-                shadow.transform.localScale = Vector3.Lerp(initialScale, targetScale, t);
-                shadow.transform.localRotation = new Quaternion(-72f, 0f, 0f, 0);
-                elapsed += Time.deltaTime;
-                yield return null;
-            }
+            float t = elapsed / duration;
+            shadow.transform.localScale = Vector3.Lerp(initialScale, targetScale, t);
+            shadow.transform.localRotation = Quaternion.Euler(-72f, 0f, 0f);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        if (shadow != null)
+        {
+            shadow.transform.localScale = targetScale;
         }
     }
 
+    private Vector3 GetMeteorSpawnPosition()
+    {
+        Camera cam = Camera.main;
+        float cameraTopY = cam.ViewportToWorldPoint(new Vector3(0.5f, 1f, cam.nearClipPlane)).y;
+        return new Vector3(mousePosition.x, cameraTopY + 1f, 0);
+    }
+
+    #endregion
+
+    #region Utility
+
+    private Vector3 GetMouseWorldPosition()
+    {
+        Camera cam = Camera.main;
+        return cam.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+    }
+
+    public void MultiDirectionalAttack(int evolutionIndex)
+    {
+        Bullet bulletPrefab = currentBullet;
+
+        // 1. Pega posição do mouse
+        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePosition.z = 0f;
+
+        // 2. Calcula a direção entre player e mouse
+        Vector3 shootDirection = (mousePosition - PlayerController.instance.transform.position).normalized;
+
+        // 3. Determina o spawner a ser usado (baseado na direção)
+        Vector3 spawnerPos = GetSpawnerByDirection(shootDirection);
+
+        // 4. Define número de projéteis com base na evolução
+        int numberOfProjectiles = 3 + evolutionIndex; // Por exemplo: evolução 0 = 3 projéteis, etc.
+
+        float spreadAngle = 30f; // Ângulo total de abertura do cone
+        float angleStep = spreadAngle / (numberOfProjectiles - 1);
+        float startAngle = -spreadAngle / 2f;
+
+        for (int i = 0; i < numberOfProjectiles; i++)
+        {
+            float angleOffset = startAngle + i * angleStep;
+
+            // Aplica rotação ao vetor de direção base
+            Vector3 rotatedDirection = Quaternion.Euler(0, 0, angleOffset) * shootDirection;
+
+            // Instancia projétil
+            Bullet bullet = Instantiate(bulletPrefab, spawnerPos, Quaternion.identity);
+
+            // Define rotação visual da bullet
+            float bulletAngle = Mathf.Atan2(-rotatedDirection.y, -rotatedDirection.x) * Mathf.Rad2Deg;
+            bullet.transform.rotation = Quaternion.Euler(0, 0, bulletAngle);
+
+            // Aplica velocidade
+            bullet.GetComponent<Rigidbody2D>().velocity = rotatedDirection * bullet.speed;
+        }
+    }
+
+
+    private Vector3 GetSpawnerByDirection(Vector3 direction)
+    {
+        var spawners = PlayerController.instance.GetComponent<PlayerAttack>().spawnersPositions;
+
+        if (spawners == null || spawners.Count != 4)
+        {
+            Debug.LogWarning("Spawners não encontrados corretamente.");
+            return PlayerController.instance.transform.position;
+        }
+
+        // Decide qual spawner usar baseado na direção
+        if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
+        {
+            // Esquerda ou direita
+            return direction.x > 0 ? spawners[1].transform.position : spawners[3].transform.position;
+        }
+        else
+        {
+            // Cima ou baixo
+            return direction.y > 0 ? spawners[0].transform.position : spawners[2].transform.position;
+        }
+    }
+
+
+
+
+
+    #endregion
 }

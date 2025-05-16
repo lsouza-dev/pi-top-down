@@ -8,7 +8,7 @@ using UnityEngine;
 public class PlayerAttack : MonoBehaviour
 {
     [SerializeField] private Transform spawnerParent; // O spawner principal
-    [SerializeField] private List<GameObject> spawnersPositions; // Lista dos spawners filhos
+    [SerializeField] public List<GameObject> spawnersPositions; // Lista dos spawners filhos
     [SerializeField] private float timeToDestroy;
     [SerializeField] private float speed;
 

@@ -1,5 +1,6 @@
 using System.Linq;
 using Unity.VisualScripting;
+using UnityEditor.Callbacks;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
@@ -107,6 +108,9 @@ public class Bullet : MonoBehaviour
             if (bulletName == "Mage" || bulletName == "Archer")
             {
                 anim.SetTrigger("explode");
+                var rb = GetComponent<Rigidbody2D>();
+                rb.velocity = Vector2.zero;
+                Destroy(gameObject, .5f);
             }
         }
 
