@@ -96,7 +96,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 20
   m_Sprite: {fileID: 172254546, guid: 78123afb57789bb4ca146b805e83b1e6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -334,11 +334,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   magePowerUp: {fileID: 0}
   playerClass: 0
+  meteorShadowPrefab: {fileID: 0}
   rb: {fileID: 0}
+  multidirectionalSpawner: {fileID: 1889766320860116126}
+  currentBullet: {fileID: 0}
   isOnGround: 0
   spawnPoints: []
-  currentBullet: {fileID: 0}
-  multidirectionalSpawner: {fileID: 1889766320860116126}
 --- !u!50 &4283367481896405922
 Rigidbody2D:
   serializedVersion: 4
@@ -458,7 +459,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7154cfaac3676d49b91c9fe0d1152da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageText: {fileID: 0}
+  canvas: {fileID: 0}
+  damageTextGO: {fileID: 0}
+  player: {fileID: 0}
+  xOffset: 1
+  color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &5734906362682855608
 GameObject:
   m_ObjectHideFlags: 0

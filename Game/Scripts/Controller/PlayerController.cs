@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Xml;
+using Cinemachine;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEditor;
@@ -243,6 +244,22 @@ public class PlayerController : MonoBehaviour
             var enemy = other.gameObject.GetComponentInParent<EnemyController>();
             enemy.PlayerHit(this);
             invencibleTime = 2f;
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("BossArea"))
+        {
+            var gc = GameController.instance;
+            CinemachineVirtualCamera cam = gc.virtualCamera.GetComponent<CinemachineVirtualCamera>();
+            cam.Follow = other.transform;
+            cam.transform.position = new Vector2(other.transform.position.x, other.transform.position.y + 5);
+            cam.m_Lens.OrthographicSize = 13.5f;
+
+            gc.secondBg.SetActive(false);
+            gc.mapContainer.SetActive(false);
+            gc.attrBg.SetActive(false);
         }
     }
 

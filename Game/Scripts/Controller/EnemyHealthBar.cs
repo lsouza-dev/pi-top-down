@@ -10,6 +10,7 @@ public class EnemyHealthBar : MonoBehaviour
     public bool isActive = false;
     [SerializeField] public EnemyController enemyController;
     [SerializeField] public SpawnerController spawnerController;
+    [SerializeField] public MinionController minionController;
 
     public List<Image> heatlthBarImages = new List<Image>();
     public float timeToDisappear = 5f;
@@ -47,6 +48,14 @@ public class EnemyHealthBar : MonoBehaviour
                 gameObject.SetActive(true);
                 this.transform.position = Camera.main.WorldToScreenPoint(this.spawnerController.transform.position + new Vector3(0, yOffset, 0));
                 lifeBar.value = spawnerController.currentHealth / spawnerController.maxHealth;
+            }else if(minionController != null){
+                gameObject.SetActive(true);
+                this.transform.position = Camera.main.WorldToScreenPoint(this.minionController.transform.position + new Vector3(0, yOffset, 0));
+                lifeBar.value = minionController.currentHealth / minionController.maxHealth;
+            }
+            else
+            {
+                gameObject.SetActive(false);
             }
            
 

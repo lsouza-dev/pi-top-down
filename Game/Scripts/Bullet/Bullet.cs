@@ -8,7 +8,7 @@ public class Bullet : MonoBehaviour
     public PlayerController playerController;
     private Animator anim;
     [Header("Attributes")]
-    [SerializeField] float timeToDestroy = .5f;
+    [SerializeField] float timeToDestroy = 2f;
     [SerializeField] public float damage;
     [SerializeField] bool isCrit = false;
     [SerializeField] float defaultX = 1f;
@@ -57,18 +57,17 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        var isEnemy = other.gameObject.CompareTag("Enemy");
+        var isEnemy = other.gameObject.CompareTag("Enemy") && !other.gameObject.name.Contains("Minion");
+        var isMinion = other.gameObject.CompareTag("Enemy") && other.gameObject.name.Contains("Minion");
         var isTower = other.gameObject.CompareTag("TowerEnemy");
         var isSpawner = other.gameObject.CompareTag("Spawner");
-        
 
-        if (isEnemy || isTower || isSpawner)
+        if (isEnemy || isTower || isSpawner || isMinion)
         {
             var dmg = other.gameObject.GetComponent<DamageFeedbackController>();
 
             if (!isSpawner)
             {
-                var enemy = other.gameObject.GetComponent<EnemyController>();
                 isCrit = IsCriticalDamage();
 
                 if (isCrit)
@@ -77,14 +76,28 @@ public class Bullet : MonoBehaviour
                     dmg.color = Color.red;
                 }
 
-                enemy.healthBar.timeToDisappear = 5f;
-                enemy.healthBar.isActive = true;
-                enemy.healthBar.yOffset = .3f;
-                enemy.healthBar.UpdateHealthBar();
-                enemy.TakeDamage(damage);
+                if (isMinion)
+                {
+                    var minion = other.gameObject.GetComponent<MinionController>();
+                    minion.healthBar.timeToDisappear = 5f;
+                    minion.healthBar.isActive = true;
+                    minion.healthBar.yOffset = .3f;
+                    minion.healthBar.UpdateHealthBar();
+                    minion.TakeDamage(damage);
+                }
+                else
+                {
+                    var enemy = other.gameObject.GetComponent<EnemyController>();
+                    enemy.healthBar.timeToDisappear = 5f;
+                    enemy.healthBar.isActive = true;
+                    enemy.healthBar.yOffset = .3f;
+                    enemy.healthBar.UpdateHealthBar();
+                    enemy.TakeDamage(damage);
+                }
             }
-            
-            if(isSpawner){
+
+            if (isSpawner)
+            {
                 var spawner = other.gameObject.GetComponent<SpawnerController>();
                 spawner.healthBar.timeToDisappear = 5f;
                 spawner.healthBar.isActive = true;
@@ -93,7 +106,7 @@ public class Bullet : MonoBehaviour
                 spawner.TakeDamage(damage);
             }
 
-            dmg.ShowDamageFeedback(damage);
+            dmg.ShowDamageFeedback(damage, isCrit);
 
 
             if (bulletName == "Dagger")
@@ -134,14 +147,18 @@ public class Bullet : MonoBehaviour
         switch (bulletName)
         {
             case "Archer":
-                timeToDestroy = 3;
+                timeToDestroy = 5;
+                defaultX *= 2f;
+                defaultY *= 2f;
                 break;
             case "Dagger":
                 defaultX = .3f;
                 defaultY = .3f;
                 break;
             case "Mage":
-                timeToDestroy = 3;
+                timeToDestroy = 5;
+                defaultX *= 2.5f;
+                defaultY *= 2.5f;
                 break;
 
         }
