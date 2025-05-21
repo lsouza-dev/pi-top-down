@@ -4,18 +4,16 @@ using UnityEngine;
 
 public class Minimap : MonoBehaviour
 {
-    public Transform target; // Alvo da cï¿½mera (ex: jogador)
-    public Vector2 minBounds; // Limite mï¿½nimo da cï¿½mera (X, Y)
-    public Vector2 maxBounds; // Limite mï¿½ximo da cï¿½mera (X, Y)
+    public Transform target; // Alvo da câmera (ex: jogador)
+    public Vector2 minBounds; // Limite mínimo da câmera (X, Y)
+    public Vector2 maxBounds; // Limite máximo da câmera (X, Y)
 
     private Camera cam;
-    // private Camera cam;
     private float camWidth, camHeight;
 
     void Start()
     {
-        // cam = GameObject.Find("Virtual Camera").GetComponent<Cinemachine.CinemachineVirtualCamera>();
-        // cam = Camera.main;
+        cam = Camera.main;
         camHeight = cam.orthographicSize;
         camWidth = camHeight * cam.aspect; // Aspecto da tela
     }
