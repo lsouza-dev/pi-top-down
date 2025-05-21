@@ -112,6 +112,7 @@ MonoBehaviour:
   playerController: {fileID: 0}
   timeToDestroy: 0.5
   damage: 1
+  isCrit: 0
   defaultX: 0.3
   defaultY: 0.3
   incrementValue: 0.01
@@ -201,6 +202,6 @@ SpriteRenderer:
   m_Size: {x: 0.75, y: 0.75}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0

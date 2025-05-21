@@ -412,7 +412,7 @@ GameObject:
   - component: {fileID: 8287052937680495764}
   m_Layer: 0
   m_Name: BigMushGround
-  m_TagString: Objects
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
