@@ -31,7 +31,6 @@ namespace TMPro.Examples
             m_initial_Position = m_transform.position;
 
             Light light = GetComponent<Light>();
-            m_lightColor = light != null ? light.color : Color.black;
         }
 
 

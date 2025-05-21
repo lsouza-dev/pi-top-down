@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 12
       objectReference: {fileID: 0}
+    - target: {fileID: 323326184029655868, guid: 26dbb676ca2bc2c4ca3ac15a61b07976, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
     - target: {fileID: 3990084187898206308, guid: 26dbb676ca2bc2c4ca3ac15a61b07976, type: 3}
       propertyPath: m_Name
       value: Grass4 Variant

@@ -76,7 +76,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -269,8 +269,8 @@ MonoBehaviour:
   critDamage: 10
   critRate: 5
   nexLevelPoints: 50
-  currentHp: 100
-  maxHp: 100
+  currentHealth: 100
+  maxHealth: 100
   xp: 0
   strength: 3
   atkSpeed: 0.3

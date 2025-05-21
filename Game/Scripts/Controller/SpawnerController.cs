@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor.SearchService;
 using UnityEngine;
 
 public class SpawnerController : MonoBehaviour
@@ -89,6 +90,7 @@ public class SpawnerController : MonoBehaviour
                 break;
             default:
                 enemies = null;
+                this.sceneName = "Desert";
                 break;
         }
     }
