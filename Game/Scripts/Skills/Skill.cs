@@ -17,6 +17,11 @@ public class Skill : MonoBehaviour
     [SerializeField] private CircleCollider2D parentCollider;
     [SerializeField] private CircleCollider2D areaCollider;
 
+    private float elapsedTime = 0f;
+    private bool isCoroutineRunning = false;
+
+    private Dictionary<GameObject, EnemyController> cachedEnemies = new();
+
     void Awake()
     {
         parentSpriteRenderer = GetComponent<SpriteRenderer>();
@@ -25,54 +30,34 @@ public class Skill : MonoBehaviour
         areaCollider = damageArea.GetComponent<CircleCollider2D>();
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         areaSpriteRenderer.enabled = false;
         areaCollider.enabled = false;
     }
 
-    // Update is called once per frame
     void Update()
     {
+        elapsedTime += Time.deltaTime;
         timeToDestroy -= Time.deltaTime;
-
-        PowerUpLifeCicle();
+        PowerUpLifeCycle();
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    void PowerUpLifeCycle()
     {
-        if (other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("TowerEnemy"))
-        {
-            print("Inimigo entrou no PowerUp");
-            var enemy = other.gameObject.GetComponent<EnemyController>();
-            enemy.TakeDamage(collisionDamage);
-        }
+        if (timeToDestroy <= 0)
+            Destroy(gameObject);
     }
 
-    void OnTriggerStay2D(Collider2D other)
+    public void LaunchMeteorEffect()
     {
-        if (other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("TowerEnemy"))
-        {
-            var enemy = other.gameObject.GetComponent<EnemyController>();
-            enemy.TakeDamage(onStayAreaDamage);
-        }
-    }
-
-    private bool isCoroutineRunning = false; // Variável de controle
-
-    private void PowerUpLifeCicle()
-    {
-        if (SkillController.instance.isOnGround && !isCoroutineRunning)
-        {
+        if (!isCoroutineRunning)
             StartCoroutine(WaitToDisableMeteor());
-        }
-        if (timeToDestroy <= 0) Destroy(gameObject);
     }
 
     private IEnumerator WaitToDisableMeteor()
     {
-        isCoroutineRunning = true; // Marca que a coroutine está em execução
+        isCoroutineRunning = true;
 
         timeToDestroy = 3f;
 
@@ -84,7 +69,44 @@ public class Skill : MonoBehaviour
 
         yield return new WaitForSeconds(3f);
 
-        Destroy(gameObject); // Destroi o objeto após 3 segundos
-        isCoroutineRunning = false; // Reseta a variável de controle (opcional, mas não necessário aqui)
+        Destroy(gameObject);
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Enemy") || other.CompareTag("TowerEnemy"))
+        {
+            if (!cachedEnemies.ContainsKey(other.gameObject))
+                cachedEnemies[other.gameObject] = other.GetComponent<EnemyController>();
+
+            var enemy = cachedEnemies[other.gameObject];
+            if (enemy != null)
+            {
+                enemy.healthBar.timeToDisappear = 5f;
+                enemy.healthBar.isActive = true;
+                enemy.healthBar.yOffset = .3f;
+                enemy.healthBar.UpdateHealthBar();
+                enemy.TakeDamage(collisionDamage);
+            }
+        }
+    }
+
+    void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.CompareTag("Enemy") || other.CompareTag("TowerEnemy"))
+        {
+            if (!cachedEnemies.ContainsKey(other.gameObject))
+                cachedEnemies[other.gameObject] = other.GetComponent<EnemyController>();
+
+            var enemy = cachedEnemies[other.gameObject];
+            if (enemy != null)
+            {
+                enemy.healthBar.timeToDisappear = 5f;
+                enemy.healthBar.isActive = true;
+                enemy.healthBar.yOffset = .3f;
+                enemy.healthBar.UpdateHealthBar();
+                enemy.TakeDamage(onStayAreaDamage * Time.deltaTime);
+            }
+        }
     }
 }

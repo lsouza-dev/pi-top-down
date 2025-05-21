@@ -8,6 +8,7 @@ public class SpawnerController : MonoBehaviour
 {
     public List<EnemyController> enemies = new List<EnemyController>();
     public List<EnemyController> spawnedEnemies = new List<EnemyController>();
+    public EnemyHealthBar healthBar;
 
     [Header("Components")]
     [SerializeField] private SpriteRenderer spriteRenderer;
@@ -15,7 +16,8 @@ public class SpawnerController : MonoBehaviour
     [SerializeField] private Animator animator;
 
     [Header("Spawner Variables")]
-    private float health = 30f;
+    public float currentHealth;
+    public float maxHealth = 30f;
     private bool isIdle;
     private bool isRespawning;
     [SerializeField] private bool isRespawningCoroutineRunning = false; // Controle da corrotina
@@ -31,6 +33,7 @@ public class SpawnerController : MonoBehaviour
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         boxCollider = GetComponentInChildren<BoxCollider2D>();
         animator = GetComponentInChildren<Animator>();
+        currentHealth = maxHealth;
     }
 
     void Start()
@@ -54,7 +57,7 @@ public class SpawnerController : MonoBehaviour
             isRespawning = true;
             isIdle = false;
 
-            if (!isRespawningCoroutineRunning) // Evita múltiplas corrotinas
+            if (!isRespawningCoroutineRunning) 
             {
                 StartCoroutine(RespawnEnemies());
                 print("Corrotina RespawnEnemies iniciada.");
@@ -69,7 +72,7 @@ public class SpawnerController : MonoBehaviour
 
         animator.SetBool("isIdle", isIdle);
         animator.SetBool("isRespawning", isRespawning);
-        animator.SetFloat("health", health);
+        animator.SetFloat("health", currentHealth);
     }
 
     private void GetMaxEnemiesSpawn(string sceneName)
@@ -99,7 +102,6 @@ public class SpawnerController : MonoBehaviour
     {
         spawnedEnemies.Clear();
         enemiesSpawnedsCount++;
-        print($"Max enemies on spawner: {enemiesSpawnedsCount}");
 
         for (int i = 1; i <= enemiesSpawnedsCount; i++)
         {
@@ -115,22 +117,29 @@ public class SpawnerController : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.CompareTag("Bullet"))
-        {
-            var damage = other.gameObject.GetComponent<Bullet>().damage;
-            TakeDamage(damage);
-            Destroy(other.gameObject);
+    // void OnTriggerEnter2D(Collider2D other)
+    // {
+    //     if (other.gameObject.CompareTag("Bullet"))
+    //     {
+    //         var damage = other.gameObject.GetComponent<Bullet>().damage;
 
-            Debug.Log("Ai papai, tomei dano: " + damage);
-        }
-    }
+    //         Destroy(other.gameObject);
+
+    //         var dmgController = GetComponent<DamageFeedbackController>();
+    //         dmgController.ShowDamageFeedback(damage);
+            
+    //         TakeDamage(damage);
+
+    //         Debug.Log("Ai papai, tomei dano: " + damage);
+    //     }
+    // }
 
     public void TakeDamage(float damage)
     {
-        health -= damage;
-        if (health <= 0)
+        print($"Health: {currentHealth} - Damage: {damage} - Life Remain: {currentHealth - damage}");
+        currentHealth -= damage;
+
+        if (currentHealth <= 0)
         {
             Destroy(gameObject);
         }

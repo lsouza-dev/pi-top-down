@@ -90,6 +90,7 @@ GameObject:
   - component: {fileID: 3054788508057420648}
   - component: {fileID: 2491261557308865664}
   - component: {fileID: 5921470528859192769}
+  - component: {fileID: -5265511422231548746}
   m_Layer: 0
   m_Name: Elf
   m_TagString: Enemy
@@ -231,8 +232,29 @@ MonoBehaviour:
   backMeleeCollider: {fileID: 892017441278414482}
   spawner: {fileID: 0}
   levelUpController: {fileID: 0}
+<<<<<<< HEAD
   healthBar: {fileID: 0}
+=======
+  healthBar: {fileID: 6894115016862892152}
+>>>>>>> 609d9cbea74e060aaec9619848dfb7fcd3f26531
   attackDelay: 0
+--- !u!114 &-5265511422231548746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1877620256806826917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7154cfaac3676d49b91c9fe0d1152da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvas: {fileID: 0}
+  damageTextGO: {fileID: 0}
+  player: {fileID: 0}
+  xOffset: 1
+  color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &5987479121747865040
 GameObject:
   m_ObjectHideFlags: 0
@@ -420,7 +442,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -841950733, guid: 4b4fdd9f35c694e44983ff71ddba607f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -536,6 +558,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+<<<<<<< HEAD
+=======
+    - target: {fileID: 6265931489565616272, guid: 25082181168adda4d952534c58bdf1d3, type: 3}
+      propertyPath: enemyController
+      value: 
+      objectReference: {fileID: 5921470528859192769}
+>>>>>>> 609d9cbea74e060aaec9619848dfb7fcd3f26531
     - target: {fileID: 8687949685559419670, guid: 25082181168adda4d952534c58bdf1d3, type: 3}
       propertyPath: m_Name
       value: EnemyHealthBar
@@ -558,3 +587,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 997942627527772386, guid: 25082181168adda4d952534c58bdf1d3, type: 3}
   m_PrefabInstance: {fileID: 673814161866795240}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
+=======
+--- !u!114 &6894115016862892152 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6265931489565616272, guid: 25082181168adda4d952534c58bdf1d3, type: 3}
+  m_PrefabInstance: {fileID: 673814161866795240}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c29054a3bb2aa94086c118938bfddee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+>>>>>>> 609d9cbea74e060aaec9619848dfb7fcd3f26531

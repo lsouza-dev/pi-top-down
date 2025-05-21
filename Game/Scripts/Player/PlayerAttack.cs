@@ -8,7 +8,7 @@ using UnityEngine;
 public class PlayerAttack : MonoBehaviour
 {
     [SerializeField] private Transform spawnerParent; // O spawner principal
-    [SerializeField] private List<GameObject> spawnersPositions; // Lista dos spawners filhos
+    [SerializeField] public List<GameObject> spawnersPositions; // Lista dos spawners filhos
     [SerializeField] private float timeToDestroy;
     [SerializeField] private float speed;
 
@@ -63,7 +63,7 @@ public class PlayerAttack : MonoBehaviour
         Vector3 direction = (mousePosition - spawnPosition).normalized;
 
         var bulletInstance = Instantiate(bullet, spawnPosition, Quaternion.identity);
-        PlayerController.instance.shootCooldownTime = PlayerController.instance.shootCooldownTimeDefault;
+        PlayerController.instance.shootCooldownTime = PlayerController.instance.shootCooldownTimeDefault - PlayerController.instance.atkSpeed;;
         
         float angle = Mathf.Atan2(-direction.y, -direction.x) * Mathf.Rad2Deg;
         bulletInstance.transform.rotation = Quaternion.Euler(0, 0, angle);

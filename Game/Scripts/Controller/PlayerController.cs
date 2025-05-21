@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Xml;
+using Cinemachine;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEditor;
@@ -23,7 +24,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] public float maxHealth = 100;
     [SerializeField] public float xp = 00;
     [SerializeField] public float strength = 5;
-    [SerializeField] public float atkSpeed = .3f;
+    [SerializeField] public float atkSpeed = .1f;
 
 
 
@@ -210,6 +211,12 @@ public class PlayerController : MonoBehaviour
     {
         if (invencibleTime >= 0) return;
 
+<<<<<<< HEAD
+=======
+        var dmgController = GetComponent<DamageFeedbackController>();
+        dmgController.ShowDamageFeedback(damage,false);
+
+>>>>>>> 609d9cbea74e060aaec9619848dfb7fcd3f26531
         this.currentHealth -= damage;
         animator.SetTrigger("isDamage");
 
@@ -240,6 +247,22 @@ public class PlayerController : MonoBehaviour
             var enemy = other.gameObject.GetComponentInParent<EnemyController>();
             enemy.PlayerHit(this);
             invencibleTime = 2f;
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("BossArea"))
+        {
+            var gc = GameController.instance;
+            CinemachineVirtualCamera cam = gc.virtualCamera.GetComponent<CinemachineVirtualCamera>();
+            cam.Follow = other.transform;
+            cam.transform.position = new Vector2(other.transform.position.x, other.transform.position.y + 5);
+            cam.m_Lens.OrthographicSize = 13.5f;
+
+            gc.secondBg.SetActive(false);
+            gc.mapContainer.SetActive(false);
+            gc.attrBg.SetActive(false);
         }
     }
 

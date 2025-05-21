@@ -199,7 +199,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72d90bbe74051644f916c497d954e496, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 5
+  currentHealth: 0
+  maxHealth: 100
   animator: {fileID: 0}
   player: {fileID: 0}
   isAlive: 1
@@ -215,16 +216,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 321fa7732a6cc8b44bb9a2f342cf9d24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 5
+  currentHealth: 0
+  maxHealth: 100
   animator: {fileID: 0}
   player: {fileID: 0}
   isAlive: 1
   chaseDistance: 5
   atkDistance: 0.1
   patrolArea: 8
+  spawnerDistance: 0
   collisionDamage: 5
   frontMeleeCollider: {fileID: 8993785876401909866}
   backMeleeCollider: {fileID: 892017441278414482}
+  spawner: {fileID: 0}
+  levelUpController: {fileID: 0}
+  healthBar: {fileID: 0}
   attackDelay: 0
 --- !u!1 &5987479121747865040
 GameObject:
@@ -413,7 +419,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -14839822, guid: aff6f42be8bcf4241b3f00a80b6a3a3c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

@@ -90,6 +90,7 @@ GameObject:
   - component: {fileID: 3054788508057420648}
   - component: {fileID: 2491261557308865664}
   - component: {fileID: 5921470528859192769}
+  - component: {fileID: -8600530070445134432}
   m_Layer: 0
   m_Name: Warg
   m_TagString: Enemy
@@ -106,7 +107,7 @@ Transform:
   m_GameObject: {fileID: 1877620256806826917}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.77, y: 0, z: 0}
+  m_LocalPosition: {x: -1.32, y: -0.48, z: 0}
   m_LocalScale: {x: 1.7, y: 1.7, z: 1.7}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -231,8 +232,29 @@ MonoBehaviour:
   backMeleeCollider: {fileID: 892017441278414482}
   spawner: {fileID: 0}
   levelUpController: {fileID: 0}
+<<<<<<< HEAD
   healthBar: {fileID: 0}
+=======
+  healthBar: {fileID: 1107798684675654257}
+>>>>>>> 609d9cbea74e060aaec9619848dfb7fcd3f26531
   attackDelay: 0
+--- !u!114 &-8600530070445134432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1877620256806826917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7154cfaac3676d49b91c9fe0d1152da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvas: {fileID: 0}
+  damageTextGO: {fileID: 0}
+  player: {fileID: 0}
+  xOffset: 1
+  color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &5987479121747865040
 GameObject:
   m_ObjectHideFlags: 0
@@ -420,7 +442,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -1356365716, guid: 56bc3eaee7a485248a7e4e55dcacf08c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -536,6 +558,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+<<<<<<< HEAD
+=======
+    - target: {fileID: 1530045759815628632, guid: 2129e2f857c81a14c8447220a47a1390, type: 3}
+      propertyPath: enemyController
+      value: 
+      objectReference: {fileID: 5921470528859192769}
+>>>>>>> 609d9cbea74e060aaec9619848dfb7fcd3f26531
     - target: {fileID: 8687949685559419670, guid: 2129e2f857c81a14c8447220a47a1390, type: 3}
       propertyPath: m_Name
       value: EnemyHealthBar
@@ -553,6 +582,20 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2129e2f857c81a14c8447220a47a1390, type: 3}
+<<<<<<< HEAD
+=======
+--- !u!114 &1107798684675654257 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1530045759815628632, guid: 2129e2f857c81a14c8447220a47a1390, type: 3}
+  m_PrefabInstance: {fileID: 1901752195932222761}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c29054a3bb2aa94086c118938bfddee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+>>>>>>> 609d9cbea74e060aaec9619848dfb7fcd3f26531
 --- !u!224 &1710530045930945995 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 997942627527772386, guid: 2129e2f857c81a14c8447220a47a1390, type: 3}
