@@ -232,7 +232,11 @@ MonoBehaviour:
   backMeleeCollider: {fileID: 892017441278414482}
   spawner: {fileID: 0}
   levelUpController: {fileID: 0}
+<<<<<<< HEAD
+  healthBar: {fileID: 0}
+=======
   healthBar: {fileID: 3411398676819749827}
+>>>>>>> 609d9cbea74e060aaec9619848dfb7fcd3f26531
   attackDelay: 0
 --- !u!114 &-1470360016853549875
 MonoBehaviour:
@@ -554,10 +558,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+<<<<<<< HEAD
+=======
     - target: {fileID: 6265931489565616272, guid: 25082181168adda4d952534c58bdf1d3, type: 3}
       propertyPath: enemyController
       value: 
       objectReference: {fileID: 5921470528859192769}
+>>>>>>> 609d9cbea74e060aaec9619848dfb7fcd3f26531
     - target: {fileID: 8687949685559419670, guid: 25082181168adda4d952534c58bdf1d3, type: 3}
       propertyPath: m_Name
       value: EnemyHealthBar
@@ -575,6 +582,8 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 25082181168adda4d952534c58bdf1d3, type: 3}
+<<<<<<< HEAD
+=======
 --- !u!114 &3411398676819749827 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6265931489565616272, guid: 25082181168adda4d952534c58bdf1d3, type: 3}
@@ -586,6 +595,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c29054a3bb2aa94086c118938bfddee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+>>>>>>> 609d9cbea74e060aaec9619848dfb7fcd3f26531
 --- !u!224 &8393533160019282865 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 997942627527772386, guid: 25082181168adda4d952534c58bdf1d3, type: 3}

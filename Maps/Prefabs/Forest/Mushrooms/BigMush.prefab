@@ -91,6 +91,10 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 17
       objectReference: {fileID: 0}
+    - target: {fileID: 6727761190591852143, guid: aef9da638f30b5b459c090a9280eb310, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
     m_RemovedComponents:
     - {fileID: 7826071111137838781, guid: aef9da638f30b5b459c090a9280eb310, type: 3}
     m_RemovedGameObjects: []
@@ -158,6 +162,10 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 17
       objectReference: {fileID: 0}
+    - target: {fileID: 5818881632866283747, guid: 2583953b38d483d4b9929afda1620c5b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
     m_RemovedComponents:
     - {fileID: 2148500521171005178, guid: 2583953b38d483d4b9929afda1620c5b, type: 3}
     m_RemovedGameObjects: []
@@ -225,6 +233,10 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 17
       objectReference: {fileID: 0}
+    - target: {fileID: 4676169497371747542, guid: 745b331dfd0709f4c892098eda1154bb, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
     - target: {fileID: 5175089241976403054, guid: 745b331dfd0709f4c892098eda1154bb, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.5
@@ -288,6 +300,10 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 17
       objectReference: {fileID: 0}
+    - target: {fileID: 3036148154767846805, guid: 1be3fb20f2b7b534184b3e6f5a052f0a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
     - target: {fileID: 3997610614731614830, guid: 1be3fb20f2b7b534184b3e6f5a052f0a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.5

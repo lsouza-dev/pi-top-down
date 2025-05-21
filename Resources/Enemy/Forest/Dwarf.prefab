@@ -232,7 +232,11 @@ MonoBehaviour:
   backMeleeCollider: {fileID: 892017441278414482}
   spawner: {fileID: 0}
   levelUpController: {fileID: 0}
+<<<<<<< HEAD
+  healthBar: {fileID: 0}
+=======
   healthBar: {fileID: 132036138704076550}
+>>>>>>> 609d9cbea74e060aaec9619848dfb7fcd3f26531
   attackDelay: 0
 --- !u!114 &-7013117189523322267
 MonoBehaviour:

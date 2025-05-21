@@ -1,16 +1,36 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data.Common;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
+using UnityEngine.UIElements;
 
 public class BrazierTrigger : MonoBehaviour
 {
-    public ParticleSystem fireParticles; // Referência ao sistema de partículas
+    public ParticleSystem fireParticles; // Referï¿½ncia ao sistema de partï¿½culas
+    public List<Light2D> light2D;
+    [SerializeField] private Sprite sprite;
+    private SpriteRenderer spRender;
 
+    private bool isBrazier;
+
+    void Awake()
+    {
+        isBrazier = gameObject.name.Contains("Brazier");
+        spRender = GetComponentInChildren<SpriteRenderer>();
+    }
     void Start()
     {
-        if (fireParticles != null)
+        foreach (Light2D li in light2D)
         {
-            fireParticles.Stop(); // Garante que começa desativado
+            li.gameObject.SetActive(!li.gameObject.activeSelf);
+            if (li.gameObject.activeSelf) spRender.sprite = sprite;
+
+            if (fireParticles != null)
+            {
+                fireParticles.Stop(); // Garante que comeï¿½a desativado
+            }
         }
     }
 
@@ -20,7 +40,16 @@ public class BrazierTrigger : MonoBehaviour
         {
             if (fireParticles != null)
             {
-                fireParticles.Play(); // Ativa as partículas
+                if (!isBrazier)
+                {
+                    var spRender = GetComponentInChildren<SpriteRenderer>();
+                    spRender.sprite = sprite;
+                }
+                fireParticles.Play(); // Ativa as partï¿½culas
+                foreach (Light2D li in light2D)
+                {
+                    li.gameObject.SetActive(true);
+                }
             }
         }
     }
