@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 
 public class BossController : MonoBehaviour
@@ -19,6 +20,12 @@ public class BossController : MonoBehaviour
     public GameObject player;
     public List<MonoBehaviour> attackBehaviors;
 
+    [Header("Animações")]
+    private bool isWalking;
+    private bool isIdle;
+    private bool isAlive;
+    private Animator animator;
+
     private List<IBossAttack> attacks = new List<IBossAttack>();
 
     private void Start()
@@ -29,6 +36,7 @@ public class BossController : MonoBehaviour
                 attacks.Add(attack);
         }
 
+        animator = GetComponentInChildren<Animator>();
         player = GameObject.FindGameObjectWithTag("Player");
         SetNewTargetPosition();
     }
@@ -45,11 +53,13 @@ public class BossController : MonoBehaviour
             ExecuteRandomAttack();
             currentAttackIndex++;
         }
+        ChangeAnimations();
     }
 
     void MoveWithinArea()
     {
         transform.position = Vector3.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
+        isWalking = true;
 
         if (Vector3.Distance(transform.position, targetPosition) < 0.5f)
         {
@@ -60,15 +70,21 @@ public class BossController : MonoBehaviour
     void SetNewTargetPosition()
     {
         float x = Random.Range(areaMin.x, areaMax.x);
-        float y = Random.Range(areaMin.y, areaMax.y);
-        targetPosition = new Vector3(x, y, transform.position.z);
+        targetPosition = new Vector3(x, transform.position.y, transform.position.z); // Apenas X
     }
 
     void ExecuteRandomAttack()
     {
         if (attacks.Count == 0) return;
-
         int index = Random.Range(0, attacks.Count);
         attacks[index].Execute(player);
+        
+    }
+
+    void ChangeAnimations()
+    {
+        animator.SetBool("isWalking", isWalking);
+        animator.SetBool("isIdle", isIdle);
+        animator.SetBool("isAlive", isAlive);
     }
 }

@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 1817334263, guid: e32fe4fc57389804c9e1ef7b5bf9cc1b, type: 3}
+  m_Sprite: {fileID: -306671210, guid: 418a5031bee3a7a4cb5a4ebedb3c4c21, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -95,7 +95,7 @@ Animator:
   m_GameObject: {fileID: 4017008655062104094}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7ab45b68c9d3e0e4a918b6654bde812c, type: 2}
+  m_Controller: {fileID: 9100000, guid: 579b4002746e34a47adc5ce69c34c99b, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -252,7 +252,7 @@ GameObject:
   - component: {fileID: 6632388661240349532}
   - component: {fileID: 1236853191739227625}
   m_Layer: 0
-  m_Name: ScrollLanguage
+  m_Name: ScrollLang
   m_TagString: ScrollLang
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -295,6 +295,7 @@ MonoBehaviour:
   yOffset: 1
   isActiveActionTextGO: 0
   pulseSpeed: 0.25
+  pulseMutiplier: 5
   scaleMultiplier: 0.2
   alphaMin: 0.2
 --- !u!61 &1236853191739227625

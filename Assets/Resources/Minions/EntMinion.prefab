@@ -110,7 +110,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 0
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &5385541139073724812
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -146,7 +146,6 @@ MonoBehaviour:
   player: {fileID: 0}
   isAlive: 1
   attackType: 0
-  chaseDistance: 5
   attackDistance: 1.5
   moveSpeed: 1
   attackCooldown: 2

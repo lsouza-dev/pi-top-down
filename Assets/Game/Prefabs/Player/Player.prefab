@@ -274,7 +274,7 @@ MonoBehaviour:
   currentHealth: 100
   maxHealth: 100
   xp: 0
-  strength: 3
+  strength: 9
   atkSpeed: 0.3
   mouseDirection: 0
   isAttack: 0
