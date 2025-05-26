@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &1
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5e6fedc2472449cead18ef23b5cb30d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Library:
+  - m_Name: shoot
+    m_Hash: 809827518
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: shoot_0
+      m_Hash: 342765197
+      m_Sprite: {fileID: -478469019, guid: 64fa5af8421b26f489d6cfe4f1a2f4c1, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -478469019, guid: 64fa5af8421b26f489d6cfe4f1a2f4c1, type: 3}
+    - m_Name: shoot_1
+      m_Hash: 594091547
+      m_Sprite: {fileID: -318199428, guid: 64fa5af8421b26f489d6cfe4f1a2f4c1, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -318199428, guid: 64fa5af8421b26f489d6cfe4f1a2f4c1, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 2
+  - m_Name: explosion
+    m_Hash: 832004380
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: explosion_0
+      m_Hash: 115416780
+      m_Sprite: {fileID: 608253039, guid: 60a1666f9cd9ee447a609a7ca55e9889, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 608253039, guid: 60a1666f9cd9ee447a609a7ca55e9889, type: 3}
+    - m_Name: explosion_1
+      m_Hash: 837168730
+      m_Sprite: {fileID: 1583716899, guid: 60a1666f9cd9ee447a609a7ca55e9889, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1583716899, guid: 60a1666f9cd9ee447a609a7ca55e9889, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 2
+  m_PrimaryLibraryGUID: 
+  m_ModificationHash: 638829282936941460
+  m_Version: 1
