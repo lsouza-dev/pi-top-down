@@ -14,7 +14,7 @@ public class GameController : MonoBehaviour
     public GameObject mapContainer;
     public GameObject secondBg;
     public GameObject attrBg;
-
+    public bool bossFigth;
     
 
     void Awake()

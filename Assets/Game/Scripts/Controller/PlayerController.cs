@@ -251,11 +251,14 @@ public class PlayerController : MonoBehaviour
     {
         if (other.CompareTag("BossArea"))
         {
+            GameController.instance.bossFigth = true;
             var gc = GameController.instance;
             CinemachineVirtualCamera cam = gc.virtualCamera.GetComponent<CinemachineVirtualCamera>();
             cam.Follow = other.transform;
             cam.transform.position = new Vector2(other.transform.position.x, other.transform.position.y + 5);
             cam.m_Lens.OrthographicSize = 13.5f;
+
+
 
             gc.secondBg.SetActive(false);
             gc.mapContainer.SetActive(false);

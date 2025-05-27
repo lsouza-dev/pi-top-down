@@ -127,7 +127,11 @@ public class Bullet : MonoBehaviour
             }
         }
 
-        if (other.gameObject.CompareTag("Wall") || other.gameObject.CompareTag("Objects")) Destroy(gameObject);
+        if ((other.gameObject.CompareTag("Wall") || other.gameObject.CompareTag("Objects")) && !GameController.instance.bossFigth)
+        {
+            Destroy(gameObject);
+        }
+            
 
     }
 

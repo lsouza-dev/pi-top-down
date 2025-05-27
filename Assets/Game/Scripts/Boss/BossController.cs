@@ -1,90 +1,156 @@
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class BossController : MonoBehaviour
 {
     [Header("Movimentação")]
     public Vector2 areaMin;
     public Vector2 areaMax;
-    public float moveSpeed = 2f;
+    public float moveSpeed = 10f;
+    public float idleDuration = 2f;
     private Vector3 targetPosition;
+    private float idleTimer = 0f;
+    private Vector3 lastPosition;
+    private bool movingRight = false;
+    private float changeDirectionChance = 0.01f; // 1% de chance de mudar de direção a cada frame
 
     [Header("Ataques")]
-    public float[] attackIntervals = { 3f, 6f, 9f };
+    public float attackInterval = 3f;
+    public float minionSpawnInterval = 6f;
     private float attackTimer;
+    private float minionSpawnTimer;
     private int currentAttackIndex = 0;
 
     [Header("Referências")]
     public GameObject player;
     public List<MonoBehaviour> attackBehaviors;
+    public MinionSpawner minionSpawner;
 
     [Header("Animações")]
-    private bool isWalking;
-    private bool isIdle;
-    private bool isAlive;
     private Animator animator;
+    private Rigidbody2D rb;
+    [SerializeField] private bool isIdle;
+    [SerializeField] private bool isWalking;
+    [SerializeField] private bool isAlive = true;
 
     private List<IBossAttack> attacks = new List<IBossAttack>();
 
-    private void Start()
+    void Awake()
     {
+        animator = GetComponentInChildren<Animator>();
+        rb = GetComponent<Rigidbody2D>();
+        player = GameObject.FindGameObjectWithTag("Player");
+        lastPosition = transform.position;
         foreach (var behavior in attackBehaviors)
         {
             if (behavior is IBossAttack attack)
                 attacks.Add(attack);
         }
-
-        animator = GetComponentInChildren<Animator>();
-        player = GameObject.FindGameObjectWithTag("Player");
-        SetNewTargetPosition();
     }
 
-    private void Update()
+    void Update()
     {
-        MoveWithinArea();
-
-        if (player == null) return;
-
-        attackTimer += Time.deltaTime;
-        if (currentAttackIndex < attackIntervals.Length && attackTimer >= attackIntervals[currentAttackIndex])
+        if (isAlive)
         {
-            ExecuteRandomAttack();
-            currentAttackIndex++;
+            HandleMovement();
+            HandleAttacks();
+            HandleMinionSpawn();
+            UpdateAnimations();
         }
-        ChangeAnimations();
     }
 
-    void MoveWithinArea()
+    void HandleMovement()
     {
-        transform.position = Vector3.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
+        if (idleTimer >= idleDuration) MoveToRandomPosition();
+        else idleTimer += Time.deltaTime;
+    }
+
+    void MoveToRandomPosition()
+    {
+        float moveStep = moveSpeed * Time.deltaTime;
+        Vector3 newPosition;
+
+        // Inverter direção com baixa chance aleatória (sem estar nos limites)
+        if (Random.value < changeDirectionChance &&
+            transform.position.x > areaMin.x + 0.5f &&
+            transform.position.x < areaMax.x - 0.5f)
+        {
+            movingRight = !movingRight;
+        }
+
+        // Movimento normal com verificação de limites
+        if (movingRight)
+        {
+            newPosition = new Vector3(transform.position.x + moveStep, transform.position.y, transform.position.z);
+
+            if (newPosition.x >= areaMax.x)
+            {
+                newPosition.x = areaMax.x;
+                movingRight = false;
+            }
+        }
+        else
+        {
+            newPosition = new Vector3(transform.position.x - moveStep, transform.position.y, transform.position.z);
+
+            if (newPosition.x <= areaMin.x)
+            {
+                newPosition.x = areaMin.x;
+                movingRight = true;
+            }
+        }
+
+        rb.MovePosition(Vector3.MoveTowards(transform.position, newPosition, moveStep));
         isWalking = true;
+    }
 
-        if (Vector3.Distance(transform.position, targetPosition) < 0.5f)
+    void HandleAttacks()
+    {
+        if (attackTimer <= 0f)
         {
-            SetNewTargetPosition();
+            attackTimer = attackInterval;
+            if (attacks.Count > 0)
+            {
+                attacks[currentAttackIndex].Execute(player);
+                currentAttackIndex = (currentAttackIndex + 1) % attacks.Count;
+            }
+        }
+        else
+        {
+            attackTimer -= Time.deltaTime;
         }
     }
 
-    void SetNewTargetPosition()
+    void HandleMinionSpawn()
     {
-        float x = Random.Range(areaMin.x, areaMax.x);
-        targetPosition = new Vector3(x, transform.position.y, transform.position.z); // Apenas X
+        if (minionSpawnTimer <= 0f)
+        {
+            minionSpawnTimer = minionSpawnInterval;
+            if (minionSpawner != null)
+                minionSpawner.Execute(player);
+        }
+        else
+        {
+            minionSpawnTimer -= Time.deltaTime;
+        }
     }
 
-    void ExecuteRandomAttack()
+    public void TakeDamage(int damage)
     {
-        if (attacks.Count == 0) return;
-        int index = Random.Range(0, attacks.Count);
-        attacks[index].Execute(player);
-        
+        // Lógica para receber dano
+        // Exemplo: Reduzir vida, verificar se está morto, etc.
+        isAlive = true; // Defina como false se o boss morrer
+        UpdateAnimations();
     }
 
-    void ChangeAnimations()
+    void UpdateAnimations()
     {
         animator.SetBool("isWalking", isWalking);
         animator.SetBool("isIdle", isIdle);
         animator.SetBool("isAlive", isAlive);
+
+        // O parâmetro "hit" pode ser setado de forma externa ao levar dano
+        // animator.SetTrigger("hit");
     }
 }

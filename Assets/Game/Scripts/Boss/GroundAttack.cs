@@ -8,7 +8,7 @@ public class GroundAttack : MonoBehaviour, IBossAttack
     {
         if (player == null || groundEffectPrefab == null) return;
 
-        Vector3 spawnPos = player.transform.position;
+        Vector3 spawnPos = transform.position + Vector3.down * 1f;
         Instantiate(groundEffectPrefab, spawnPos, Quaternion.identity);
     }
 }
