@@ -18,9 +18,7 @@ public class MyLight : MonoBehaviour
     }
     void Update()
     {
-        print("Rodando");
         float t = Mathf.PingPong(Time.time * oscilateSpeed, 1);
         light2D.intensity = Mathf.Lerp(intensytiMin, intensytiMax, t);
-        Debug.Log("Intensidade: " + light2D.intensity);
     }
 }
