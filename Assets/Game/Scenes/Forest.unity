@@ -132,11 +132,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1887342867010537932, guid: dca89647ee06fcf4fab5905cf84e56c3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 11.7
+      value: -10.3
       objectReference: {fileID: 0}
     - target: {fileID: 1887342867010537932, guid: dca89647ee06fcf4fab5905cf84e56c3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 15.1
+      value: -17.2
       objectReference: {fileID: 0}
     - target: {fileID: 1887342867010537932, guid: dca89647ee06fcf4fab5905cf84e56c3, type: 3}
       propertyPath: m_LocalPosition.z
@@ -518,7 +518,7 @@ Transform:
   m_GameObject: {fileID: 499320603}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.7, y: 15.1, z: -10}
+  m_LocalPosition: {x: -10.3, y: -17.2, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -715,6 +715,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &973622608
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 973622609}
+  m_Layer: 0
+  m_Name: SpawnPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &973622609
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 973622608}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1667382940}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &975846666
 GameObject:
   m_ObjectHideFlags: 0
@@ -957,7 +988,7 @@ Transform:
   m_GameObject: {fileID: 991084961}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.7, y: 15.1, z: -10}
+  m_LocalPosition: {x: -10.3, y: -17.2, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1276,9 +1307,10 @@ GameObject:
   - component: {fileID: 1667382939}
   - component: {fileID: 1667382942}
   - component: {fileID: 1667382943}
+  - component: {fileID: 1667382944}
   m_Layer: 0
   m_Name: Ent
-  m_TagString: Untagged
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1332,6 +1364,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 975846667}
+  - {fileID: 973622609}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1667382942
@@ -1348,14 +1381,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   areaMin: {x: 0, y: 0}
   areaMax: {x: 25, y: 0}
-  moveSpeed: 2
+  moveSpeed: 8
   idleDuration: 2
-  attackIntervals:
-  - 3
-  - 6
-  - 9
+  attackInterval: 5
+  spawnInterval: 15
   player: {fileID: 0}
-  attackBehaviors: []
+  minionSpawner: {fileID: 0}
+  bulletSpawnPoint: {fileID: 973622608}
+  isIdle: 0
+  isWalking: 0
+  isAlive: 1
+  bullets: []
+  minions: []
 --- !u!50 &1667382943
 Rigidbody2D:
   serializedVersion: 4
@@ -1383,6 +1420,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1667382944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1667382938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5457b757ce8ff2f48abed63a7832b34b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minionPrefab: {fileID: 0}
+  numberToSpawn: 3
 --- !u!1001 &1921532339
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1437,11 +1488,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7431058015376118900, guid: 52b85619a52f7844e90837734397e1ac, type: 3}
       propertyPath: m_LocalScale.y
-      value: 26
+      value: 17.6
       objectReference: {fileID: 0}
     - target: {fileID: 7431058015376118900, guid: 52b85619a52f7844e90837734397e1ac, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 25.9
+      value: 22.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 7431058015376118900, guid: 52b85619a52f7844e90837734397e1ac, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8003521289035210783, guid: 52b85619a52f7844e90837734397e1ac, type: 3}
       propertyPath: m_TagString

@@ -15,7 +15,8 @@ public class GameController : MonoBehaviour
     public GameObject secondBg;
     public GameObject attrBg;
     public bool bossFigth;
-    
+    private BossController bossController;
+
 
     void Awake()
     {
@@ -28,11 +29,13 @@ public class GameController : MonoBehaviour
         attributesUI = Resources.Load<GameObject>("Attributes\\AttributeUpgradeController");
         canvasPos = GameObject.Find("Canvas");
         attributesBackground = GameObject.FindGameObjectWithTag("AttributesBackground");
-        if(sceneName == "Forest") PlayerPrefs.SetInt("maxEnemiesOnSpawner", 1);
+        if (sceneName == "Forest") PlayerPrefs.SetInt("maxEnemiesOnSpawner", 1);
+        bossController = GameObject.FindGameObjectWithTag("Boss").GetComponent<BossController>();
     }
 
     void Start()
     {
+        if(bossController != null) bossController.gameObject.SetActive(bossFigth);
         Instantiate(attributesUI, canvasPos.transform);
     }
 

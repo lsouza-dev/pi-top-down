@@ -1,26 +1,46 @@
 using UnityEngine;
 
-public class MinionSpawner : MonoBehaviour, IBossAttack
+public class MinionSpawner : MonoBehaviour
 {
-    public GameObject minionPrefab;
+    public MinionController minionPrefab;
     public int numberToSpawn = 3;
-    public Vector2 spawnAreaMin;
-    public Vector2 spawnAreaMax;
+    private GameObject bossArea;
+    private BoxCollider2D bossAreaCollider;
 
-    public void Execute(GameObject player)
+    void Awake()
     {
-        if (minionPrefab == null || player == null) return;
+        bossArea = GameObject.FindGameObjectWithTag("BossArea");
+        if (bossArea != null)
+        {
+            bossAreaCollider = bossArea.GetComponent<BoxCollider2D>();
+        }
+    }
+
+    public void Execute()
+    {
+        if (bossAreaCollider == null) return;
 
         for (int i = 0; i < numberToSpawn; i++)
         {
-            Vector3 pos = new Vector3(
-                Random.Range(spawnAreaMin.x, spawnAreaMax.x),
-                Random.Range(spawnAreaMin.y, spawnAreaMax.y),
-                0f
-            );
+            // Calcula uma posição aleatória dentro da área do boss
+            Vector2 randomPoint = GetRandomPointInBossArea();
+            Vector3 spawnPosition = new Vector3(randomPoint.x, randomPoint.y, 0f);
 
-            GameObject minion = Instantiate(minionPrefab, pos, Quaternion.identity);
-            // O minion usará seu script já existente para atacar o player automaticamente
+            Instantiate(minionPrefab, spawnPosition, Quaternion.identity);
         }
+    }
+
+    private Vector2 GetRandomPointInBossArea()
+    {
+        if (bossAreaCollider == null) return Vector2.zero;
+
+        // Obtém os limites do BoxCollider2D
+        Bounds bounds = bossAreaCollider.bounds;
+        
+        // Gera uma posição aleatória dentro dos limites
+        float randomX = Random.Range(bounds.min.x, bounds.max.x);
+        float randomY = Random.Range(bounds.min.y, bounds.max.y);
+
+        return new Vector2(randomX, randomY);
     }
 }

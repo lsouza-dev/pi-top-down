@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ProjectileAttack : MonoBehaviour, IBossAttack
+public class ProjectileAttack : MonoBehaviour
 {
     public GameObject projectilePrefab;
     public float projectileSpeed = 5f;

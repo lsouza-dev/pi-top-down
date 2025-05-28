@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class GroundAttack : MonoBehaviour, IBossAttack
+public class GroundAttack : MonoBehaviour
 {
     public GameObject groundEffectPrefab;
 

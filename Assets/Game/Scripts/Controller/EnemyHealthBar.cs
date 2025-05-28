@@ -15,7 +15,11 @@ public class EnemyHealthBar : MonoBehaviour
     public List<Image> heatlthBarImages = new List<Image>();
     public float timeToDisappear = 5f;
     public float yOffset = .3f;
-    // Start is called before the first frame update
+    [Header("Redimensionamento da Barra de Vida")]
+    public Vector2 healthBarSize = new Vector2(100, 40);
+    public float extraYOffset = -0.2f;
+
+    private SpriteRenderer targetSpriteRenderer;
 
     void Awake()
     {
@@ -29,35 +33,66 @@ public class EnemyHealthBar : MonoBehaviour
         UpdateHealthBar();
     }
 
-
     public void UpdateHealthBar()
     {
         if (isActive)
         {
+            Transform trackedTransform = null;
+            float spriteHeight = 1f;
+
             if (enemyController != null)
             {
+                trackedTransform = enemyController.transform;
+                targetSpriteRenderer = enemyController.GetComponentInChildren<SpriteRenderer>();
+                if (targetSpriteRenderer != null)
+                    spriteHeight = targetSpriteRenderer.bounds.size.y;
                 gameObject.SetActive(true);
-                this.transform.position = Camera.main.WorldToScreenPoint(this.enemyController.transform.position + new Vector3(0, yOffset, 0));
                 lifeBar.value = enemyController.currentHealth / enemyController.maxHealth;
-
-                if(!enemyController.isAlive){
+                if (!enemyController.isAlive)
+                {
                     Destroy(lifeBar.gameObject);
                 }
             }
-            else if(spawnerController != null){
+            else if (spawnerController != null)
+            {
+                trackedTransform = spawnerController.transform;
+                targetSpriteRenderer = spawnerController.GetComponentInChildren<SpriteRenderer>();
+                if (targetSpriteRenderer != null)
+                    spriteHeight = targetSpriteRenderer.bounds.size.y;
                 gameObject.SetActive(true);
-                this.transform.position = Camera.main.WorldToScreenPoint(this.spawnerController.transform.position + new Vector3(0, yOffset, 0));
                 lifeBar.value = spawnerController.currentHealth / spawnerController.maxHealth;
-            }else if(minionController != null){
+            }
+            else if (minionController != null)
+            {
+                trackedTransform = minionController.transform;
+                targetSpriteRenderer = minionController.GetComponentInChildren<SpriteRenderer>();
+                if (targetSpriteRenderer != null)
+                    spriteHeight = targetSpriteRenderer.bounds.size.y;
                 gameObject.SetActive(true);
-                this.transform.position = Camera.main.WorldToScreenPoint(this.minionController.transform.position + new Vector3(0, yOffset, 0));
                 lifeBar.value = minionController.currentHealth / minionController.maxHealth;
+                if (!minionController.isAlive)
+                {
+                    Destroy(lifeBar.gameObject);
+                }
             }
             else
             {
                 gameObject.SetActive(false);
             }
-           
+
+            // Calcula a posição acima da sprite
+            if (trackedTransform != null)
+            {
+                float totalYOffset = spriteHeight / 2f + yOffset + extraYOffset;
+                this.transform.position = Camera.main.WorldToScreenPoint(trackedTransform.position + new Vector3(0, totalYOffset, 0));
+            }
+
+            // Redimensiona a barra de vida
+            RectTransform rt = GetComponent<RectTransform>();
+            if (rt != null)
+            {
+                rt.sizeDelta = healthBarSize;
+            }
 
             LifeBarOpacityController();
         }
@@ -74,6 +109,4 @@ public class EnemyHealthBar : MonoBehaviour
         if (timeToDisappear <= 0) heatlthBarImages.ForEach(h => h.color = new Color(h.color.r, h.color.g, h.color.b, .5f));
         else heatlthBarImages.ForEach(h => h.color = new Color(h.color.r, h.color.g, h.color.b, 1f));
     }
-
-
 }

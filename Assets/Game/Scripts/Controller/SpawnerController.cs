@@ -34,6 +34,7 @@ public class SpawnerController : MonoBehaviour
         boxCollider = GetComponentInChildren<BoxCollider2D>();
         animator = GetComponentInChildren<Animator>();
         currentHealth = maxHealth;
+        if(healthBar.spawnerController != null) healthBar.spawnerController = this;
     }
 
     void Start()

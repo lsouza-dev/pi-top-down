@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3499399267436722374}
   - component: {fileID: 5260774535131364765}
-  - component: {fileID: 1530045759815628632}
+  - component: {fileID: 6265931489565616272}
   m_Layer: 5
   m_Name: HealthBar
   m_TagString: Untagged
@@ -37,7 +37,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 5.2, y: 0}
-  m_SizeDelta: {x: 240, y: 105}
+  m_SizeDelta: {x: 160, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &5260774535131364765
 MonoBehaviour:
@@ -90,7 +90,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1530045759815628632
+--- !u!114 &6265931489565616272
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -103,7 +103,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifeBar: {fileID: 0}
-  enemy: {fileID: 0}
+  isActive: 0
+  enemyController: {fileID: 0}
+  spawnerController: {fileID: 0}
+  minionController: {fileID: 0}
+  heatlthBarImages: []
+  timeToDisappear: 5
+  yOffset: 0.3
+  healthBarSize: {x: 120, y: 40}
+  extraYOffset: -0.2
 --- !u!1 &2191483936020283877
 GameObject:
   m_ObjectHideFlags: 0
