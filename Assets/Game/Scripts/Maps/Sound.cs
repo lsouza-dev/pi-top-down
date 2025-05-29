@@ -4,15 +4,34 @@ using UnityEngine;
 
 public class BossRoomSound : MonoBehaviour
 {
-    public AudioSource bossMusic;
+    public AudioSource Music;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+
         if (other.CompareTag("Player"))
         {
-            if (!bossMusic.isPlaying)
+            print("TriggerEnter");
+            if (!Music.isPlaying)
             {
-                bossMusic.Play();
+                print("Tocando");
+                Music.Play();
+            }
+            else
+            {
+                Music.UnPause();
+            }
+        }
+    }
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            print("TriggerExit");
+            if (Music.isPlaying)
+            {
+            print("parou");
+                Music.Pause();
             }
         }
     }

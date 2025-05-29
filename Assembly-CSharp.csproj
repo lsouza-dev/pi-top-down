@@ -100,6 +100,7 @@
     <Compile Include="Assets\Maps\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
     <Compile Include="Assets\Maps\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeA.cs" />
     <Compile Include="Assets\Maps\TextMesh Pro\Examples &amp; Extras\Scripts\TextConsoleSimulator.cs" />
+    <Compile Include="Assets\Game\Scripts\Maps\LightningFlash.cs" />
     <Compile Include="Assets\Game\Scripts\Maps\UIManager.cs" />
     <Compile Include="Assets\Game\Scripts\Skills\SkillController.cs" />
     <Compile Include="Assets\Maps\TextMesh Pro\Examples &amp; Extras\Scripts\TeleType.cs" />
@@ -114,12 +115,12 @@
     <Compile Include="Assets\Game\Scripts\Maps\Minimap.cs" />
     <Compile Include="Assets\Game\Scripts\Maps\CastleDoor&apos;s.cs" />
     <Compile Include="Assets\Maps\TextMesh Pro\Examples &amp; Extras\Scripts\SkewTextExample.cs" />
-    <Compile Include="Assets\Game\Scripts\Maps\BossRoomSound.cs" />
     <Compile Include="Assets\Game\Scripts\Maps\Sound.cs" />
     <Compile Include="Assets\Game\Scripts\Maps\IceSliding.cs" />
     <Compile Include="Assets\Game\Scripts\Controller\LevelUpController.cs" />
     <Compile Include="Assets\Game\Scripts\Boss\BossController.cs" />
     <Compile Include="Assets\Game\Scripts\Bullet\Bullet.cs" />
+    <Compile Include="Assets\Game\Scripts\Maps\SoundEffects.cs" />
     <Compile Include="Assets\Game\Scripts\Enemy\EnemyController.cs" />
     <Compile Include="Assets\Maps\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark03.cs" />
     <Compile Include="Assets\Maps\TextMesh Pro\Examples &amp; Extras\Scripts\CameraController.cs" />

@@ -9,6 +9,8 @@ public class Scroll : MonoBehaviour
     public bool canInteract = false;
     public bool isLanguageScroll = false;
 
+    [SerializeField] private AudioSource effect;
+
     [SerializeField] private GameObject actionTextGO;
     [SerializeField] private float yOffset = 1f; // Offset vertical do texto na tela
     [SerializeField] public bool isActiveActionTextGO = false;
@@ -125,6 +127,7 @@ public class Scroll : MonoBehaviour
     void OpenBossTxt()
     {
         isActiveActionTextGO = false;
+        effect.Play();
         Time.timeScale = 0f; // Pausa o jogo
         uiManager.BossRead();
     }
@@ -134,6 +137,7 @@ public class Scroll : MonoBehaviour
     {
         isActiveActionTextGO = false;
         uiManager.haveLanguage = true;
+        effect.Play();
         Time.timeScale = 0f; // Pausa o jogo
         uiManager.LanguageRead();
     }
