@@ -89,6 +89,7 @@
     <Compile Include="Assets\Maps\TextMesh Pro\Examples &amp; Extras\Scripts\WarpTextExample.cs" />
     <Compile Include="Assets\Maps\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_PhoneNumberValidator.cs" />
     <Compile Include="Assets\Game\Scripts\Maps\Scroll.cs" />
+    <Compile Include="Assets\Game\Scripts\Bullet\BossBullet.cs" />
     <Compile Include="Assets\Maps\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_FrameRateCounter.cs" />
     <Compile Include="Assets\Game\Scripts\Attributes\UIAtributtesController.cs" />
     <Compile Include="Assets\Game\Scripts\Maps\MyLight.cs" />
@@ -127,7 +128,6 @@
     <Compile Include="Assets\Maps\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextInfoDebugTool.cs" />
     <Compile Include="Assets\Maps\TextMesh Pro\Examples &amp; Extras\Scripts\TMPro_InstructionOverlay.cs" />
     <Compile Include="Assets\Maps\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_DigitValidator.cs" />
-    <Compile Include="Assets\Game\Scripts\Boss\IBossAttack.cs" />
     <Compile Include="Assets\Game\Scripts\Boss\GroundAttack.cs" />
     <Compile Include="Assets\Game\Scripts\Skills\Skill.cs" />
     <Compile Include="Assets\Maps\TextMesh Pro\Examples &amp; Extras\Scripts\ObjectSpin.cs" />

@@ -209,8 +209,7 @@ public class PlayerController : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        if (invencibleTime >= 0) return;
-
+        if (invencibleTime >= 0 || !isAlive) return;
         var dmgController = GetComponent<DamageFeedbackController>();
         dmgController.ShowDamageFeedback(damage,false);
 

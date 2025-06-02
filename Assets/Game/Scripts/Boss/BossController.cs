@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
+using System.Collections;
+using System.Linq;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class BossController : MonoBehaviour
@@ -9,23 +11,21 @@ public class BossController : MonoBehaviour
     public Vector2 areaMax;
     public float moveSpeed = 10f;
     public float idleDuration = 2f;
-    private Vector3 targetPosition;
     private float idleTimer = 0f;
     private Vector3 lastPosition;
     private bool movingRight = false;
     private float changeDirectionChance = 0.01f; // 1% de chance de mudar de direção a cada frame
 
     [Header("Ataques")]
-    public float attackInterval = 3f;
-    public float minionSpawnInterval = 6f;
-    private float attackTimer;
-    private float minionSpawnTimer;
-    private int currentAttackIndex = 0;
+    public float attackInterval = 5f;
+    public float spawnInterval = 15f;
+    private float nextAttackTime;
+    private float nextSpawnTime;
 
     [Header("Referências")]
     public GameObject player;
-    public List<MonoBehaviour> attackBehaviors;
     public MinionSpawner minionSpawner;
+    [SerializeField] private GameObject bulletSpawnPoint;
 
     [Header("Animações")]
     private Animator animator;
@@ -34,18 +34,34 @@ public class BossController : MonoBehaviour
     [SerializeField] private bool isWalking;
     [SerializeField] private bool isAlive = true;
 
-    private List<IBossAttack> attacks = new List<IBossAttack>();
+    [SerializeField] private List<BossBullet> bullets = new List<BossBullet>();
+    private BossBullet currentBullet;
+    [SerializeField] public List<MinionController> minions = new List<MinionController>();
+    private MinionController currentMinion;
 
     void Awake()
     {
         animator = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player");
+        minionSpawner = GetComponent<MinionSpawner>();
         lastPosition = transform.position;
-        foreach (var behavior in attackBehaviors)
+    }
+
+    void Start()
+    {
+        bullets = Resources.LoadAll<BossBullet>("Bullets\\Boss").ToList();
+        minions = Resources.LoadAll<MinionController>("Minions").ToList();
+        currentBullet = bullets.FirstOrDefault();
+        currentMinion = minions.FirstOrDefault();
+        minionSpawner.minionPrefab = currentMinion;
+        currentBullet.minionSpawner = minionSpawner;
+        
+        if (isAlive)
         {
-            if (behavior is IBossAttack attack)
-                attacks.Add(attack);
+            nextAttackTime = Time.time + attackInterval;
+            nextSpawnTime = Time.time + spawnInterval;
+            StartCoroutine(BossActionRoutine());
         }
     }
 
@@ -54,8 +70,6 @@ public class BossController : MonoBehaviour
         if (isAlive)
         {
             HandleMovement();
-            HandleAttacks();
-            HandleMinionSpawn();
             UpdateAnimations();
         }
     }
@@ -105,34 +119,40 @@ public class BossController : MonoBehaviour
         isWalking = true;
     }
 
-    void HandleAttacks()
+    IEnumerator BossActionRoutine()
     {
-        if (attackTimer <= 0f)
+        while (isAlive)
         {
-            attackTimer = attackInterval;
-            if (attacks.Count > 0)
-            {
-                attacks[currentAttackIndex].Execute(player);
-                currentAttackIndex = (currentAttackIndex + 1) % attacks.Count;
-            }
-        }
-        else
-        {
-            attackTimer -= Time.deltaTime;
-        }
-    }
+            float currentTime = Time.time;
 
-    void HandleMinionSpawn()
-    {
-        if (minionSpawnTimer <= 0f)
-        {
-            minionSpawnTimer = minionSpawnInterval;
-            if (minionSpawner != null)
-                minionSpawner.Execute(player);
-        }
-        else
-        {
-            minionSpawnTimer -= Time.deltaTime;
+            // Se ambos os tempos chegarem juntos (com margem de 0.1 segundos)
+            if (Mathf.Abs(nextAttackTime - nextSpawnTime) < 0.1f)
+            {
+                // Prioriza o ataque
+                print("Boss is attacking...");
+                ExecuteAttack();
+                nextAttackTime = currentTime + attackInterval;
+                nextSpawnTime = currentTime + spawnInterval;
+            }
+            else
+            {
+                // Verifica qual ação deve ser executada primeiro
+                if (nextAttackTime <= currentTime)
+                {
+                    print("Boss is attacking...");
+                    ExecuteAttack();
+                    nextAttackTime = currentTime + attackInterval;
+                }
+
+                if (nextSpawnTime <= currentTime)
+                {
+                    print("Boss is spawning minions...");   
+                    minionSpawner.Execute(); // Executa o spawn de minions
+                    nextSpawnTime = currentTime + spawnInterval;
+                }
+            }
+
+            yield return new WaitForSeconds(0.1f); // Pequeno intervalo para não sobrecarregar
         }
     }
 
@@ -152,5 +172,15 @@ public class BossController : MonoBehaviour
 
         // O parâmetro "hit" pode ser setado de forma externa ao levar dano
         // animator.SetTrigger("hit");
+    }
+
+    void ExecuteAttack()
+    {
+        if (bullets.Count > 0 && bulletSpawnPoint != null)
+        {
+            // Instancia a bullet no ponto de spawn
+            BossBullet bullet = Instantiate(currentBullet, bulletSpawnPoint.transform.position, Quaternion.identity);
+            bullet.playerController = player.GetComponent<PlayerController>();
+        }
     }
 }
