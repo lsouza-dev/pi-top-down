@@ -176,7 +176,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4960589485371639800, guid: dca89647ee06fcf4fab5905cf84e56c3, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9026970655102764844, guid: dca89647ee06fcf4fab5905cf84e56c3, type: 3}
       propertyPath: strength
@@ -2576,7 +2576,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 975846667}
-  - {fileID: 973622609}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1667382942
@@ -2596,21 +2595,15 @@ MonoBehaviour:
   moveSpeed: 8
   idleDuration: 2
   attackInterval: 3
-  minionSpawnInterval: 6
-  attackInterval: 5
   spawnInterval: 15
   player: {fileID: 0}
   minionSpawner: {fileID: 0}
-  bulletSpawnPoint: {fileID: 973622608}
+  bulletSpawnPoint: {fileID: 0}
   isIdle: 0
   isWalking: 0
   isAlive: 1
   bullets: []
   minions: []
-  minionSpawner: {fileID: 0}
-  isIdle: 0
-  isWalking: 0
-  isAlive: 1
 --- !u!50 &1667382943
 Rigidbody2D:
   serializedVersion: 4
@@ -2660,6 +2653,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7431058015376118900, guid: 52b85619a52f7844e90837734397e1ac, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 17.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7431058015376118900, guid: 52b85619a52f7844e90837734397e1ac, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 22.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 7431058015376118900, guid: 52b85619a52f7844e90837734397e1ac, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8003521289035210783, guid: 52b85619a52f7844e90837734397e1ac, type: 3}
+      propertyPath: m_TagString
+      value: BossArea
+      objectReference: {fileID: 0}
     - target: {fileID: 3207540019580759328, guid: 12bfc5688ede96f45a5743a21b09ae78, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1
@@ -2703,22 +2712,6 @@ PrefabInstance:
     - target: {fileID: 8103112301569846668, guid: 12bfc5688ede96f45a5743a21b09ae78, type: 3}
       propertyPath: m_Name
       value: Forest
-      objectReference: {fileID: 0}
-    - target: {fileID: 7431058015376118900, guid: 52b85619a52f7844e90837734397e1ac, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 17.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 7431058015376118900, guid: 52b85619a52f7844e90837734397e1ac, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 22.35
-      objectReference: {fileID: 0}
-    - target: {fileID: 7431058015376118900, guid: 52b85619a52f7844e90837734397e1ac, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8003521289035210783, guid: 52b85619a52f7844e90837734397e1ac, type: 3}
-      propertyPath: m_TagString
-      value: BossArea
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
