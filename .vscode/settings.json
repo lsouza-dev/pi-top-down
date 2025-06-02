@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Goblin Legacy.sln"
+    "dotnet.defaultSolution": "pi-top-down.sln"
 }
