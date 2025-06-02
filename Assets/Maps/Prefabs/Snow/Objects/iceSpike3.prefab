@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1957873312282826753}
   m_Layer: 0
   m_Name: iceSpike3
-  m_TagString: Ice
+  m_TagString: Spike
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
