@@ -9,13 +9,12 @@ public class Minimap : MonoBehaviour
     public Vector2 maxBounds; // Limite m�ximo da c�mera (X, Y)
 
     private Camera cam;
-    // private Camera cam;
     private float camWidth, camHeight;
 
     void Start()
     {
-        // cam = GameObject.Find("Virtual Camera").GetComponent<Cinemachine.CinemachineVirtualCamera>();
-        // cam = Camera.main;
+        //cam = GameObject.Find("Virtual Camera").GetComponent<Cinemachine.CinemachineVirtualCamera>();
+        cam = Camera.main;
         camHeight = cam.orthographicSize;
         camWidth = camHeight * cam.aspect; // Aspecto da tela
     }
