@@ -29,6 +29,8 @@ TagManager:
   - SecondBackground
   - MapContainer
   - Boss
+  - Ice
+  - Spike
   layers:
   - Default
   - TransparentFX
