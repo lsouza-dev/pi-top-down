@@ -15,7 +15,8 @@ public class GameController : MonoBehaviour
     public GameObject secondBg;
     public GameObject attrBg;
     public bool bossFigth;
-    private BossController bossController;
+    [SerializeField] public BossController bossController;
+    public float camOffset = 4.3f;
 
 
     void Awake()
