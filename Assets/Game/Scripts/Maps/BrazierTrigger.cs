@@ -44,12 +44,12 @@ public class BrazierTrigger : MonoBehaviour
                 {
                     var spRender = GetComponentInChildren<SpriteRenderer>();
                     spRender.sprite = sprite;
-                }
+                }                
                 fireParticles.Play(); // Ativa as part�culas
                 foreach (Light2D li in light2D)
                 {
                     li.gameObject.SetActive(true);
-                }
+                }           
             }
         }
     }
