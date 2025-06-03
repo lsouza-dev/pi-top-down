@@ -31,6 +31,7 @@ TagManager:
   - Boss
   - Ice
   - Spike
+  - Canvas
   layers:
   - Default
   - TransparentFX

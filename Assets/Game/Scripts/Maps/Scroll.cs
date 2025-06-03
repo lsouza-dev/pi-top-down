@@ -10,7 +10,6 @@ public class Scroll : MonoBehaviour
     public bool isLanguageScroll = false;
 
     [SerializeField] private AudioSource effect;
-
     [SerializeField] private GameObject actionTextGO;
     [SerializeField] private float yOffset = 1f; // Offset vertical do texto na tela
     [SerializeField] public bool isActiveActionTextGO = false;
@@ -25,11 +24,13 @@ public class Scroll : MonoBehaviour
     private bool pulsing = false;
     private Coroutine pulseCoroutine;
     private TextMeshProUGUI actionTMP;
+    private SpriteRenderer sprite;
 
     void Awake()
     {
         if (instance == null)
             instance = this;
+         sprite = GetComponentInChildren<SpriteRenderer>();
     }
 
     private void Start()
@@ -48,17 +49,20 @@ public class Scroll : MonoBehaviour
 
             if (isLanguageScroll) LearnLanguage();
             else OpenBossTxt();
-            
+
         }
-        else if(canInteract &&  !isActiveActionTextGO && Input.GetKeyDown(KeyCode.F))
+        else if (canInteract && !isActiveActionTextGO && Input.GetKeyDown(KeyCode.F))
             uiManager.CloseRead();
-        
+
 
         if (isActiveActionTextGO && actionTextGO != null)
         {
             Vector3 screenPos = Camera.main.WorldToScreenPoint(transform.position + new Vector3(0, yOffset, 0));
             actionTextGO.transform.position = screenPos;
         }
+
+        // sprite.gameObject.SetActive(true);
+        // sprite.gameObject.transform.position = transform.position;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -130,6 +134,7 @@ public class Scroll : MonoBehaviour
         effect.Play();
         Time.timeScale = 0f; // Pausa o jogo
         uiManager.BossRead();
+        GameManager.Instance.SetBossScrollInteracted();
     }
 
 
@@ -140,5 +145,6 @@ public class Scroll : MonoBehaviour
         effect.Play();
         Time.timeScale = 0f; // Pausa o jogo
         uiManager.LanguageRead();
+        GameManager.Instance.CollectScroll("Language");
     }
 }

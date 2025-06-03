@@ -73,7 +73,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 20
   m_Sprite: {fileID: -1285955, guid: e32fe4fc57389804c9e1ef7b5bf9cc1b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -291,6 +291,7 @@ MonoBehaviour:
   TranslateTxt: "Agora voc\xEA entende o que est\xE1 escrito!"
   canInteract: 0
   isLanguageScroll: 0
+  effect: {fileID: 0}
   actionTextGO: {fileID: 4542246163633807460}
   yOffset: 1
   isActiveActionTextGO: 0

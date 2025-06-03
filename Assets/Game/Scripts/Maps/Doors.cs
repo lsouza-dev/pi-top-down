@@ -1,28 +1,67 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 
 public class DoorTeleporter : MonoBehaviour
 {
+    public enum DoorUnlockCondition
+    {
+        None,
+        AllSpawnersDestroyed,
+        GotLanguageScroll,
+        InteractedWithBossScroll
+    }
+
     [Header("Destino da porta")]
     public Transform destination;
 
     [Header("Deslocamento aplicado ao destino")]
     public Vector2 offset = new Vector2(-0.1f, -0.6f);
 
+    [Header("Condição de desbloqueio da porta")]
+    public DoorUnlockCondition unlockCondition = DoorUnlockCondition.None;
+
     private bool playerInRange = false;
-    private bool canTeleport = true; // Controle de cooldown de teleporte
+    private bool canTeleport = true;
+    private bool isUnlocked = false;
 
     private GameObject player;
 
     private void Update()
     {
-        if (playerInRange && canTeleport && Input.GetKeyDown(KeyCode.F))
+        CheckUnlockCondition();
+
+        if (playerInRange && canTeleport && isUnlocked && Input.GetKeyDown(KeyCode.Space))
         {
             TeleportPlayer();
+        }
+    }
+
+    private void CheckUnlockCondition()
+    {
+        if (GameManager.Instance == null)
+        {
+            isUnlocked = false;
+            return;
+        }
+
+        switch (unlockCondition)
+        {
+            case DoorUnlockCondition.None:  
+                isUnlocked = true;
+                break;
+
+            case DoorUnlockCondition.AllSpawnersDestroyed:
+                isUnlocked = GameManager.Instance.AreAllSpawnersDestroyed();
+                break;
+
+            case DoorUnlockCondition.GotLanguageScroll:
+                isUnlocked = GameManager.Instance.HasScroll("Language");
+                break;
+
+            case DoorUnlockCondition.InteractedWithBossScroll:
+                isUnlocked = GameManager.Instance.HasScroll("Language") &&
+                             GameManager.Instance.HasInteractedWithBossScroll();
+                break;
         }
     }
 
@@ -30,25 +69,21 @@ public class DoorTeleporter : MonoBehaviour
     {
         if (destination == null || player == null) return;
 
-        // Teleporta o jogador com offset
         player.transform.position = (Vector2)destination.position + offset;
 
-        // Avisa a porta de destino para não teleportar imediatamente de volta
         DoorTeleporter destinationDoor = destination.GetComponent<DoorTeleporter>();
         if (destinationDoor != null)
         {
             destinationDoor.DisableTeleportTemporarily();
         }
 
-        // Desabilita teleporte temporariamente nesta porta
         canTeleport = false;
     }
 
-    // Usado pela porta de origem para desabilitar temporariamente o teleporte
     public void DisableTeleportTemporarily()
     {
         canTeleport = false;
-        Invoke(nameof(EnableTeleport), 0.5f); // Reativa depois de meio segundo
+        Invoke(nameof(EnableTeleport), 0.5f);
     }
 
     private void EnableTeleport()
@@ -71,7 +106,7 @@ public class DoorTeleporter : MonoBehaviour
         {
             playerInRange = false;
             player = null;
-            EnableTeleport(); // Garante que a porta possa ser usada novamente depois
+            EnableTeleport();
         }
     }
 }

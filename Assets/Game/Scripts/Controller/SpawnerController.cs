@@ -27,6 +27,9 @@ public class SpawnerController : MonoBehaviour
     [SerializeField] private int maxEnemiesSpawneds = 5;
     public string sceneName;
 
+    private static int totalSpawners = 0;
+    private static int destroySpawners = 0;
+
     void Awake()
     {
         instance = instance == null ? this : instance;
@@ -34,7 +37,10 @@ public class SpawnerController : MonoBehaviour
         boxCollider = GetComponentInChildren<BoxCollider2D>();
         animator = GetComponentInChildren<Animator>();
         currentHealth = maxHealth;
-        if(healthBar.spawnerController != null) healthBar.spawnerController = this;
+        if (healthBar.spawnerController != null) healthBar.spawnerController = this;
+
+        totalSpawners = FindObjectsOfType<SpawnerController>().Count();
+        print("spawner criado. Total atual:" + totalSpawners);
     }
 
     void Start()
@@ -142,8 +148,25 @@ public class SpawnerController : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            Destroy(gameObject);
+            HandleDeath();
         }
+    }
+
+    private void HandleDeath()
+    {
+        destroySpawners++;
+        print($"Spawners Destruidos: {destroySpawners} - Total atual:{totalSpawners - destroySpawners}");
+        if (destroySpawners >= totalSpawners)
+        {
+            if (GameManager.Instance != null)
+            {
+                GameManager.Instance.SetAllSpawnersDestroyed();
+                print("Labirinto Destrancado");
+            }
+            else
+                print("Instancia null");
+        }
+        Destroy(gameObject);
     }
 
     private IEnumerator RespawnEnemies()
@@ -152,5 +175,5 @@ public class SpawnerController : MonoBehaviour
         yield return new WaitForSeconds(5f);
         SpawnEnemies();
         isRespawningCoroutineRunning = false;
-    }
+    }   
 }

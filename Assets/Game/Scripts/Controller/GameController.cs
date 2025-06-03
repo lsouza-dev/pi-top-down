@@ -28,7 +28,7 @@ public class GameController : MonoBehaviour
         mapContainer = GameObject.FindGameObjectWithTag("MapContainer");
         sceneName = SceneManager.GetActiveScene().name;
         attributesUI = Resources.Load<GameObject>("Attributes\\AttributeUpgradeController");
-        canvasPos = GameObject.Find("Canvas");
+        canvasPos = GameObject.FindWithTag("Canvas");
         attributesBackground = GameObject.FindGameObjectWithTag("AttributesBackground");
         if (sceneName == "Forest") PlayerPrefs.SetInt("maxEnemiesOnSpawner", 1);
         bossController = GameObject.FindGameObjectWithTag("Boss").GetComponent<BossController>();
