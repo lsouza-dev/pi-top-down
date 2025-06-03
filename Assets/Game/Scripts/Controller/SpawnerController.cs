@@ -143,7 +143,6 @@ public class SpawnerController : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        print($"Health: {currentHealth} - Damage: {damage} - Life Remain: {currentHealth - damage}");
         currentHealth -= damage;
 
         if (currentHealth <= 0)
