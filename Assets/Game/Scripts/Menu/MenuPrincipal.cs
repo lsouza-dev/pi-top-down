@@ -33,7 +33,7 @@ public class menuprincipal : MonoBehaviour
    public void iniciar()
    {
 
-      SceneManager.LoadScene("Game");
+      SceneManager.LoadScene("Forest");
    }
 
    public void EscolherClasse()
