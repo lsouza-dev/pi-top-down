@@ -11,6 +11,7 @@ public class EnemyHealthBar : MonoBehaviour
     [SerializeField] public EnemyController enemyController;
     [SerializeField] public SpawnerController spawnerController;
     [SerializeField] public MinionController minionController;
+    [SerializeField] public BossController bossController;
 
     public List<Image> heatlthBarImages = new List<Image>();
     public float timeToDisappear = 5f;
@@ -71,6 +72,19 @@ public class EnemyHealthBar : MonoBehaviour
                 gameObject.SetActive(true);
                 lifeBar.value = minionController.currentHealth / minionController.maxHealth;
                 if (!minionController.isAlive)
+                {
+                    Destroy(lifeBar.gameObject);
+                }
+            }
+            else if (bossController != null)
+            {
+                trackedTransform = bossController.transform;
+                targetSpriteRenderer = bossController.GetComponentInChildren<SpriteRenderer>();
+                if (targetSpriteRenderer != null)
+                    spriteHeight = targetSpriteRenderer.bounds.size.y;
+                gameObject.SetActive(true);
+                lifeBar.value = bossController.currentHealth / bossController.maxHealth;
+                if (!bossController.isAlive)
                 {
                     Destroy(lifeBar.gameObject);
                 }

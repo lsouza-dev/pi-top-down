@@ -29,6 +29,7 @@ public class Bullet : MonoBehaviour
         sr = GetComponentInChildren<SpriteRenderer>();
         damage = playerController.strength;
         anim = GetComponentInChildren<Animator>();
+        
     }
 
     // Start is called before the first frame update
@@ -59,11 +60,13 @@ public class Bullet : MonoBehaviour
     {
         var isEnemy = other.gameObject.CompareTag("Enemy") && !other.gameObject.name.Contains("Minion");
         var isMinion = other.gameObject.CompareTag("Enemy") && other.gameObject.name.Contains("Minion");
+        var isBoss = other.gameObject.CompareTag("Boss");
         var isTower = other.gameObject.CompareTag("TowerEnemy");
         var isSpawner = other.gameObject.CompareTag("Spawner");
 
-        if (isEnemy || isTower || isSpawner || isMinion)
+        if (isEnemy || isTower || isSpawner || isMinion || isBoss)
         {
+            print($"E: {isEnemy} T: {isTower}  M: {isMinion} B: {isBoss} S: {isSpawner}");
             var dmg = other.gameObject.GetComponent<DamageFeedbackController>();
 
             if (!isSpawner)
@@ -84,6 +87,15 @@ public class Bullet : MonoBehaviour
                     minion.healthBar.yOffset = .3f;
                     minion.healthBar.UpdateHealthBar();
                     minion.TakeDamage(damage);
+                }
+                else if (isBoss)
+                {
+                    var boss = other.gameObject.GetComponent<BossController>();
+                    boss.healthBar.timeToDisappear = 5f;
+                    boss.healthBar.isActive = true;
+                    boss.healthBar.yOffset = .3f;
+                    boss.healthBar.UpdateHealthBar();
+                    boss.TakeDamage(damage);
                 }
                 else
                 {

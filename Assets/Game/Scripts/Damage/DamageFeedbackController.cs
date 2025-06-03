@@ -22,7 +22,7 @@ public class DamageFeedbackController : MonoBehaviour
 
     void Start()
     {
-        isPlayer = !gameObject.name.Contains("(Clone)") && !gameObject.name.Contains("Spawner") && !gameObject.name.Contains("Minion");
+        isPlayer = !gameObject.name.Contains("(Clone)") && !gameObject.name.Contains("Spawner") && !gameObject.name.Contains("Minion") && !gameObject.name.Contains("Boss");
     }
 
     public void ShowDamageFeedback(float damageAmount,bool isCrit)
@@ -41,6 +41,8 @@ public class DamageFeedbackController : MonoBehaviour
         floatingComponent.offset += new Vector3(xOffset, 0, 0);
 
         color = isPlayer ? Color.red : Color.white;
+
+
         color = isCrit ? Color.yellow : color;
         floatingComponent.tmpText.color = color;
 

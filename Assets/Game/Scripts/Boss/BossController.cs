@@ -26,16 +26,20 @@ public class BossController : MonoBehaviour
     public GameObject player;
     public MinionSpawner minionSpawner;
     [SerializeField] private GameObject bulletSpawnPoint;
+    [SerializeField] public EnemyHealthBar healthBar;
+    public float maxHealth = 100f;
+    public float currentHealth = 100f;
 
     [Header("Animações")]
     private Animator animator;
     private Rigidbody2D rb;
     [SerializeField] private bool isIdle;
     [SerializeField] private bool isWalking;
-    [SerializeField] private bool isAlive = true;
+    [SerializeField] public bool isAlive = true;
 
     [SerializeField] private List<BossBullet> bullets = new List<BossBullet>();
     private BossBullet currentBullet;
+    private LevelUpController levelUpController;
     [SerializeField] public List<MinionController> minions = new List<MinionController>();
     private MinionController currentMinion;
 
@@ -46,6 +50,7 @@ public class BossController : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         minionSpawner = GetComponent<MinionSpawner>();
         lastPosition = transform.position;
+        levelUpController = FindObjectOfType<LevelUpController>();
     }
 
     void Start()
@@ -156,12 +161,25 @@ public class BossController : MonoBehaviour
         }
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
-        // Lógica para receber dano
-        // Exemplo: Reduzir vida, verificar se está morto, etc.
-        isAlive = true; // Defina como false se o boss morrer
-        UpdateAnimations();
+        this.currentHealth -= damage;
+        animator.SetTrigger("isDamage");
+        if (this.currentHealth <= 0)
+        {
+            isAlive = false;
+            var player = FindObjectOfType<PlayerController>();
+            player.xp += 20;
+            rb.velocity = Vector2.zero;
+
+            if (player.xp >= player.nexLevelPoints) levelUpController.LevelUp();
+
+            animator.SetTrigger("isDie");
+            animator.SetBool("isAlive", false);
+
+            CapsuleCollider2D coll = GetComponent<CapsuleCollider2D>();
+            coll.enabled = false;
+        }
     }
 
     void UpdateAnimations()
@@ -178,7 +196,7 @@ public class BossController : MonoBehaviour
     {
         if (bullets.Count > 0 && bulletSpawnPoint != null)
         {
-            // Instancia a bullet no ponto de spawn
+            animator.SetTrigger("isAttack");
             BossBullet bullet = Instantiate(currentBullet, bulletSpawnPoint.transform.position, Quaternion.identity);
             bullet.playerController = player.GetComponent<PlayerController>();
         }
