@@ -83,6 +83,7 @@ MonoBehaviour:
   animator: {fileID: 0}
   player: {fileID: 0}
   isAlive: 1
+  rb: {fileID: 0}
 --- !u!114 &4851220916565992043
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -100,11 +101,12 @@ MonoBehaviour:
   animator: {fileID: 0}
   player: {fileID: 0}
   isAlive: 1
+  rb: {fileID: 0}
   attackType: 0
   attackDistance: 1.75
   moveSpeed: 1
   attackCooldown: 2
-  startDelay: 0.5
+  startDelay: 1.75
   attackCollider: {fileID: 7284494277996655889}
   projectilePrefab: {fileID: 0}
   projectileSpawnPoint: {fileID: 0}
@@ -360,7 +362,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.31879544}

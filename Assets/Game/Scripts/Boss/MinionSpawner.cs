@@ -2,10 +2,11 @@ using UnityEngine;
 
 public class MinionSpawner : MonoBehaviour
 {
-    public MinionController minionPrefab;
+    public RootController rootController;
     public int numberToSpawn = 3;
     private GameObject bossArea;
     private BoxCollider2D bossAreaCollider;
+
 
     void Awake()
     {
@@ -26,7 +27,7 @@ public class MinionSpawner : MonoBehaviour
             Vector2 randomPoint = GetRandomPointInBossArea();
             Vector3 spawnPosition = new Vector3(randomPoint.x, randomPoint.y, 0f);
 
-            Instantiate(minionPrefab, spawnPosition, Quaternion.identity);
+            Instantiate(rootController, spawnPosition, Quaternion.identity);
         }
     }
 

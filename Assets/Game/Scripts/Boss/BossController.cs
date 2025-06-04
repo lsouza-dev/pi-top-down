@@ -41,7 +41,9 @@ public class BossController : MonoBehaviour
     private BossBullet currentBullet;
     private LevelUpController levelUpController;
     [SerializeField] public List<MinionController> minions = new List<MinionController>();
+    
     private MinionController currentMinion;
+    private RootController rootController;
 
     void Awake()
     {
@@ -51,6 +53,7 @@ public class BossController : MonoBehaviour
         minionSpawner = GetComponent<MinionSpawner>();
         lastPosition = transform.position;
         levelUpController = FindObjectOfType<LevelUpController>();
+        rootController = Resources.Load<RootController>("Root/Root");
     }
 
     void Start()
@@ -59,8 +62,8 @@ public class BossController : MonoBehaviour
         minions = Resources.LoadAll<MinionController>("Minions").ToList();
         currentBullet = bullets.FirstOrDefault();
         currentMinion = minions.FirstOrDefault();
-        minionSpawner.minionPrefab = currentMinion;
         currentBullet.minionSpawner = minionSpawner;
+        minionSpawner.rootController = rootController;
         
         if (isAlive)
         {
