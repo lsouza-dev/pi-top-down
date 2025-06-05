@@ -96,7 +96,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 20
+  m_SortingOrder: 14
   m_Sprite: {fileID: 172254546, guid: 78123afb57789bb4ca146b805e83b1e6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -228,6 +228,7 @@ GameObject:
   - component: {fileID: 2567594268146112582}
   - component: {fileID: 1342481747709705645}
   - component: {fileID: 4926605776445313748}
+  - component: {fileID: 9073911296935060455}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -465,6 +466,20 @@ MonoBehaviour:
   player: {fileID: 0}
   xOffset: 1
   color: {r: 0, g: 0, b: 0, a: 0}
+--- !u!114 &9073911296935060455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4960589485371639800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f26bb428b76edfa45b324f551e65c1d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slideSpeed: 5
+  gridSize: 0.5
 --- !u!1 &5734906362682855608
 GameObject:
   m_ObjectHideFlags: 0
