@@ -13,7 +13,11 @@ GameObject:
   - component: {fileID: -2673055235079441765}
   m_Layer: 3
   m_Name: Stone2 Ground
+<<<<<<< HEAD
   m_TagString: Wall
+=======
+  m_TagString: Objects
+>>>>>>> a40413aafbe5c7ff92299c58b71f2f16e8caa3c1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

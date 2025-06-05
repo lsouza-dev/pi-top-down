@@ -83,6 +83,7 @@ public class UIManager : MonoBehaviour
         }
         else
         {
+            GameManager.Instance.SetBossScrollInteracted();
             switch (index)
             {
                 case 0:

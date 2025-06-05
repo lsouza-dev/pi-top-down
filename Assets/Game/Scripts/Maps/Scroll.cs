@@ -134,7 +134,6 @@ public class Scroll : MonoBehaviour
         effect.Play();
         Time.timeScale = 0f; // Pausa o jogo
         uiManager.BossRead();
-        GameManager.Instance.SetBossScrollInteracted();
     }
 
 
