@@ -783,7 +783,7 @@ Transform:
   m_GameObject: {fileID: 499320603}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 35.5, y: 33, z: -10}
+  m_LocalPosition: {x: 31, y: 27, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1303,7 +1303,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6248118671531071115, guid: 82e3e2684b3ba054b8751e410b8a753a, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: ScrollLang
       objectReference: {fileID: 0}
     - target: {fileID: 6632388661240349532, guid: 82e3e2684b3ba054b8751e410b8a753a, type: 3}
       propertyPath: effect
@@ -1804,7 +1804,7 @@ Transform:
   m_GameObject: {fileID: 991084961}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 35.5, y: 33, z: -10}
+  m_LocalPosition: {x: 31, y: 27, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2345,11 +2345,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1887342867010537932, guid: dca89647ee06fcf4fab5905cf84e56c3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 35.5
+      value: 31
       objectReference: {fileID: 0}
     - target: {fileID: 1887342867010537932, guid: dca89647ee06fcf4fab5905cf84e56c3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 33
+      value: 27
       objectReference: {fileID: 0}
     - target: {fileID: 1887342867010537932, guid: dca89647ee06fcf4fab5905cf84e56c3, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2389,11 +2389,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9026970655102764844, guid: dca89647ee06fcf4fab5905cf84e56c3, type: 3}
       propertyPath: maxSpeed
-      value: 3
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 9026970655102764844, guid: dca89647ee06fcf4fab5905cf84e56c3, type: 3}
       propertyPath: strength
-      value: 9
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 9073911296935060455, guid: dca89647ee06fcf4fab5905cf84e56c3, type: 3}
       propertyPath: m_Enabled
@@ -2554,7 +2554,7 @@ Transform:
   m_GameObject: {fileID: 1757277007}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 35.5, y: 34.75, z: -2.2323115}
+  m_LocalPosition: {x: 35.5, y: 34.942, z: -2.2323115}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -61222,6 +61222,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ScrollBoss
       objectReference: {fileID: 0}
+    - target: {fileID: 6248118671531071115, guid: 01593e79e51c2a04daa8c6120623dc35, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 6632388661240349532, guid: 01593e79e51c2a04daa8c6120623dc35, type: 3}
       propertyPath: effect
       value: 
@@ -61317,7 +61321,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2112662782
 Transform:
   m_ObjectHideFlags: 0

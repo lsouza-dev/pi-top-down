@@ -7,11 +7,11 @@ using UnityEngine.UI;
 public class LoadingScreenController : MonoBehaviour
 {
     public Image loadingImage;
-    public Sprite florestaSprite;
-    public Sprite pantanoSprite;
-    public Sprite neveSprite;
-    public Sprite desertoSprite;
-    public Sprite bossSprite;
+    public Sprite forestSprite;
+    public Sprite swampSprite;
+    public Sprite snowSprite;
+    public Sprite desertSprite;
+    public Sprite finalBossSprite;
 
     void Awake()
     {
@@ -27,19 +27,20 @@ public class LoadingScreenController : MonoBehaviour
         switch (targetScene)
         {
             case "Forest":
-                loadingImage.sprite = florestaSprite;
+                loadingImage.sprite = forestSprite;
                 break;
             case "Swamp":
-                loadingImage.sprite = pantanoSprite;
+                loadingImage.sprite = swampSprite;
                 break;
             case "Snow":
-                loadingImage.sprite = neveSprite;
+                loadingImage.sprite = snowSprite;
                 break;
             case "Desert":
-                loadingImage.sprite = desertoSprite;
+                loadingImage.sprite = desertSprite;                
+                transform.localScale = new Vector3(-1, 1, 1);
                 break;
             case "FinalBoss":
-                loadingImage.sprite = bossSprite;
+                loadingImage.sprite = finalBossSprite;
                 break;
             default:
                 print("cena nao encontrada");
@@ -51,7 +52,7 @@ public class LoadingScreenController : MonoBehaviour
 
     IEnumerator LoadAsyncScene(string sceneName)
     {
-        yield return new WaitForSeconds(3f); // tempo para exibir a imagem
+        yield return new WaitForSeconds(7f); // tempo para exibir a imagem
         AsyncOperation operation = SceneManager.LoadSceneAsync(sceneName);
         while (!operation.isDone)
         {
