@@ -116,6 +116,7 @@
     <Compile Include="Assets\Game\Scripts\Controller\ClassSelector.cs" />
     <Compile Include="Assets\Maps\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventCheck.cs" />
     <Compile Include="Assets\Game\Scripts\Menu\MenuPrincipal.cs" />
+    <Compile Include="Assets\Game\Scripts\Boss\RootController.cs" />
     <Compile Include="Assets\Game\Scripts\Maps\Minimap.cs" />
     <Compile Include="Assets\Game\Scripts\Maps\CastleDoor&apos;s.cs" />
     <Compile Include="Assets\Maps\TextMesh Pro\Examples &amp; Extras\Scripts\SkewTextExample.cs" />
