@@ -79,7 +79,6 @@ public class menuprincipal : MonoBehaviour
       
       activeToggle = toggles.FirstOrDefault(t => t.isOn);
       if (activeToggle != null) { 
-         print($"Toggle selecionado: {toggles.IndexOf(activeToggle)} | Classe: {activeToggle.name}"); 
          playButton.interactable = true;
       } else playButton.interactable = false;
       

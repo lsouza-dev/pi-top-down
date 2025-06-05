@@ -53,9 +53,7 @@ public class MinionController : Enemy
 
     void Update()
     {
-        print("Can Act:  " + canAct);
         if (!isAlive || !canAct || player == null) return;
-        print("DelayTime:  " + startDelay);
 
         distanceToPlayer = Vector2.Distance(transform.position, player.transform.position);
         currentAttackCooldown -= Time.deltaTime;

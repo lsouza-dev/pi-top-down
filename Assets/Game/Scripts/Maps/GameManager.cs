@@ -17,7 +17,6 @@ public class GameManager : MonoBehaviour
     public void SetAllSpawnersDestroyed()
     {
         allSpawnersDestroyed = true;
-        Debug.Log("Todos os spawners foram destruídos!");
     }
 
     public bool AreAllSpawnersDestroyed()
@@ -30,7 +29,6 @@ public class GameManager : MonoBehaviour
         if (!scrollsCollected.Contains(scrollName))
         {
             scrollsCollected.Add(scrollName);
-            Debug.Log($"Pergaminho '{scrollName}' coletado!");
         }
     }
 
@@ -42,7 +40,6 @@ public class GameManager : MonoBehaviour
     public void SetBossScrollInteracted()
     {
         bossScrollInteracted = true;
-        Debug.Log("Interação com o pergaminho do boss concluída!");
     }
 
     public bool HasInteractedWithBossScroll()

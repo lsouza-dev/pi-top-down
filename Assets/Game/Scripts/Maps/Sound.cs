@@ -11,10 +11,8 @@ public class BossRoomSound : MonoBehaviour
 
         if (other.CompareTag("Player"))
         {
-            print("TriggerEnter");
             if (!Music.isPlaying)
             {
-                print("Tocando");
                 Music.Play();
             }
             else
@@ -27,10 +25,8 @@ public class BossRoomSound : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            print("TriggerExit");
             if (Music.isPlaying)
             {
-            print("parou");
                 Music.Pause();
             }
         }

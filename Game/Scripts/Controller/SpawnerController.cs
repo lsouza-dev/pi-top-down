@@ -60,7 +60,6 @@ public class SpawnerController : MonoBehaviour
             if (!isRespawningCoroutineRunning) 
             {
                 StartCoroutine(RespawnEnemies());
-                print("Corrotina RespawnEnemies iniciada.");
             }
         }
         else
@@ -117,26 +116,8 @@ public class SpawnerController : MonoBehaviour
         }
     }
 
-    // void OnTriggerEnter2D(Collider2D other)
-    // {
-    //     if (other.gameObject.CompareTag("Bullet"))
-    //     {
-    //         var damage = other.gameObject.GetComponent<Bullet>().damage;
-
-    //         Destroy(other.gameObject);
-
-    //         var dmgController = GetComponent<DamageFeedbackController>();
-    //         dmgController.ShowDamageFeedback(damage);
-            
-    //         TakeDamage(damage);
-
-    //         Debug.Log("Ai papai, tomei dano: " + damage);
-    //     }
-    // }
-
     public void TakeDamage(float damage)
     {
-        print($"Health: {currentHealth} - Damage: {damage} - Life Remain: {currentHealth - damage}");
         currentHealth -= damage;
 
         if (currentHealth <= 0)

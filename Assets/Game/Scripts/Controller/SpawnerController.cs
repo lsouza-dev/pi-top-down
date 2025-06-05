@@ -40,7 +40,6 @@ public class SpawnerController : MonoBehaviour
         if (healthBar.spawnerController != null) healthBar.spawnerController = this;
 
         totalSpawners = FindObjectsOfType<SpawnerController>().Count();
-        print("spawner criado. Total atual:" + totalSpawners);
     }
 
     void Start()
@@ -67,7 +66,6 @@ public class SpawnerController : MonoBehaviour
             if (!isRespawningCoroutineRunning) 
             {
                 StartCoroutine(RespawnEnemies());
-                print("Corrotina RespawnEnemies iniciada.");
             }
         }
         else
@@ -124,23 +122,6 @@ public class SpawnerController : MonoBehaviour
         }
     }
 
-    // void OnTriggerEnter2D(Collider2D other)
-    // {
-    //     if (other.gameObject.CompareTag("Bullet"))
-    //     {
-    //         var damage = other.gameObject.GetComponent<Bullet>().damage;
-
-    //         Destroy(other.gameObject);
-
-    //         var dmgController = GetComponent<DamageFeedbackController>();
-    //         dmgController.ShowDamageFeedback(damage);
-            
-    //         TakeDamage(damage);
-
-    //         Debug.Log("Ai papai, tomei dano: " + damage);
-    //     }
-    // }
-
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;
@@ -154,7 +135,6 @@ public class SpawnerController : MonoBehaviour
     private void HandleDeath()
     {
         destroySpawners++;
-        print($"Spawners Destruidos: {destroySpawners} - Total atual:{totalSpawners - destroySpawners}");
         if (destroySpawners >= totalSpawners)
         {
             if (GameManager.Instance != null)
@@ -162,8 +142,6 @@ public class SpawnerController : MonoBehaviour
                 GameManager.Instance.SetAllSpawnersDestroyed();
                 print("Labirinto Destrancado");
             }
-            else
-                print("Instancia null");
         }
         Destroy(gameObject);
     }

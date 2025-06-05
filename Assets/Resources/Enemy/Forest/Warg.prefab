@@ -206,6 +206,7 @@ MonoBehaviour:
   animator: {fileID: 0}
   player: {fileID: 0}
   isAlive: 1
+  rb: {fileID: 0}
 --- !u!114 &5921470528859192769
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -223,6 +224,7 @@ MonoBehaviour:
   animator: {fileID: 0}
   player: {fileID: 0}
   isAlive: 1
+  rb: {fileID: 0}
   chaseDistance: 4
   atkDistance: 1.5
   patrolArea: 6
@@ -474,16 +476,8 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6026747972197595688}
     m_Modifications:
-    - target: {fileID: 1530045759815628632, guid: 2129e2f857c81a14c8447220a47a1390, type: 3}
-      propertyPath: enemyController
-      value: 
-      objectReference: {fileID: 5921470528859192769}
-    - target: {fileID: 8853088739730624390, guid: 2129e2f857c81a14c8447220a47a1390, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8853088739730624390, guid: 2129e2f857c81a14c8447220a47a1390, type: 3}
-      propertyPath: m_AnchorMax.y
+    - target: {fileID: 798021017019259188, guid: 25082181168adda4d952534c58bdf1d3, type: 3}
+      propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 997942627527772386, guid: 25082181168adda4d952534c58bdf1d3, type: 3}
@@ -562,15 +556,43 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2191483936020283877, guid: 25082181168adda4d952534c58bdf1d3, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3482815619004857097, guid: 25082181168adda4d952534c58bdf1d3, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8687949685559419670, guid: 25082181168adda4d952534c58bdf1d3, type: 3}
       propertyPath: m_Name
       value: EnemyHealthBar
+      objectReference: {fileID: 0}
+    - target: {fileID: 8687949685559419670, guid: 25082181168adda4d952534c58bdf1d3, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8853088739730624390, guid: 25082181168adda4d952534c58bdf1d3, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8853088739730624390, guid: 25082181168adda4d952534c58bdf1d3, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9080979601765481700, guid: 25082181168adda4d952534c58bdf1d3, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1530045759815628632, guid: 2129e2f857c81a14c8447220a47a1390, type: 3}
+      propertyPath: enemyController
+      value: 
+      objectReference: {fileID: 5921470528859192769}
+    - target: {fileID: 8853088739730624390, guid: 2129e2f857c81a14c8447220a47a1390, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8853088739730624390, guid: 2129e2f857c81a14c8447220a47a1390, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}

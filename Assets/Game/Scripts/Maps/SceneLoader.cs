@@ -10,7 +10,6 @@ public class SceneLoader : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            print("colidiu aqui ó");
             LoadTargetScene();
         }
     }

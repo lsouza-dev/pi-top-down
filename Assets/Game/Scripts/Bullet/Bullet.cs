@@ -66,7 +66,6 @@ public class Bullet : MonoBehaviour
 
         if (isEnemy || isTower || isSpawner || isMinion || isBoss)
         {
-            print($"E: {isEnemy} T: {isTower}  M: {isMinion} B: {isBoss} S: {isSpawner}");
             var dmg = other.gameObject.GetComponent<DamageFeedbackController>();
 
             if (!isSpawner)

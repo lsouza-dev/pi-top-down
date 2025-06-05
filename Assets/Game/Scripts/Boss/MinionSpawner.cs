@@ -2,11 +2,10 @@ using UnityEngine;
 
 public class MinionSpawner : MonoBehaviour
 {
-    public RootController rootController;
+    public RootController rootController; // <- prefab de minion
     public int numberToSpawn = 3;
     private GameObject bossArea;
     private BoxCollider2D bossAreaCollider;
-
 
     void Awake()
     {
@@ -23,7 +22,6 @@ public class MinionSpawner : MonoBehaviour
 
         for (int i = 0; i < numberToSpawn; i++)
         {
-            // Calcula uma posição aleatória dentro da área do boss
             Vector2 randomPoint = GetRandomPointInBossArea();
             Vector3 spawnPosition = new Vector3(randomPoint.x, randomPoint.y, 0f);
 
@@ -33,12 +31,8 @@ public class MinionSpawner : MonoBehaviour
 
     private Vector2 GetRandomPointInBossArea()
     {
-        if (bossAreaCollider == null) return Vector2.zero;
-
-        // Obtém os limites do BoxCollider2D
         Bounds bounds = bossAreaCollider.bounds;
-        
-        // Gera uma posição aleatória dentro dos limites
+
         float randomX = Random.Range(bounds.min.x, bounds.max.x);
         float randomY = Random.Range(bounds.min.y, bounds.max.y);
 

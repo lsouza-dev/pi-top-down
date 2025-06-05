@@ -21,7 +21,6 @@ public class LoadingScreenController : MonoBehaviour
     {
         string targetScene = PlayerPrefs.GetString("TargetScene");
         string loadingKey = "Loading_" + targetScene;
-        print(targetScene);
 
         switch (targetScene)
         {
