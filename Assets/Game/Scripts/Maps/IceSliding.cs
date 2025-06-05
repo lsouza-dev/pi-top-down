@@ -15,6 +15,8 @@ public class IceSliding : MonoBehaviour
 
     void Start()
     {
+        string scene = PlayerPrefs.GetString("TargetScene");
+        if (!scene.Equals("Snow")) this.enabled = false;
         rb = GetComponent<Rigidbody2D>();
         playerMovement = GetComponent<PlayerMovement>();
     }
