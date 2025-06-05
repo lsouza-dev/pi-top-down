@@ -15,7 +15,7 @@ public class LoadingScreenController : MonoBehaviour
 
     void Awake()
     {
-          loadingImage = GetComponent<Image>();
+        loadingImage = GetComponent<Image>();
     }
     void Start()
     {
@@ -23,7 +23,6 @@ public class LoadingScreenController : MonoBehaviour
         string loadingKey = "Loading_" + targetScene;
         print(targetScene);
 
-        // Escolhe a imagem certa
         switch (targetScene)
         {
             case "Forest":
@@ -46,7 +45,7 @@ public class LoadingScreenController : MonoBehaviour
                 print("cena nao encontrada");
                 break;
         }
-        //animação de loading
+        
         StartCoroutine(LoadAsyncScene(targetScene));
     }
 

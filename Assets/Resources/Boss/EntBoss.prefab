@@ -151,6 +151,7 @@ GameObject:
   - component: {fileID: 5876813432318952674}
   - component: {fileID: 4644899855800843343}
   - component: {fileID: 502979823262031826}
+  - component: {fileID: 969188821361540833}
   m_Layer: 0
   m_Name: EntBoss
   m_TagString: Boss
@@ -232,7 +233,7 @@ MonoBehaviour:
   player: {fileID: 0}
   minionSpawner: {fileID: 0}
   bulletSpawnPoint: {fileID: 0}
-  healthBar: {fileID: 0}
+  healthBar: {fileID: 7968421745537835612}
   maxHealth: 100
   currentHealth: 100
   isIdle: 0
@@ -281,6 +282,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minionPrefab: {fileID: 0}
   numberToSpawn: 3
+--- !u!114 &969188821361540833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4012992518310296373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7154cfaac3676d49b91c9fe0d1152da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvas: {fileID: 0}
+  damageTextGO: {fileID: 0}
+  player: {fileID: 0}
+  xOffset: 1
+  color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &6744999832145186963
 GameObject:
   m_ObjectHideFlags: 0
@@ -400,6 +418,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6265931489565616272, guid: 25082181168adda4d952534c58bdf1d3, type: 3}
+      propertyPath: bossController
+      value: 
+      objectReference: {fileID: 5876813432318952674}
     - target: {fileID: 8687949685559419670, guid: 25082181168adda4d952534c58bdf1d3, type: 3}
       propertyPath: m_Name
       value: EnemyHealthBar
@@ -422,3 +444,14 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 997942627527772386, guid: 25082181168adda4d952534c58bdf1d3, type: 3}
   m_PrefabInstance: {fileID: 4062398760326122188}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7968421745537835612 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6265931489565616272, guid: 25082181168adda4d952534c58bdf1d3, type: 3}
+  m_PrefabInstance: {fileID: 4062398760326122188}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c29054a3bb2aa94086c118938bfddee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

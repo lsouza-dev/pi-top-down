@@ -17,7 +17,7 @@ public class MinionController : Enemy
     private float currentAttackCooldown;
 
     [Header("Spawn")]
-    public float startDelay = 0.5f;
+    public float startDelay = 1f;
     private bool canAct = false;
 
     [Header("Referências")]
@@ -53,7 +53,9 @@ public class MinionController : Enemy
 
     void Update()
     {
+        print("Can Act:  " + canAct);
         if (!isAlive || !canAct || player == null) return;
+        print("DelayTime:  " + startDelay);
 
         distanceToPlayer = Vector2.Distance(transform.position, player.transform.position);
         currentAttackCooldown -= Time.deltaTime;
