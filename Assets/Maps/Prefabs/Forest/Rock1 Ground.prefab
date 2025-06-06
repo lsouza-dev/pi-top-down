@@ -97,11 +97,7 @@ GameObject:
   - component: {fileID: -4371003757944588385}
   m_Layer: 3
   m_Name: Rock1 Ground
-<<<<<<< HEAD
   m_TagString: Wall
-=======
-  m_TagString: Objects
->>>>>>> a40413aafbe5c7ff92299c58b71f2f16e8caa3c1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
