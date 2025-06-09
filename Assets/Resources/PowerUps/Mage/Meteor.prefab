@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 3906943220923712989}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.12, y: 0, z: 0}
   m_LocalScale: {x: 1.3, y: 1.3, z: 1.3}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -73,10 +73,10 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 0.30588236}
-  m_FlipX: 0
+  m_SortingOrder: 2
+  m_Sprite: {fileID: 21300000, guid: 9c30f93a602594542b5d7bb4207da9fd, type: 3}
+  m_Color: {r: 0.80451226, g: 0.9528302, b: 0.9528302, a: 0.57254905}
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 1}
@@ -117,9 +117,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.007013266, y: 0.0046959748}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.7644566
 --- !u!1 &7761791750340381925
 GameObject:
   m_ObjectHideFlags: 0
@@ -133,6 +133,7 @@ GameObject:
   - component: {fileID: -7396113984543477131}
   - component: {fileID: 6332267283404116757}
   - component: {fileID: -2283505223884936628}
+  - component: {fileID: 2466587569631132276}
   m_Layer: 0
   m_Name: Meteor
   m_TagString: PowerUp
@@ -196,8 +197,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_SortingOrder: 2
+  m_Sprite: {fileID: 8605571950298446061, guid: 3eefe4bc573e5aa41927558622fc3564, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -220,18 +221,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da8a9b6d35eab2844b6c55dd59d246bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToHitGround: 3
   timeToDestroy: 8
   collisionDamage: 10
   onStayAreaDamage: 2
   damageArea: {fileID: 3906943220923712989}
-  parentSpriteRenderer: {fileID: 0}
+  parentSpriteRenderer: {fileID: 2169340886775977096}
   areaSpriteRenderer: {fileID: 0}
   parentCollider: {fileID: 0}
   areaCollider: {fileID: 0}
-  shadowObject: {fileID: 0}
-  shadowTransform: {fileID: 0}
-  maxShadowScale: 1.5
 --- !u!58 &6332267283404116757
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -264,9 +261,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.12994853, y: 0.00000023841858}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.9886104
 --- !u!50 &-2283505223884936628
 Rigidbody2D:
   serializedVersion: 4
@@ -294,3 +291,24 @@ Rigidbody2D:
   m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!95 &2466587569631132276
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7761791750340381925}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: acaad4860600b5749ba9986116054a93, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: -3647446039999890588}
   - component: {fileID: 3836502692474837373}
   - component: {fileID: 238538847350440243}
+  - component: {fileID: 2540315065943546020}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -49,6 +50,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneName: 
   canvasPos: {fileID: 0}
+  attributesBackground: {fileID: 0}
+  virtualCamera: {fileID: 0}
+  mapContainer: {fileID: 0}
+  secondBg: {fileID: 0}
+  attrBg: {fileID: 0}
+  bossFigth: 0
+  bossController: {fileID: 0}
+  camOffset: 4.3
 --- !u!114 &-3647446039999890588
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -104,3 +113,15 @@ MonoBehaviour:
   playerController: {fileID: 0}
   attributeUpgradeController: {fileID: 0}
   fadeUpgradePannel: {fileID: 0}
+--- !u!114 &2540315065943546020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3251509402498636556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0b564b31d71be847852bbcfba84eeb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
