@@ -5,7 +5,13 @@ using UnityEngine;
 public class BossRoomSound : MonoBehaviour
 {
     public AudioSource Music;
+    public static BossRoomSound Instance;
 
+
+    public void Awake()
+    {
+        Instance = this;
+    }
     private void OnTriggerEnter2D(Collider2D other)
     {
 
@@ -30,5 +36,9 @@ public class BossRoomSound : MonoBehaviour
                 Music.Pause();
             }
         }
+    }
+    public void MusicPause()
+    {
+        Music.Pause();
     }
 }

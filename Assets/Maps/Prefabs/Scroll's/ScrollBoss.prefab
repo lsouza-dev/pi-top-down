@@ -292,7 +292,7 @@ MonoBehaviour:
   canInteract: 0
   isLanguageScroll: 0
   effect: {fileID: 0}
-  actionTextGO: {fileID: 4017008655062104094}
+  actionTextGO: {fileID: 1856631623242419053}
   yOffset: 1
   isActiveActionTextGO: 0
   pulseSpeed: 0.25
