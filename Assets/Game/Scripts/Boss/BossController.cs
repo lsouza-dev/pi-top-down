@@ -170,6 +170,8 @@ public class BossController : MonoBehaviour
         animator.SetTrigger("isDamage");
         if (this.currentHealth <= 0)
         {
+            GameManager.Instance.SetBossKilled();
+            print("o boss morreu, a porta ta aberta");
             isAlive = false;
             var player = FindObjectOfType<PlayerController>();
             player.xp += 20;

@@ -9,9 +9,14 @@ public class BossWakeUp : MonoBehaviour
 
     private bool hasTriggered = false;
 
+    private void Awake()
+    {
+        if (playerController == null)
+            playerController = FindObjectOfType<PlayerController>();
+    }
     public void OnTriggerEnter2D(Collider2D other)
     {
-        if (!hasTriggered && other.CompareTag("Player"))
+        if (!hasTriggered && other.CompareTag("Player") && GameManager.Instance.HasInteractedWithBossScroll())
         {
             hasTriggered = true;
             StartCoroutine(WakeUpSequence());
@@ -20,6 +25,8 @@ public class BossWakeUp : MonoBehaviour
 
     private System.Collections.IEnumerator WakeUpSequence()
     {
+        print("funcionou");
+        playerController.FreezePlayer(10000f);
         Music.Pause();
         yield return new WaitForSeconds(0.8f);
         roar.Play();
@@ -30,5 +37,7 @@ public class BossWakeUp : MonoBehaviour
         shakeController.StopShake();
         yield return new WaitForSeconds(0.8f);
         Music.UnPause();
+
+        playerController.FreezePlayer(0f);
     }
 }

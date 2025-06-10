@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     private bool allSpawnersDestroyed = false;
     private HashSet<string> scrollsCollected = new HashSet<string>();
     private bool bossScrollInteracted = false;
+    private bool bossKilled = false;
 
     private void Awake()
     {
@@ -45,5 +46,13 @@ public class GameManager : MonoBehaviour
     public bool HasInteractedWithBossScroll()
     {
         return bossScrollInteracted;
+    }
+    public void SetBossKilled()
+    {
+        bossKilled = true;
+    }
+    public bool AreBossKilled()
+    {
+        return bossKilled;
     }
 }

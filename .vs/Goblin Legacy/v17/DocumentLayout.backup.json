@@ -3,8 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\sala103b\\Desktop\\Goblin Legacy\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{CB45B959-AB7E-3982-4B6E-495051F60798}|Assembly-CSharp.csproj|C:\\Users\\sala103b\\Desktop\\Goblin Legacy\\assets\\game\\scripts\\maps\\bosswakeup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{CB45B959-AB7E-3982-4B6E-495051F60798}|Assembly-CSharp.csproj|c:\\users\\sala103b\\desktop\\goblin legacy\\assets\\game\\scripts\\maps\\bosswakeup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CB45B959-AB7E-3982-4B6E-495051F60798}|Assembly-CSharp.csproj|solutionrelative:assets\\game\\scripts\\maps\\bosswakeup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CB45B959-AB7E-3982-4B6E-495051F60798}|Assembly-CSharp.csproj|c:\\users\\sala103b\\desktop\\goblin legacy\\assets\\game\\scripts\\maps\\continuousshake.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CB45B959-AB7E-3982-4B6E-495051F60798}|Assembly-CSharp.csproj|solutionrelative:assets\\game\\scripts\\maps\\continuousshake.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{CB45B959-AB7E-3982-4B6E-495051F60798}|Assembly-CSharp.csproj|C:\\Users\\sala103b\\Desktop\\Goblin Legacy\\assets\\game\\scripts\\maps\\sound.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -22,11 +26,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "ContinuousShake.cs",
+              "DocumentMoniker": "C:\\Users\\sala103b\\Desktop\\Goblin Legacy\\Assets\\Game\\Scripts\\Maps\\ContinuousShake.cs",
+              "RelativeDocumentMoniker": "Assets\\Game\\Scripts\\Maps\\ContinuousShake.cs",
+              "ToolTip": "C:\\Users\\sala103b\\Desktop\\Goblin Legacy\\Assets\\Game\\Scripts\\Maps\\ContinuousShake.cs",
+              "RelativeToolTip": "Assets\\Game\\Scripts\\Maps\\ContinuousShake.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAACMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-09T20:20:30.551Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "Sound.cs",
               "DocumentMoniker": "C:\\Users\\sala103b\\Desktop\\Goblin Legacy\\Assets\\Game\\Scripts\\Maps\\Sound.cs",
               "RelativeDocumentMoniker": "Assets\\Game\\Scripts\\Maps\\Sound.cs",
@@ -45,14 +62,14 @@
               "RelativeDocumentMoniker": "Assets\\Game\\Scripts\\Maps\\BossWakeUp.cs",
               "ToolTip": "C:\\Users\\sala103b\\Desktop\\Goblin Legacy\\Assets\\Game\\Scripts\\Maps\\BossWakeUp.cs",
               "RelativeToolTip": "Assets\\Game\\Scripts\\Maps\\BossWakeUp.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAUAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-09T19:00:11.858Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Scroll.cs",
               "DocumentMoniker": "C:\\Users\\sala103b\\Desktop\\Goblin Legacy\\Assets\\Game\\Scripts\\Maps\\Scroll.cs",
               "RelativeDocumentMoniker": "Assets\\Game\\Scripts\\Maps\\Scroll.cs",
@@ -60,7 +77,8 @@
               "RelativeToolTip": "Assets\\Game\\Scripts\\Maps\\Scroll.cs",
               "ViewState": "AgIAADAAAAAAAAAAAAAgwCUAAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-09T18:37:39.618Z"
+              "WhenOpened": "2025-06-09T18:37:39.618Z",
+              "EditorCaption": ""
             }
           ]
         }

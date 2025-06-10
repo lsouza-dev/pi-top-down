@@ -634,11 +634,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1887342867010537932, guid: dca89647ee06fcf4fab5905cf84e56c3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 15
+      value: -11.55
       objectReference: {fileID: 0}
     - target: {fileID: 1887342867010537932, guid: dca89647ee06fcf4fab5905cf84e56c3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5
+      value: -17
       objectReference: {fileID: 0}
     - target: {fileID: 1887342867010537932, guid: dca89647ee06fcf4fab5905cf84e56c3, type: 3}
       propertyPath: m_LocalPosition.z
@@ -678,11 +678,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9026970655102764844, guid: dca89647ee06fcf4fab5905cf84e56c3, type: 3}
       propertyPath: maxSpeed
-      value: 7
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9026970655102764844, guid: dca89647ee06fcf4fab5905cf84e56c3, type: 3}
       propertyPath: strength
-      value: 100
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -758,7 +758,7 @@ Transform:
   m_GameObject: {fileID: 499320603}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 15, y: 5, z: -10}
+  m_LocalPosition: {x: -11.55, y: -17, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -900,6 +900,11 @@ MonoBehaviour:
     m_FrequencyGain: 1
     m_Duration: 1
     m_NoiseOffsets: {x: 0, y: 0, z: 0}
+--- !u!4 &579711620 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3001854754446269456, guid: 12bfc5688ede96f45a5743a21b09ae78, type: 3}
+  m_PrefabInstance: {fileID: 1921532339}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &657969468
 GameObject:
   m_ObjectHideFlags: 0
@@ -1650,7 +1655,7 @@ Transform:
   m_GameObject: {fileID: 991084961}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 15, y: 5, z: -10}
+  m_LocalPosition: {x: -7.5841713, y: -16.187176, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2482,7 +2487,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 1.331688, y: -0.95355463}
+  m_Offset: {x: 1.5830836, y: -0.95355463}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -2493,7 +2498,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.967119, y: 2.9071093}
+  m_Size: {x: 0.4643278, y: 2.9071093}
   m_EdgeRadius: 0
 --- !u!4 &1690170603
 Transform:
@@ -2731,6 +2736,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 169751453216064354, guid: 12bfc5688ede96f45a5743a21b09ae78, type: 3}
+      propertyPath: SceneNames
+      value: Desert
+      objectReference: {fileID: 0}
+    - target: {fileID: 169751453216064354, guid: 12bfc5688ede96f45a5743a21b09ae78, type: 3}
+      propertyPath: unlockCondition
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 169751453216064354, guid: 12bfc5688ede96f45a5743a21b09ae78, type: 3}
+      propertyPath: nomeDaCenaParaCarregar
+      value: Desert
+      objectReference: {fileID: 0}
     - target: {fileID: 247037211857586721, guid: 12bfc5688ede96f45a5743a21b09ae78, type: 3}
       propertyPath: InitialModule.startColor.maxColor.a
       value: 0.1764706
@@ -20999,6 +21016,10 @@ PrefabInstance:
       propertyPath: m_Tiles.Array.data[2411].second.m_TileObjectToInstantiateIndex
       value: 65535
       objectReference: {fileID: 0}
+    - target: {fileID: 691333610001449553, guid: 12bfc5688ede96f45a5743a21b09ae78, type: 3}
+      propertyPath: destination
+      value: 
+      objectReference: {fileID: 579711620}
     - target: {fileID: 996157592994940365, guid: 12bfc5688ede96f45a5743a21b09ae78, type: 3}
       propertyPath: InitialModule.startColor.maxColor.a
       value: 0.1764706

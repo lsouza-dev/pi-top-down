@@ -1,5 +1,6 @@
-using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DoorTeleporter : MonoBehaviour
 {
@@ -8,21 +9,34 @@ public class DoorTeleporter : MonoBehaviour
         None,
         AllSpawnersDestroyed,
         GotLanguageScroll,
-        InteractedWithBossScroll
+        InteractedWithBossScroll,
+        BossKilled,
     }
 
-    [Header("Destino da porta")]
+    [Header("Destino da porta (na mesma cena)")]
     public Transform destination;
 
     [Header("Deslocamento aplicado ao destino")]
     public Vector2 offset = new Vector2(-0.1f, -0.6f);
 
+    [Header("Cena a carregar (deixe vazio se for teleporte local)")]
+    public string SceneNames;
+
     [Header("Condição de desbloqueio da porta")]
     public DoorUnlockCondition unlockCondition = DoorUnlockCondition.None;
 
-    private bool playerInRange = false;
-    private bool canTeleport = true;
-    private bool isUnlocked = false;
+    // Lista de cenas válidas para verificação
+    private readonly List<string> ValidScenes = new List<string>
+    {
+        "Desert",
+        "Snow",
+        "Swamp",
+        "FinalBoss",
+    };
+
+    [SerializeField] private bool playerInRange = false;
+    [SerializeField] private bool canTeleport = true;
+    [SerializeField] private bool isUnlocked = false;
 
     private GameObject player;
 
@@ -32,7 +46,15 @@ public class DoorTeleporter : MonoBehaviour
 
         if (playerInRange && canTeleport && isUnlocked && Input.GetKeyDown(KeyCode.Space))
         {
-            TeleportPlayer();
+            print("pode telar");
+            if (!string.IsNullOrEmpty(SceneNames))
+            {
+                LoadValidScene();
+            }
+            else
+            {
+                TeleportPlayer();
+            }
         }
     }
 
@@ -46,7 +68,7 @@ public class DoorTeleporter : MonoBehaviour
 
         switch (unlockCondition)
         {
-            case DoorUnlockCondition.None:  
+            case DoorUnlockCondition.None:
                 isUnlocked = true;
                 break;
 
@@ -61,6 +83,10 @@ public class DoorTeleporter : MonoBehaviour
             case DoorUnlockCondition.InteractedWithBossScroll:
                 isUnlocked = GameManager.Instance.HasScroll("Language") &&
                              GameManager.Instance.HasInteractedWithBossScroll();
+                break;
+
+            case DoorUnlockCondition.BossKilled:
+                isUnlocked = GameManager.Instance.AreBossKilled();
                 break;
         }
     }
@@ -78,6 +104,18 @@ public class DoorTeleporter : MonoBehaviour
         }
 
         canTeleport = false;
+    }
+
+    private void LoadValidScene()
+    {
+        if (ValidScenes.Contains(SceneNames))
+        {
+            SceneManager.LoadScene(SceneNames);
+        }
+        else
+        {
+            Debug.LogWarning($"Cena '{SceneNames}' não está na lista de cenas válidas!");
+        }
     }
 
     public void DisableTeleportTemporarily()

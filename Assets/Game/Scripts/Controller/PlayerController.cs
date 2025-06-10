@@ -304,4 +304,9 @@ public class PlayerController : MonoBehaviour
         this.boxCollider.offset = colliderOffset;
         this.boxCollider.size = colliderSize;
     }
+    public void FreezePlayer(float duration)
+    {
+        stoppedTime = duration;
+        rb.velocity = Vector2.zero;
+    }
 }
