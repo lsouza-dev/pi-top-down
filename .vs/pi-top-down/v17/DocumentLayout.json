@@ -3,11 +3,19 @@
   "WorkspaceRootPath": "C:\\Users\\CYNTHIA\\Desktop\\Goblin Legacy\\pi-top-down\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{71536AC9-A891-E2D4-003D-D939B61A50F8}|Assembly-CSharp.Player.csproj|c:\\users\\cynthia\\desktop\\goblin legacy\\pi-top-down\\assets\\game\\scripts\\maps\\camerazoneswitcher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{71536AC9-A891-E2D4-003D-D939B61A50F8}|Assembly-CSharp.Player.csproj|solutionrelative:assets\\game\\scripts\\maps\\camerazoneswitcher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{71536AC9-A891-E2D4-003D-D939B61A50F8}|Assembly-CSharp.Player.csproj|c:\\users\\cynthia\\desktop\\goblin legacy\\pi-top-down\\assets\\game\\scripts\\controller\\gamecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{71536AC9-A891-E2D4-003D-D939B61A50F8}|Assembly-CSharp.Player.csproj|solutionrelative:assets\\game\\scripts\\controller\\gamecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{71536AC9-A891-E2D4-003D-D939B61A50F8}|Assembly-CSharp.Player.csproj|c:\\users\\cynthia\\desktop\\goblin legacy\\pi-top-down\\assets\\game\\scripts\\maps\\scroll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{71536AC9-A891-E2D4-003D-D939B61A50F8}|Assembly-CSharp.Player.csproj|solutionrelative:assets\\game\\scripts\\maps\\scroll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{71536AC9-A891-E2D4-003D-D939B61A50F8}|Assembly-CSharp.Player.csproj|c:\\users\\cynthia\\desktop\\goblin legacy\\pi-top-down\\assets\\game\\scripts\\maps\\uimanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{71536AC9-A891-E2D4-003D-D939B61A50F8}|Assembly-CSharp.Player.csproj|C:\\Users\\CYNTHIA\\Desktop\\Goblin Legacy\\pi-top-down\\assets\\game\\scripts\\maps\\uimanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{71536AC9-A891-E2D4-003D-D939B61A50F8}|Assembly-CSharp.Player.csproj|solutionrelative:assets\\game\\scripts\\maps\\uimanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -15,7 +23,7 @@
       "RelativeMoniker": "D:0:0:{71536AC9-A891-E2D4-003D-D939B61A50F8}|Assembly-CSharp.Player.csproj|solutionrelative:assets\\game\\scripts\\maps\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{71536AC9-A891-E2D4-003D-D939B61A50F8}|Assembly-CSharp.Player.csproj|c:\\users\\cynthia\\desktop\\goblin legacy\\pi-top-down\\assets\\game\\scripts\\maps\\bosswakeup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{71536AC9-A891-E2D4-003D-D939B61A50F8}|Assembly-CSharp.Player.csproj|C:\\Users\\CYNTHIA\\Desktop\\Goblin Legacy\\pi-top-down\\assets\\game\\scripts\\maps\\bosswakeup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{71536AC9-A891-E2D4-003D-D939B61A50F8}|Assembly-CSharp.Player.csproj|solutionrelative:assets\\game\\scripts\\maps\\bosswakeup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -23,7 +31,7 @@
       "RelativeMoniker": "D:0:0:{71536AC9-A891-E2D4-003D-D939B61A50F8}|Assembly-CSharp.Player.csproj|solutionrelative:assets\\game\\scripts\\controller\\spawnercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{71536AC9-A891-E2D4-003D-D939B61A50F8}|Assembly-CSharp.Player.csproj|c:\\users\\cynthia\\desktop\\goblin legacy\\pi-top-down\\assets\\game\\scripts\\boss\\bosscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{71536AC9-A891-E2D4-003D-D939B61A50F8}|Assembly-CSharp.Player.csproj|C:\\Users\\CYNTHIA\\Desktop\\Goblin Legacy\\pi-top-down\\assets\\game\\scripts\\boss\\bosscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{71536AC9-A891-E2D4-003D-D939B61A50F8}|Assembly-CSharp.Player.csproj|solutionrelative:assets\\game\\scripts\\boss\\bosscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -43,6 +51,32 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "GameController.cs",
+              "DocumentMoniker": "C:\\Users\\CYNTHIA\\Desktop\\Goblin Legacy\\pi-top-down\\Assets\\Game\\Scripts\\Controller\\GameController.cs",
+              "RelativeDocumentMoniker": "Assets\\Game\\Scripts\\Controller\\GameController.cs",
+              "ToolTip": "C:\\Users\\CYNTHIA\\Desktop\\Goblin Legacy\\pi-top-down\\Assets\\Game\\Scripts\\Controller\\GameController.cs",
+              "RelativeToolTip": "Assets\\Game\\Scripts\\Controller\\GameController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACEAAABhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-11T01:36:21.438Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CameraZoneSwitcher.cs",
+              "DocumentMoniker": "C:\\Users\\CYNTHIA\\Desktop\\Goblin Legacy\\pi-top-down\\Assets\\Game\\Scripts\\Maps\\CameraZoneSwitcher.cs",
+              "RelativeDocumentMoniker": "Assets\\Game\\Scripts\\Maps\\CameraZoneSwitcher.cs",
+              "ToolTip": "C:\\Users\\CYNTHIA\\Desktop\\Goblin Legacy\\pi-top-down\\Assets\\Game\\Scripts\\Maps\\CameraZoneSwitcher.cs",
+              "RelativeToolTip": "Assets\\Game\\Scripts\\Maps\\CameraZoneSwitcher.cs",
+              "ViewState": "AgIAADYAAAAAAAAAAAAowEIAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-11T01:05:59.026Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "UIManager.cs",
               "DocumentMoniker": "C:\\Users\\CYNTHIA\\Desktop\\Goblin Legacy\\pi-top-down\\Assets\\Game\\Scripts\\Maps\\UIManager.cs",
               "RelativeDocumentMoniker": "Assets\\Game\\Scripts\\Maps\\UIManager.cs",
@@ -50,12 +84,11 @@
               "RelativeToolTip": "Assets\\Game\\Scripts\\Maps\\UIManager.cs",
               "ViewState": "AgIAACoAAAAAAAAAAAAjwFUAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-11T00:48:55.964Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-11T00:48:55.964Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "Scroll.cs",
               "DocumentMoniker": "C:\\Users\\CYNTHIA\\Desktop\\Goblin Legacy\\pi-top-down\\Assets\\Game\\Scripts\\Maps\\Scroll.cs",
               "RelativeDocumentMoniker": "Assets\\Game\\Scripts\\Maps\\Scroll.cs",
@@ -68,7 +101,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "BossWakeUp.cs",
               "DocumentMoniker": "C:\\Users\\CYNTHIA\\Desktop\\Goblin Legacy\\pi-top-down\\Assets\\Game\\Scripts\\Maps\\BossWakeUp.cs",
               "RelativeDocumentMoniker": "Assets\\Game\\Scripts\\Maps\\BossWakeUp.cs",
@@ -76,12 +109,11 @@
               "RelativeToolTip": "Assets\\Game\\Scripts\\Maps\\BossWakeUp.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAABaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-11T00:45:54.205Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-11T00:45:54.205Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 8,
               "Title": "Sound.cs",
               "DocumentMoniker": "C:\\Users\\CYNTHIA\\Desktop\\Goblin Legacy\\pi-top-down\\Assets\\Game\\Scripts\\Maps\\Sound.cs",
               "RelativeDocumentMoniker": "Assets\\Game\\Scripts\\Maps\\Sound.cs",
@@ -93,7 +125,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 7,
               "Title": "BossController.cs",
               "DocumentMoniker": "C:\\Users\\CYNTHIA\\Desktop\\Goblin Legacy\\pi-top-down\\Assets\\Game\\Scripts\\Boss\\BossController.cs",
               "RelativeDocumentMoniker": "Assets\\Game\\Scripts\\Boss\\BossController.cs",
@@ -101,12 +133,11 @@
               "RelativeToolTip": "Assets\\Game\\Scripts\\Boss\\BossController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAALcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-09T01:18:50.397Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-09T01:18:50.397Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "SpawnerController.cs",
               "DocumentMoniker": "C:\\Users\\CYNTHIA\\Desktop\\Goblin Legacy\\pi-top-down\\Assets\\Game\\Scripts\\Controller\\SpawnerController.cs",
               "RelativeDocumentMoniker": "Assets\\Game\\Scripts\\Controller\\SpawnerController.cs",
@@ -114,12 +145,11 @@
               "RelativeToolTip": "Assets\\Game\\Scripts\\Controller\\SpawnerController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAI4AAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-08T22:45:02.891Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-08T22:45:02.891Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "GameManager.cs",
               "DocumentMoniker": "C:\\Users\\CYNTHIA\\Desktop\\Goblin Legacy\\pi-top-down\\Assets\\Game\\Scripts\\Maps\\GameManager.cs",
               "RelativeDocumentMoniker": "Assets\\Game\\Scripts\\Maps\\GameManager.cs",
@@ -127,8 +157,7 @@
               "RelativeToolTip": "Assets\\Game\\Scripts\\Maps\\GameManager.cs",
               "ViewState": "AgIAABAAAAAAAAAAAAAgwCgAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-08T22:43:24.801Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-08T22:43:24.801Z"
             }
           ]
         }

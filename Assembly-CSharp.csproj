@@ -83,6 +83,7 @@
     <Compile Include="Assets\Maps\TextMesh Pro\Examples &amp; Extras\Scripts\DropdownSample.cs" />
     <Compile Include="Assets\Maps\TextMesh Pro\Examples &amp; Extras\Scripts\ShaderPropAnimator.cs" />
     <Compile Include="Assets\Game\Scripts\Boss\MinionSpawner.cs" />
+    <Compile Include="Assets\Game\Scripts\Maps\CameraZoneSwitcher.cs" />
     <Compile Include="Assets\Maps\TextMesh Pro\Examples &amp; Extras\Scripts\WarpTextExample.cs" />
     <Compile Include="Assets\Game\Scripts\Maps\LoadingTextAnimator.cs" />
     <Compile Include="Assets\Maps\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_PhoneNumberValidator.cs" />

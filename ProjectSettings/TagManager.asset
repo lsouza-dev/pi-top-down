@@ -33,6 +33,12 @@ TagManager:
   - Spike
   - Canvas
   - ScrollBoss
+  - anteRoomConfiner
+  - bossRoomConfiner
+  - darkForestConfiner
+  - darkForestZone
+  - anteRoomZone
+  - bossRoomZone
   layers:
   - Default
   - TransparentFX
