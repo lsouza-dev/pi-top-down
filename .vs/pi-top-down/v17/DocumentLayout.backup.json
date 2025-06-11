@@ -3,8 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\CYNTHIA\\Desktop\\Goblin Legacy\\pi-top-down\\pi-top-down\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{71536AC9-A891-E2D4-003D-D939B61A50F8}|Assembly-CSharp.Player.csproj|c:\\users\\cynthia\\desktop\\goblin legacy\\pi-top-down\\pi-top-down\\assets\\game\\scripts\\boss\\bosscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{71536AC9-A891-E2D4-003D-D939B61A50F8}|Assembly-CSharp.Player.csproj|solutionrelative:assets\\game\\scripts\\boss\\bosscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{71536AC9-A891-E2D4-003D-D939B61A50F8}|Assembly-CSharp.Player.csproj|c:\\users\\cynthia\\desktop\\goblin legacy\\pi-top-down\\pi-top-down\\assets\\game\\scripts\\maps\\sound.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{71536AC9-A891-E2D4-003D-D939B61A50F8}|Assembly-CSharp.Player.csproj|solutionrelative:assets\\game\\scripts\\maps\\sound.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{71536AC9-A891-E2D4-003D-D939B61A50F8}|Assembly-CSharp.Player.csproj|c:\\users\\cynthia\\desktop\\goblin legacy\\pi-top-down\\pi-top-down\\assets\\game\\scripts\\maps\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{71536AC9-A891-E2D4-003D-D939B61A50F8}|Assembly-CSharp.Player.csproj|solutionrelative:assets\\game\\scripts\\maps\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{71536AC9-A891-E2D4-003D-D939B61A50F8}|Assembly-CSharp.Player.csproj|c:\\users\\cynthia\\desktop\\goblin legacy\\pi-top-down\\pi-top-down\\assets\\game\\scripts\\controller\\spawnercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{71536AC9-A891-E2D4-003D-D939B61A50F8}|Assembly-CSharp.Player.csproj|solutionrelative:assets\\game\\scripts\\controller\\spawnercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,17 +26,56 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Sound.cs",
+              "DocumentMoniker": "C:\\Users\\CYNTHIA\\Desktop\\Goblin Legacy\\pi-top-down\\pi-top-down\\Assets\\Game\\Scripts\\Maps\\Sound.cs",
+              "RelativeDocumentMoniker": "Assets\\Game\\Scripts\\Maps\\Sound.cs",
+              "ToolTip": "C:\\Users\\CYNTHIA\\Desktop\\Goblin Legacy\\pi-top-down\\pi-top-down\\Assets\\Game\\Scripts\\Maps\\Sound.cs",
+              "RelativeToolTip": "Assets\\Game\\Scripts\\Maps\\Sound.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACAAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-09T01:22:56.703Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "BossController.cs",
+              "DocumentMoniker": "C:\\Users\\CYNTHIA\\Desktop\\Goblin Legacy\\pi-top-down\\pi-top-down\\Assets\\Game\\Scripts\\Boss\\BossController.cs",
+              "RelativeDocumentMoniker": "Assets\\Game\\Scripts\\Boss\\BossController.cs",
+              "ToolTip": "C:\\Users\\CYNTHIA\\Desktop\\Goblin Legacy\\pi-top-down\\pi-top-down\\Assets\\Game\\Scripts\\Boss\\BossController.cs",
+              "RelativeToolTip": "Assets\\Game\\Scripts\\Boss\\BossController.cs",
+              "ViewState": "AgIAAJwAAAAAAAAAAAAmwLcAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-09T01:18:50.397Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "SpawnerController.cs",
+              "DocumentMoniker": "C:\\Users\\CYNTHIA\\Desktop\\Goblin Legacy\\pi-top-down\\pi-top-down\\Assets\\Game\\Scripts\\Controller\\SpawnerController.cs",
+              "RelativeDocumentMoniker": "Assets\\Game\\Scripts\\Controller\\SpawnerController.cs",
+              "ToolTip": "C:\\Users\\CYNTHIA\\Desktop\\Goblin Legacy\\pi-top-down\\pi-top-down\\Assets\\Game\\Scripts\\Controller\\SpawnerController.cs",
+              "RelativeToolTip": "Assets\\Game\\Scripts\\Controller\\SpawnerController.cs",
+              "ViewState": "AgIAAH4AAAAAAAAAAAAmwI4AAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-08T22:45:02.891Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "GameManager.cs",
               "DocumentMoniker": "C:\\Users\\CYNTHIA\\Desktop\\Goblin Legacy\\pi-top-down\\pi-top-down\\Assets\\Game\\Scripts\\Maps\\GameManager.cs",
               "RelativeDocumentMoniker": "Assets\\Game\\Scripts\\Maps\\GameManager.cs",
               "ToolTip": "C:\\Users\\CYNTHIA\\Desktop\\Goblin Legacy\\pi-top-down\\pi-top-down\\Assets\\Game\\Scripts\\Maps\\GameManager.cs",
               "RelativeToolTip": "Assets\\Game\\Scripts\\Maps\\GameManager.cs",
-              "ViewState": "AgIAABoAAAAAAAAAAAAwwAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABIAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-08T22:43:24.801Z",
               "EditorCaption": ""
