@@ -11,14 +11,14 @@ public class IceSliding : MonoBehaviour
     private bool isSliding = false;
     private bool onIce = false;
     private Rigidbody2D rb;
-    private PlayerMovement playerMovement;
+    private PlayerController playerMovement;
 
     void Start()
     {
         string scene = PlayerPrefs.GetString("TargetScene");
         if (!scene.Equals("Snow")) this.enabled = false;
         rb = GetComponent<Rigidbody2D>();
-        playerMovement = GetComponent<PlayerMovement>();
+        playerMovement = GetComponent<PlayerController>();
     }
 
     private void Update()
@@ -32,7 +32,7 @@ public class IceSliding : MonoBehaviour
                 SnapToGrid();
                 StartSliding(inputDirection);
             }
-            
+
         }
     }
 

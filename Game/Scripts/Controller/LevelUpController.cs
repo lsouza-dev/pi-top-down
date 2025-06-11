@@ -34,7 +34,7 @@ public class LevelUpController : MonoBehaviour
                 playerController.EvolvePlayer(playerController.evolutionIndex, playerController.playerClass);
                 playerController.maxHealth += 30;
                 playerController.currentHealth = playerController.maxHealth;
-                playerController.atkSpeed += 0.5f;
+                playerController.atkSpeed += 0.05f;
                 playerController.strength += 10;
                 playerController.maxSpeed += 0.2f;
 
@@ -43,7 +43,7 @@ public class LevelUpController : MonoBehaviour
                 playerController.EvolvePlayer(playerController.evolutionIndex, playerController.playerClass);
                 playerController.maxHealth += 50;
                 playerController.currentHealth = playerController.maxHealth;
-                playerController.atkSpeed += 0.8f;
+                playerController.atkSpeed += 0.08f;
                 playerController.strength += 15;
                 playerController.maxSpeed += 0.4f;
                 break;
@@ -51,7 +51,7 @@ public class LevelUpController : MonoBehaviour
                 playerController.EvolvePlayer(playerController.evolutionIndex, playerController.playerClass);
                 playerController.maxHealth += 100;
                 playerController.currentHealth = playerController.maxHealth;
-                playerController.atkSpeed += 1.2f;
+                playerController.atkSpeed += .015f;
                 playerController.strength += 25;
                 playerController.maxSpeed += .8f;
                 break;

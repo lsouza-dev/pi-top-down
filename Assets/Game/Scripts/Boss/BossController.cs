@@ -174,7 +174,7 @@ public class BossController : MonoBehaviour
             print("o boss morreu, a porta ta aberta");
             isAlive = false;
             var player = FindObjectOfType<PlayerController>();
-            player.xp += 20;
+            player.xp += 10;
             rb.velocity = Vector2.zero;
 
             if (player.xp >= player.nexLevelPoints) levelUpController.LevelUp();

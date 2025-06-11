@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public enum AttackType
@@ -148,6 +149,13 @@ public class MinionController : Enemy
 
     void Die()
     {
+        var cc = GetComponent<CapsuleCollider2D>();
+        cc.enabled = false;
+
+        BoxCollider2D collider = GetComponent<BoxCollider2D>();
+        if (collider != null)
+            collider.enabled = false;
+        
         isAlive = false;
         rb.velocity = Vector2.zero;
         animator.SetTrigger("isDie");
@@ -155,10 +163,6 @@ public class MinionController : Enemy
 
         if (healthBar != null)
             Destroy(healthBar.gameObject);
-
-        BoxCollider2D collider = GetComponent<BoxCollider2D>();
-        if (collider != null)
-            collider.enabled = false;
 
         Destroy(gameObject, 2f);
         GiveXP();
@@ -168,7 +172,7 @@ public class MinionController : Enemy
     {
         if (player == null) return;
 
-        playerController.xp += 20;
+        playerController.xp += 2;
 
         LevelUpController levelUp = FindObjectOfType<LevelUpController>();
         if (playerController.xp >= playerController.nexLevelPoints)

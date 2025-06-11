@@ -3,7 +3,7 @@ using UnityEngine;
 public class ProjectileAttack : MonoBehaviour
 {
     public GameObject projectilePrefab;
-    public float projectileSpeed = 5f;
+    public float projectileSpeed = 4f;
     public Transform firePoint;
 
     public void Execute(GameObject player)

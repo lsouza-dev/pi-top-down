@@ -28,6 +28,8 @@ public class Scroll : MonoBehaviour
 
     void Awake()
     {
+        if(this.gameObject.name.Contains("Boss"))
+            effect = GameObject.FindGameObjectWithTag("ScrollLang").GetComponent<AudioSource>();
         if (instance == null)
             instance = this;
          sprite = GetComponentInChildren<SpriteRenderer>();
@@ -134,7 +136,7 @@ public class Scroll : MonoBehaviour
         effect.Play();
         Time.timeScale = 0f; // Pausa o jogo
         uiManager.BossRead();
-        //GameManager.Instance.SetBossScrollInteracted();
+
     }
 
 

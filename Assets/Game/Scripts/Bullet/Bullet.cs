@@ -134,7 +134,7 @@ public class Bullet : MonoBehaviour
                 anim.SetTrigger("explode");
                 var rb = GetComponent<Rigidbody2D>();
                 rb.velocity = Vector2.zero;
-                Destroy(gameObject, .5f);
+                Destroy(gameObject,.5f);
             }
         }
 

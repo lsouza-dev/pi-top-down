@@ -234,14 +234,14 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy"))
         {
             var enemy = other.gameObject.GetComponent<EnemyController>();
-            enemy.PlayerHit(this);
+            if(enemy != null) enemy.PlayerHit(this);
             invencibleTime = 2f;
         }
 
         if (other.gameObject.CompareTag("MeleeCollider"))
         {
             var enemy = other.gameObject.GetComponentInParent<EnemyController>();
-            enemy.PlayerHit(this);
+            if(enemy != null) enemy.PlayerHit(this);
             invencibleTime = 2f;
         }
     }

@@ -109,6 +109,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d59c0f7f2f686ad4083aec7fedfedbe4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerController: {fileID: 0}
+  timeToDestroy: 2
+  speed: 3
+  minionSpawner: {fileID: 0}
 --- !u!1 &9209013707421870379
 GameObject:
   m_ObjectHideFlags: 0

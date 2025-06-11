@@ -232,7 +232,7 @@ MonoBehaviour:
   spawnInterval: 15
   player: {fileID: 0}
   minionSpawner: {fileID: 0}
-  bulletSpawnPoint: {fileID: 0}
+  bulletSpawnPoint: {fileID: 6744999832145186963}
   healthBar: {fileID: 7968421745537835612}
   maxHealth: 100
   currentHealth: 100
@@ -280,7 +280,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5457b757ce8ff2f48abed63a7832b34b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minionPrefab: {fileID: 0}
+  rootController: {fileID: 0}
   numberToSpawn: 3
 --- !u!114 &969188821361540833
 MonoBehaviour:

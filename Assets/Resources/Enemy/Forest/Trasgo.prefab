@@ -228,14 +228,13 @@ MonoBehaviour:
   chaseDistance: 4
   atkDistance: 0.5
   patrolArea: 6
-  spawnerDistance: 0
   collisionDamage: 5
+  attackDelay: 0
   frontMeleeCollider: {fileID: 8993785876401909866}
   backMeleeCollider: {fileID: 892017441278414482}
   spawner: {fileID: 0}
   levelUpController: {fileID: 0}
   healthBar: {fileID: 4026206795670672247}
-  attackDelay: 0
 --- !u!114 &-4788310724095136474
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -440,7 +439,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 2025867135, guid: 2842cbd16b577a543accc193a6458453, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

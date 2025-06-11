@@ -165,7 +165,7 @@ public class EnemyController : Enemy
     void Die()
     {
         var player = FindObjectOfType<PlayerController>();
-        player.xp += 20;
+        player.xp += 2;
         rb.velocity = Vector2.zero;
         isAlive = false;
 

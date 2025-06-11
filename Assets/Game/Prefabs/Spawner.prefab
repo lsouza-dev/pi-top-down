@@ -55,7 +55,7 @@ MonoBehaviour:
   boxCollider: {fileID: 0}
   animator: {fileID: 0}
   currentHealth: 0
-  maxHealth: 30
+  maxHealth: 100
   isRespawningCoroutineRunning: 0
   enemiesSpawnedsCount: 0
   maxEnemiesSpawneds: 5
@@ -236,18 +236,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8660639258216263214}
     m_Modifications:
-    - target: {fileID: 1530045759815628632, guid: 2129e2f857c81a14c8447220a47a1390, type: 3}
-      propertyPath: spawnerController
-      value: 
-      objectReference: {fileID: 6054155611986710396}
-    - target: {fileID: 8853088739730624390, guid: 2129e2f857c81a14c8447220a47a1390, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8853088739730624390, guid: 2129e2f857c81a14c8447220a47a1390, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 997942627527772386, guid: 25082181168adda4d952534c58bdf1d3, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -337,6 +325,18 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8853088739730624390, guid: 25082181168adda4d952534c58bdf1d3, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1530045759815628632, guid: 2129e2f857c81a14c8447220a47a1390, type: 3}
+      propertyPath: spawnerController
+      value: 
+      objectReference: {fileID: 6054155611986710396}
+    - target: {fileID: 8853088739730624390, guid: 2129e2f857c81a14c8447220a47a1390, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8853088739730624390, guid: 2129e2f857c81a14c8447220a47a1390, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
